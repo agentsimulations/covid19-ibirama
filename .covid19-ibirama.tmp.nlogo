@@ -49,7 +49,7 @@ globals [
   education-labels
   education-values
   init med fin ;; Variables to control the turns logic flow
-  newday ;FDS magic variables?
+   ;FDS magic variables?
   min-distance dead
 ]
 
