@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ibirama - Escolas</name>
+    <description/>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Ensino Fundamental 2</name>
+      <Placemark>
+        <name>Escola Municipal Christa Sedlacek</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5393126,-27.0588131,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Tancredo Neves</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5268342,-27.1170748,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Colégio Hamônia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197845,-27.0549892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>E.E.B. Eliseu Guilherme</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5283184,-27.0582835,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Walmor Ribeiro BSE</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5908019,-27.0347133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Centro de Educação Infantil</name>
+      <Placemark>
+        <name>Centro de Educação Infantil Abelhinha Feliz</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5260105,-27.0829726,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro de Educação Infantil Florinda Zemke dos Santos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5886376,-27.0318606,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro de Educação Infantil Lidi Brodwolf</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.541648,-27.0450877,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CEI RUTH SCHLEI</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5374771,-27.0616059,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro de Educação Infantil Siegolf Radloff</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5211916,-27.0613761,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Possível Local CEI Moises Amaral
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.518976,-27.102888,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Colégio Hamônia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197845,-27.0549892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Caminho da Estação</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5015371,-27.071808,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Bairro Operário</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5114129,-27.0472586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Nova Stettin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5653963,-27.0574815,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Verônica Keil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5303161,-27.0797254,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Tancredo Neves</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5268342,-27.1170748,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Ensino Medio</name>
+      <Placemark>
+        <name>Instituto Federal de Educação, Ciência e Tecnologia Catarinense, Câmpus Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5387053,-27.0492025,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Colégio Hamônia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197845,-27.0549892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>EEB Gertrud Aichinger</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5230182,-27.0637982,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Walmor Ribeiro BSE</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5908019,-27.0347133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Universidades</name>
+      <Placemark>
+        <name>Udesc - Ceavi</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5376615,-27.0497152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Ensino Fundamental 1</name>
+      <Placemark>
+        <name>Colégio Hamônia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197845,-27.0549892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>E.E.B. Eliseu Guilherme</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5283184,-27.0582835,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Walmor Ribeiro BSE</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5908019,-27.0347133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Caminho da Estação</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5015371,-27.071808,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Bairro Operário</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5114129,-27.0472586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Christa Sedlacek</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5393126,-27.0588131,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Nova Stettin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5653963,-27.0574815,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Verônica Keil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5303161,-27.0797254,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Tancredo Neves</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5268342,-27.1170748,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Educação Jovens e Adultos</name>
+      <Placemark>
+        <name>Ceja De Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192695,-27.0591651,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
