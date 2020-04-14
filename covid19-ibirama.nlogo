@@ -483,7 +483,11 @@ to create-ibirama-civilians
               if age >= 18 and types != "CEJA" [
 
                 set types "UNI"
+
                 set period-of-day 2
+
+
+
                 let y position types education-labels
                 if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
                 let tmp item y education-values
