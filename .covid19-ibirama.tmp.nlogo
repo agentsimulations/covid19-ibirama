@@ -49,7 +49,7 @@ globals [
   education-labels
   education-values
   init med fin ;; Variables to control the turns logic flow
-   ;FDS magic variables?
+  elapsed-days ;FDS magic variables?
   min-distance dead
 ]
 
@@ -62,7 +62,7 @@ breed [ civilians civilian]
 civilians-own[
   homes work school park
   age types worker
-  period ;; Variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
+  period-of-day ;; Variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
   state infected days
   sick trancar ;FDS magic variable?
   testar casa  ;FDS magic variable?
@@ -86,7 +86,7 @@ to setup
   set init "mat" ;; Stands for matutino (morning)
   set med "vesp" ;; Stands for vespertino (afternoon)
   set fin "not"  ;; Stands for noturno (evening)
-  set newday 3
+  set elapsed-days 3
   set dead 0
   set min-distance 1
   set ceisX-list []
@@ -325,7 +325,7 @@ to create-ibirama-civilians
               set homes house me
               set work one-of houses
               set state 1
-              set period 0
+              set period-of-day 0
               set days 0
               set worker false
               set sick false
@@ -407,7 +407,7 @@ to create-ibirama-civilians
               if age >= 18 and types != "CEJA" [
 
                 set types "UNI"
-                set n 2
+                set period-of-day 2
                 let y position types education-labels
                 if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
                 let tmp item y education-values
@@ -437,7 +437,7 @@ to create-ibirama-civilians
               set homes house me
               set work one-of houses
               set state 1
-              set period 0
+              set period-of-day 0
               set days 0
               set worker false
               set sick false
@@ -483,7 +483,7 @@ to create-ibirama-civilians
               if age >= 18 and types != "CEJA" [
 
                 set types "UNI"
-                set period 2
+                set period-of-day 2
                 let y position types education-labels
                 if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
                 let tmp item y education-values
@@ -523,7 +523,7 @@ to create-ibirama-civilians
           set homes house me
           set work one-of houses
           set state 1
-          set period 0
+          set period-of-day 0
           set days 0
           set worker false
           set sick false
@@ -604,7 +604,7 @@ to create-ibirama-civilians
           if age >= 18 and types != "CEJA"  [
 
             set types "UNI"
-            set n 2
+            set period-of-day 2
             let y position types education-labels
             if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
             let tmp item y education-values
@@ -632,7 +632,7 @@ to create-ibirama-civilians
           set homes house me
           set work one-of houses
           set state 1
-          set period 0
+          set period-of-day 0
           set days 0
           set worker false
           set sick false
@@ -711,7 +711,7 @@ to create-ibirama-civilians
           if age >= 18 and types != "CEJA"  [
 
             set types "UNI"
-            set n 2
+            set period-of-day 2
             let y position types education-labels
             if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
             let tmp item y education-values
@@ -891,31 +891,31 @@ to agents-turns
   let cont count civilians with [ types = "EF1" ]
   set cont cont / 2
    ask n-of cont civilians with [ types = "EF1" ] [
-    set period 1
+    set period-of-day 1
   ]
 
   set cont count civilians with [ types = "EF2" ]
   set cont cont / 2
    ask n-of cont civilians with [ types = "EF2" ] [
-    set period 1
+    set period-of-day 1
   ]
 
   set cont count civilians with [ types = "EM" ]
   set cont cont / 3
   ask n-of cont civilians with [ types = "EM" ] [
-    set period 1
+    set period-of-day 1
   ]
-  ask n-of cont civilians with [ types = "EM" and n != 1 ] [
-    set period 2
+  ask n-of cont civilians with [ types = "EM" and period-of-day != 1 ] [
+    set period-of-day 2
   ]
 
   set cont count civilians with [ types = "CEJA" ]
   set cont cont / 3
   ask n-of cont civilians with [ types = "CEJA" ] [
-    set n 1
+    set period-of-day 1
   ]
-  ask n-of cont civilians with [ types = "CEJA" and n != 1 ] [
-    set n 2
+  ask n-of cont civilians with [ types = "CEJA" and period-of-day != 1 ] [
+    set period-of-day 2
   ]
 
 end
@@ -960,28 +960,28 @@ to move
     ask the-turtle [                      ;; 'n' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
       ifelse casa = true [][
       ifelse ticks = elapsed-days [                 ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
-         if n = 2 and types != "NE" [ move-backhome ] ;FDS 'n' and 'ss' -> magic variables?
+         if period-of-day = 2 and types != "NE" [ move-backhome ] ;FDS 'n' and 'ss' -> magic variables?
       ][
       if init = "mat" [
-          if (n = 0 and types != "NE") [ move-to-school ]
-          if (worker = true and n != 0) [ move-to-work ]
-          if (worker = true and n = 0 and types = "NE") [ move-to-work ]
+          if (period-of-day = 0 and types != "NE") [ move-to-school ]
+          if (worker = true and period-of-day != 0) [ move-to-work ]
+          if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work ]
       ]   ;;talvez abrir mais um if pra n=0 e worker=true com types="NE" ir trabalhar
       if init = "vesp" [
-          if ( n = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome] ;; <- Rotina da escola pra casa
-          if ( n = 0 and worker = true and types != "NE") [ move-to-work] ;; <- Rotina da escola pro trabalho
+          if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome] ;; <- Rotina da escola pra casa
+          if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work] ;; <- Rotina da escola pro trabalho
 
-          if (n = 1 and worker = false and types != "NE") [ move-to-school] ;; <- Rotina de casa para a escola
+          if (period-of-day = 1 and worker = false and types != "NE") [ move-to-school] ;; <- Rotina de casa para a escola
 
-          if (n = 1 and worker = true  and types != "NE") [ move-to-school] ;; <- Rotina do trabalho para a escola
+          if (period-of-day = 1 and worker = true  and types != "NE") [ move-to-school] ;; <- Rotina do trabalho para a escola
       ]
       if init = "not" [
-          if n = 1 [ move-backhome ]
-          if (n = 0 and worker = true) or (types = "EI") [ move-backhome ]
+          if period-of-day = 1 [ move-backhome ]
+          if ( = 0 and worker = true) or (types = "EI") [ move-backhome ]
           if (types = "NE") and (worker = true) [ move-backhome ] ;;Somar as 3 rotinas de backhome para dar valor total
 
-          if n = 2 and worker = false and types != "NE" [ move-to-school ] ;; <- Rotina de casa pra escola
-          if n = 2 and worker = true  and types != "NE" [ move-to-school ] ;; <- Rotina do trabalho pra escola
+          if period = 2 and worker = false and types != "NE" [ move-to-school ] ;; <- Rotina de casa pra escola
+          if period = 2 and worker = true  and types != "NE" [ move-to-school ] ;; <- Rotina do trabalho pra escola
       ]
       ]
       ]
@@ -1049,7 +1049,7 @@ to human-state
   foreach sort civilians [ the-turtle -> ;FDS why sort?  why foreach instead of just 'ask' civilians?
     ask the-turtle [
       if state != 1 [
-        if ticks >= newday [
+        if ticks >= elapsed-days [
           set days days + 1
         ]
       ]
