@@ -62,7 +62,7 @@ breed [ civilians civilian]
 civilians-own[
   homes work school park
   age types worker
-  period ;; Variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
+  period_fernando ;; Variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
   state infected days
   sick trancar ;FDS magic variable?
   testar casa  ;FDS magic variable?
@@ -437,7 +437,7 @@ to create-ibirama-civilians
               set homes house me
               set work one-of houses
               set state 1
-              set period 0
+              set period_fernando 0
               set days 0
               set worker false
               set sick false
@@ -483,7 +483,7 @@ to create-ibirama-civilians
               if age >= 18 and types != "CEJA" [
 
                 set types "UNI"
-                set period 2
+                set period_fernando 2
                 let y position types education-labels
                 if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
                 let tmp item y education-values
