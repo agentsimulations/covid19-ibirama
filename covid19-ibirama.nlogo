@@ -130,7 +130,7 @@ to setup
   ; creation of houses and agents
   create-ibirama-houses
   create-ibirama-civilians
-
+  adjust-age-range
 
   if label-points-of-interest  [
       ask locations [ set label location_label]
@@ -317,12 +317,14 @@ to create-ibirama-companies
   ; read the CSV file and initialize the number of employees for each company
   let companies locations with [location_type = LOCATION_COMPANY]
   let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
+  show companies_data
   foreach companies_data [ company ->
-    ask one-of companies with [ location_label = item 0 company] [
+    show item 0 company
+    ask locations with [ location_label = item 0 company] [
       set location_places item 1 company
     ]
   ]
-
+ show "Companies created!"
   ;TODO Lucas: now the companies have the number of employees saved in the 'location_places' attribute
   ;TODO Lucas: please modify the initialization of the 'work' place of the agents to be consistent with the number of employees
 end
@@ -412,6 +414,7 @@ to create-ibirama-schools
       ]
     ]
   ]
+  show "Schools created!"
 end
 
 to create-ibirama-parks-and-squares
@@ -428,6 +431,7 @@ to create-ibirama-parks-and-squares
       ]
     ]
   ]
+  show "Parks created!"
 end
 
 to create-ibirama-civilians
@@ -448,7 +452,7 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
-              set work one-of houses
+
               set state 1
               set period-of-day 0
               set current-days 0
@@ -551,7 +555,7 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
-              set work one-of houses
+
               set state 1
               set period-of-day 0
               set current-days 0
@@ -637,7 +641,7 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
-          set work one-of houses
+
           set state 1
           set period-of-day 0
           set current-days 0
@@ -741,7 +745,7 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
-          set work one-of houses
+
           set state 1
           set period-of-day 0
           set current-days 0
@@ -1002,28 +1006,28 @@ to move
     ask the-turtle [                      ;; 'n' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
       ifelse stay-home = true [][
       ifelse ticks = elapsed-days [                 ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
-         if period-of-day = 2 and types != "NE" [ move-backhome show word "Coe to movendo errado hein! " types print worker print stay-home] ;FDS 'n' and 'ss' -> magic variables?
+         if period-of-day = 2 and types != "NE" [ move-backhome ] ;FDS 'n' and 'ss' -> magic variables?
       ][
       if init = "mat" [
-            if (period-of-day = 0 and types != "NE") [ move-to-school show word "Coe to movendo errado hein! " types print  worker print stay-home]
-            if (worker = true and period-of-day != 0) [ move-to-work show word "Coe to movendo errado hein! " types  print worker print stay-home]
-            if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work show word "Coe to movendo errado hein! " types print   worker print stay-home]
+            if (period-of-day = 0 and types != "NE") [ move-to-school]
+            if (worker = true and period-of-day != 0) [ move-to-work ]
+            if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work]
           ]   ;;talvez abrir mais um if pra n=0 e worker=true com types="NE" ir trabalhar
           if init = "vesp" [
-            if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome show word "Coe to movendo errado hein! " types print  worker print stay-home ] ;; <- Rotina da escola pra casa
-            if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work show word "Coe to movendo errado hein! " types  print worker print stay-home] ;; <- Rotina da escola pro trabalho
+            if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome ] ;; <- Rotina da escola pra casa
+            if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work] ;; <- Rotina da escola pro trabalho
 
-            if (period-of-day = 1 and worker = false and types != "NE") [ move-to-school show word "Coe to movendo errado hein! " types  print worker print stay-home] ;; <- Rotina de casa para a escola
+            if (period-of-day = 1 and worker = false and types != "NE") [ move-to-school] ;; <- Rotina de casa para a escola
 
-            if (period-of-day = 1 and worker = true  and types != "NE") [ move-to-school show word "Coe to movendo errado hein! " types  print worker print stay-home ] ;; <- Rotina do trabalho para a escola
+            if (period-of-day = 1 and worker = true  and types != "NE") [ move-to-school ] ;; <- Rotina do trabalho para a escola
           ]
           if init = "not" [
-            if period-of-day = 1 [ move-backhome show word "Coe to movendo errado hein! " types  print worker print stay-home ]
-            if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome show word "Coe to movendo errado hein! " types print  worker print stay-home ]
-            if (types = "NE") and (worker = true) [ move-backhome show word "Coe to movendo errado hein! " types print worker ] ;;Somar as 3 rotinas de backhome para dar valor total
+            if period-of-day = 1 [ move-backhome ]
+            if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome]
+            if (types = "NE") and (worker = true) [ move-backhome] ;;Somar as 3 rotinas de backhome para dar valor total
 
-            if period-of-day = 2 and worker = false and types != "NE" [ move-to-school show word "Coe to movendo errado hein! " types print  worker print stay-home ] ;; <- Rotina de casa pra escola
-            if period-of-day = 2 and worker = true  and types != "NE" [ move-to-school show word "Coe to movendo errado hein! " types  print worker print stay-home ] ;; <- Rotina do trabalho pra escola
+            if period-of-day = 2 and worker = false and types != "NE" [ move-to-school] ;; <- Rotina de casa pra escola
+            if period-of-day = 2 and worker = true  and types != "NE" [ move-to-school] ;; <- Rotina do trabalho pra escola
           ]
         ]
       ]
@@ -1052,7 +1056,7 @@ to isolar
 ;  ]
 ;  ][
   let try 0
-   set try workers-isolation-fraction * NUMBER_WORKERS
+   set try workers-isolation-fraction * 2462
   show try
     ask n-of try civilians with [ worker = true ][
       set stay-home true
@@ -1090,9 +1094,24 @@ to move-backhome
   set testar testar + 1
 end
 
+to adjust-age-range
+  let b (max-infected - min-infected) + 1
+  let days-in-states min-infected + random b
+
+  set age-range-1 age-range-1 / days-in-states
+  set age-range-2 age-range-2 / days-in-states
+  set age-range-3 age-range-3 / days-in-states
+  set age-range-4 age-range-4 / days-in-states
+  set age-range-5 age-range-5 / days-in-states
+  set age-range-6 age-range-6 / days-in-states
+  set age-range-7 age-range-7 / days-in-states
+
+
+end
+
 to human-state
   ; ask walkers[
-  foreach sort civilians [ the-turtle -> ;FDS why sort?  why foreach instead of just 'ask' civilians?
+  foreach sort civilians [ the-turtle ->
     ask the-turtle [
       if state != 1 [
         if ticks >= elapsed-days [
@@ -1103,23 +1122,21 @@ to human-state
       if state = 1 [
         let lista  sort  other civilians-here
         while [ length lista != 0 ] [
-
           let prim first lista
-          if [state] of prim = 3 [
-            if contamined? = false [
-              let try random-float 1
-              if try <= transmission-probability [
-                set contamined? true
-                set color orange
-                set state 2
-                let b (max-exposed - min-exposed) + 1
-                set days-in-state min-exposed + random b
+          if contamined? = false [
+            if (xcor = [xcor] of prim) and (ycor = [ycor] of prim)[
+              if [state] of prim = 3 [
+                let try random-float 1
+                if try <= transmission-probability [
+                  set contamined? true
+                  set color orange
+                  set state 2
+                  let b (max-exposed - min-exposed) + 1
+                  set days-in-state min-exposed + random b
 
-                ask prim [ set how_many_i_infected how_many_i_infected + 1 ];FDS, Lucas, does this work?
-                ;FDS Lucas, what do you think of checking whether the 'target' of the agents is the same, instead of using the 'distance'?
-
+                  ask prim [ set how_many_i_infected how_many_i_infected + 1 ]
+                ]
               ]
-
             ]
           ]
           set lista but-first lista
@@ -1138,9 +1155,19 @@ to human-state
       if state = 3 [
         if current-days > days-in-state [
           set current-days 0
+          let mortality-rate 0
           let try random-float 1
-          ifelse try >= mortality-probability [ set state 4  set color blue ]
-                                              [ set dead dead + 1  die ]
+         ( ifelse
+            age <= 9 [ set mortality-rate age-range-1]
+            age > 9 and age <= 19  [ set mortality-rate age-range-2 ]
+            age > 19 and age <= 49 [ set mortality-rate age-range-3 ]
+            age > 49 and age <= 59 [ set mortality-rate age-range-4 ]
+            age > 59 and age <= 69 [ set mortality-rate age-range-5 ]
+            age > 69 and age <= 79 [ set mortality-rate age-range-6 ]
+            age >= 80 [ set mortality-rate age-range-7 ] )
+
+          ifelse try >= mortality-rate [ set state 4  set color blue ]
+                                       [ set dead dead + 1  die ]
         ]
       ]
     ]
@@ -1201,10 +1228,10 @@ periods-of-day
 30.0
 
 BUTTON
-85
-508
-150
-541
+134
+753
+199
+786
 NIL
 setup\n
 NIL
@@ -1302,13 +1329,13 @@ Isolation parameters
 1
 
 BUTTON
-178
-508
-241
-541
+227
+753
+290
+786
 NIL
 go
-NIL
+T
 1
 T
 OBSERVER
@@ -1319,10 +1346,10 @@ NIL
 1
 
 PLOT
-5
-569
-333
-813
+0
+809
+328
+1053
 COVID-19 Daily Monitoring
 Days
 Number of people
@@ -1415,7 +1442,7 @@ INPUTBOX
 281
 494
 workers-isolation-fraction
-1.0
+0.0
 1
 0
 Number
@@ -1426,7 +1453,7 @@ INPUTBOX
 145
 494
 students-isolation-fraction
-1.0
+0.0
 1
 0
 Number
@@ -1558,20 +1585,20 @@ Number of initially infected agents:
 1
 
 TEXTBOX
-11
-551
-161
-569
+6
+791
+156
+809
 Simulation monitoring
 14
 0.0
 1
 
 MONITOR
-193
-873
-279
-918
+188
+1113
+274
+1158
 Elapsed days
 ticks / NUMBER_PERIODS_OF_DAY
 0
@@ -1579,10 +1606,10 @@ ticks / NUMBER_PERIODS_OF_DAY
 11
 
 MONITOR
-15
-821
-89
-866
+10
+1061
+84
+1106
 Susceptibles
 count civilians with [ state = 1 ]
 0
@@ -1590,10 +1617,10 @@ count civilians with [ state = 1 ]
 11
 
 MONITOR
-92
-821
-168
-866
+87
+1061
+163
+1106
 Exposed
 count civilians with [ state = 2 ]
 0
@@ -1601,10 +1628,10 @@ count civilians with [ state = 2 ]
 11
 
 MONITOR
-172
-821
-247
-866
+167
+1061
+242
+1106
 Infected
 count civilians with [ state = 3 ]
 0
@@ -1612,21 +1639,21 @@ count civilians with [ state = 3 ]
 11
 
 MONITOR
-55
-874
-125
-919
-Deads
+50
+1114
+120
+1159
+Deaths
 dead
 0
 1
 11
 
 MONITOR
-251
-822
-323
-867
+246
+1062
+318
+1107
 Recovered
 count civilians with [ state = 4 ]
 0
@@ -1645,25 +1672,101 @@ mean [how_many_i_infected] of civilians with [state > 1]
 11
 
 TEXTBOX
-159
-135
-309
-153
-Mortality probability:
+11
+520
+161
+538
+Mortality rates:
 11
 0.0
 1
 
 INPUTBOX
-158
-150
-266
-210
-mortality-probability
-0.057
+9
+542
+78
+602
+age-range-1
+0.0
 1
 0
 Number
+
+INPUTBOX
+93
+542
+161
+602
+age-range-2
+2.25E-4
+1
+0
+Number
+
+INPUTBOX
+182
+542
+252
+602
+age-range-3
+4.0E-4
+1
+0
+Number
+
+INPUTBOX
+8
+618
+78
+678
+age-range-4
+0.001625
+1
+0
+Number
+
+INPUTBOX
+93
+618
+161
+678
+age-range-5
+0.0045
+1
+0
+Number
+
+INPUTBOX
+176
+619
+255
+681
+age-range-6
+0.01
+1
+0
+Number
+
+INPUTBOX
+8
+691
+78
+751
+age-range-7
+0.0185
+1
+0
+Number
+
+TEXTBOX
+97
+703
+247
+721
+*check table for ages range
+11
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
