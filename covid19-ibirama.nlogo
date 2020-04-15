@@ -1,42 +1,19 @@
 ;World extent for running: max-pxcor=1435 / max-pycor=2143
 ;FDS: Lucas, please fill with the values you use to run the simulation on your computer ->  World extent for debuging/testing: max-pxcor=717 /max-pycor=1071
-extensions [ gis ]
+extensions [ gis csv ]
 globals [
 
 
   roads-dataset
 
   escolas-ceis-dataset
-  ceisX-list
-  ceisY-list
-
   escolas-fundamental1-dataset
-  fundamental1X-list
-  fundamental1Y-list
-
   escolas-fundamental2-dataset
-  fundamental2X-list
-  fundamental2Y-list
-
   escolas-medio-dataset
-  medioX-list
-  medioY-list
-
   escolas-universidades-dataset
-  universidadeX-list
-  universidadeY-list
-
   escolas-cejas-dataset
-  cejasX-list
-  cejasY-list
-
   empresas-dataset
-  empresasX-list
-  empresasY-list
-
   pracas-parques-dataset
-  parksX-list
-  parksY-list
 
   NUMBER_HOUSES
   NUMBER_CIVILIANS
@@ -52,13 +29,23 @@ globals [
   init med fin ;; Variables to control the turns logic flow
   elapsed-days ;FDS magic variables?
   min-distance dead
+
+  ; constants
+  LOCATION_COMPANY
+  LOCATION_EDUCATION_INFANTIL
+  LOCATION_EDUCATION_FUNDAMENTAL1
+  LOCATION_EDUCATION_FUNDAMENTAL2
+  LOCATION_EDUCATION_MEDIO
+  LOCATION_EDUCATION_CEJA
+  LOCATION_EDUCATION_UNIVERSIDADE
+  LOCATION_PARK
 ]
 
 breed [ road-labels road-label ]
 breed [ ponto-de-interesse-labels ponto-de-interesse-label ]
 breed [ houses house]
-breed [ companies company]
 breed [ civilians civilian]
+breed [ locations location ]
 
 civilians-own[
   homes work school park
@@ -75,38 +62,38 @@ houses-own[
  family_members
 ]
 
-companies-own [ types ]
+locations-own [
+  location_type
+  location_label
+  location_places
+]
 
 to setup
   show "setup is running, please wait..."
   clear-all
+  ; initializing the constants
   set NUMBER_HOUSES 5515
   set NUMBER_CIVILIANS 17330
   set NUMBER_WORKERS 2462
   set NUMBER_STUDENTS 4230
   set NUMBER_PERIODS_OF_DAY 4 ;morning, afternoon, evening, night
+
+  set LOCATION_COMPANY "COMP"
+  set LOCATION_EDUCATION_INFANTIL "EI"
+  set LOCATION_EDUCATION_FUNDAMENTAL1 "EF1"
+  set LOCATION_EDUCATION_FUNDAMENTAL2 "EF2"
+  set LOCATION_EDUCATION_MEDIO "EM"
+  set LOCATION_EDUCATION_CEJA "CEJA"
+  set LOCATION_EDUCATION_UNIVERSIDADE "UNI"
+  set LOCATION_PARK "PARK"
+
+
   set init "mat" ;; Stands for matutino (morning)
   set med "vesp" ;; Stands for vespertino (afternoon)
   set fin "not"  ;; Stands for noturno (evening)
   set elapsed-days 3
   set dead 0
   set min-distance 1
-  set ceisX-list []
-  set ceisY-list []
-  set fundamental1X-list []
-  set fundamental1Y-list []
-  set fundamental2X-list []
-  set fundamental2Y-list []
-  set  medioX-list []
-  set  medioY-list []
-  set universidadeX-list []
-  set universidadeY-list []
-  set cejasX-list []
-  set cejasY-list []
-  set empresasX-list []
-  set empresasY-list []
-  set parksX-list []
-  set parksY-list []
 
   initialize-population-pyramid
   initialize-families-data
@@ -135,14 +122,19 @@ to setup
   import-drawing "images/ibirama-ruas-google-satellite-transp50.png"
 
   display-roads
-  init-point-coordinates
-  display-companies
-  display-parks-and-squares
-  display-education
+
+  create-ibirama-companies
+  create-ibirama-schools
+  create-ibirama-parks-and-squares
 
   ; creation of houses and agents
   create-ibirama-houses
   create-ibirama-civilians
+
+
+  if label-points-of-interest  [
+      ask locations [ set label location_label]
+  ]
 
   reset-ticks
 
@@ -307,6 +299,137 @@ to initialize-education-data
   ]
 end
 
+to create-ibirama-companies
+  foreach gis:feature-list-of empresas-dataset [ feature ->
+     foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "triangle"
+        set color magenta
+        set size 1
+        set location_type LOCATION_COMPANY
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+
+  ; read the CSV file and initialize the number of employees for each company
+  let companies locations with [location_type = LOCATION_COMPANY]
+  let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
+  foreach companies_data [ company ->
+    ask one-of companies with [ location_label = item 0 company] [
+      set location_places item 1 company
+    ]
+  ]
+
+  ;TODO Lucas: now the companies have the number of employees saved in the 'location_places' attribute
+  ;TODO Lucas: please modify the initialization of the 'work' place of the agents to be consistent with the number of employees
+end
+
+
+to create-ibirama-schools
+  foreach gis:feature-list-of escolas-ceis-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "star"
+        set color yellow
+        set size 1
+        set location_type LOCATION_EDUCATION_INFANTIL
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+
+  foreach gis:feature-list-of escolas-fundamental1-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "star"
+        set color yellow
+        set size 1
+        set location_type LOCATION_EDUCATION_FUNDAMENTAL1
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+
+  foreach gis:feature-list-of escolas-fundamental2-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "star"
+        set color yellow
+        set size 1
+        set location_type LOCATION_EDUCATION_FUNDAMENTAL2
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+
+  foreach gis:feature-list-of escolas-medio-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "star"
+        set color yellow
+        set size 1
+        set location_type LOCATION_EDUCATION_MEDIO
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+
+  foreach gis:feature-list-of escolas-cejas-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "star"
+        set color yellow
+        set size 1
+        set location_type LOCATION_EDUCATION_CEJA
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+
+  foreach gis:feature-list-of escolas-universidades-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "star"
+        set color yellow
+        set size 1
+        set location_type LOCATION_EDUCATION_UNIVERSIDADE
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+end
+
+to create-ibirama-parks-and-squares
+  foreach gis:feature-list-of pracas-parques-dataset [ feature ->
+    foreach gis:vertex-lists-of feature [ vertex ->
+      let coordinates gis:location-of item 0 vertex
+      create-locations 1 [
+        setxy (item 0 coordinates) (item 1 coordinates)
+        set shape "tree"
+        set color green
+        set size 1
+        set location_type LOCATION_PARK
+        set location_label gis:property-value feature "NAME"
+      ]
+    ]
+  ]
+end
+
 to create-ibirama-civilians
 
   let i 0;
@@ -355,8 +478,7 @@ to create-ibirama-civilians
                   let tmp item y education-values
                   set tmp tmp - 1
                   set education-values replace-item y education-values tmp
-                  let try random length ceisX-list
-                  set school patch item try ceisX-list item try ceisY-list
+                  set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
 
                 ]
                 age >= 6 and age <= 10 [
@@ -367,9 +489,7 @@ to create-ibirama-civilians
                   let tmp item y education-values
                   set tmp tmp - 1
                   set education-values replace-item y education-values tmp
-                  let try random length fundamental1X-list
-                  set school patch item try fundamental1X-list item try fundamental1Y-list
-
+                  set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
                 ]
                 age >= 11 and age <= 14 [
 
@@ -379,8 +499,7 @@ to create-ibirama-civilians
                   let tmp item y education-values
                   set tmp tmp - 1
                   set education-values replace-item y education-values tmp
-                  let try random length fundamental2X-list
-                  set school patch item try fundamental2X-list item try fundamental2Y-list
+                  set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
                 ]
                 age >= 15 [
                   let k position "CEJA" education-labels
@@ -392,8 +511,7 @@ to create-ibirama-civilians
                       let tmp item y education-values
                       set tmp tmp - 1
                       set education-values replace-item y education-values tmp
-                      let try random length medioX-list
-                      set school patch item try medioX-list item try medioY-list
+                      set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
                     ]
                   ][
                     set types "CEJA"
@@ -401,8 +519,7 @@ to create-ibirama-civilians
                     let tmp item y education-values
                     set tmp tmp - 1
                     set education-values replace-item y education-values tmp
-                    let try random length cejasX-list
-                    set school patch item try cejasX-list item try cejasY-list
+                    set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
                   ]
 
 
@@ -416,18 +533,14 @@ to create-ibirama-civilians
                 let tmp item y education-values
                 set tmp tmp - 1
                 set education-values replace-item y education-values tmp
-                let try random length universidadeX-list
-                set school patch item try universidadeX-list item try universidadeY-list
+                set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
               ]
 
               if age >= 10 [
                 if NUMBER_WORKERS > 0 [
                   set worker true
                   set NUMBER_WORKERS NUMBER_WORKERS - 1
-                  let try random length empresasX-list
-                  set work patch item try empresasX-list item try empresasY-list
-
-
+                  set work one-of locations with [ location_type = LOCATION_COMPANY ]
                 ]
               ]
 
@@ -469,8 +582,7 @@ to create-ibirama-civilians
                     let tmp item y education-values
                     set tmp tmp - 1
                     set education-values replace-item y education-values tmp
-                    let try random length medioX-list
-                    set school patch item try medioX-list item try medioY-list
+                    set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
                   ]
                 ][
                   set types "CEJA"
@@ -478,8 +590,7 @@ to create-ibirama-civilians
                   let tmp item y education-values
                   set tmp tmp - 1
                   set education-values replace-item y education-values tmp
-                  let try random length cejasX-list
-                  set school patch item try cejasX-list item try cejasY-list
+                  set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
                 ]
 
 
@@ -496,14 +607,12 @@ to create-ibirama-civilians
                 let tmp item y education-values
                 set tmp tmp - 1
                 set education-values replace-item y education-values tmp ]
-              let try random length universidadeX-list
-              set school patch item try universidadeX-list item try universidadeY-list
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ] ;FDS: Lucas please check this. Why this statement isn't within the ] of the if block? is that correct?
 
               if NUMBER_WORKERS > 0 [
                 set worker true
                 set NUMBER_WORKERS NUMBER_WORKERS - 1
-                let new random length empresasX-list
-                set work patch item new empresasX-list item new empresasY-list
+                set work one-of locations with [ location_type = LOCATION_COMPANY ]
 
               ]
             ]
@@ -557,8 +666,7 @@ to create-ibirama-civilians
               let tmp item y education-values
               set tmp tmp - 1
               set education-values replace-item y education-values tmp
-              let try random length ceisX-list
-              set school patch item try ceisX-list item try ceisY-list
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
 
             ]
             age >= 6 and age <= 10 [
@@ -569,8 +677,7 @@ to create-ibirama-civilians
               let tmp item y education-values
               set tmp tmp - 1
               set education-values replace-item y education-values tmp
-              let try random length fundamental1X-list
-              set school patch item try fundamental1X-list item try fundamental1Y-list
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
 
             ]
             age >= 11 and age <= 14 [
@@ -581,8 +688,7 @@ to create-ibirama-civilians
               let tmp item y education-values
               set tmp tmp - 1
               set education-values replace-item y education-values tmp
-              let try random length fundamental2X-list
-              set school patch item try fundamental2X-list item try fundamental2Y-list
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
             ]
             age >= 15 [
               let k position "CEJA" education-labels
@@ -594,8 +700,7 @@ to create-ibirama-civilians
                   let tmp item y education-values
                   set tmp tmp - 1
                   set education-values replace-item y education-values tmp
-                  let try random length medioX-list
-                  set school patch item try medioX-list item try medioY-list
+                  set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
                 ]
               ][
                 set types "CEJA"
@@ -603,8 +708,7 @@ to create-ibirama-civilians
                 let tmp item y education-values
                 set tmp tmp - 1
                 set education-values replace-item y education-values tmp
-                let try random length cejasX-list
-                set school patch item try cejasX-list item try cejasY-list
+                set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
               ]
 
 
@@ -618,8 +722,7 @@ to create-ibirama-civilians
             let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
-           let try random length universidadeX-list
-           set school patch item try universidadeX-list item try universidadeY-list
+           set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
           ]
 
 
@@ -665,8 +768,7 @@ to create-ibirama-civilians
               let tmp item y education-values
               set tmp tmp - 1
               set education-values replace-item y education-values tmp
-              let try random length ceisX-list
-              set school patch item try ceisX-list item try ceisY-list ;FDS now that you have (x,y) of the targed, do you stil need to use the patch? why not use (x,y) directly, and then change the agent location using the 'setxy' command?
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ] ;FDS now that you have (x,y) of the targed, do you stil need to use the patch? why not use (x,y) directly, and then change the agent location using the 'setxy' command?
 
             ]
             age >= 6 and age <= 10 [
@@ -677,8 +779,7 @@ to create-ibirama-civilians
               let tmp item y education-values
               set tmp tmp - 1
               set education-values replace-item y education-values tmp
-              let try random length fundamental1X-list
-              set school patch item try fundamental1X-list item try fundamental1Y-list
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
 
             ]
             age >= 11 and age <= 14 [
@@ -689,8 +790,7 @@ to create-ibirama-civilians
               let tmp item y education-values
               set tmp tmp - 1
               set education-values replace-item y education-values tmp
-              let try random length fundamental2X-list
-              set school patch item try fundamental2X-list item try fundamental2Y-list
+              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
             ]
             age >= 15 [
               let k position "CEJA" education-labels
@@ -702,8 +802,7 @@ to create-ibirama-civilians
                   let tmp item y education-values
                   set tmp tmp - 1
                   set education-values replace-item y education-values tmp
-                  let try random length medioX-list
-                  set school patch item try medioX-list item try medioY-list
+                  set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
                 ]
               ][
                 set types "CEJA"
@@ -711,8 +810,7 @@ to create-ibirama-civilians
                 let tmp item y education-values
                 set tmp tmp - 1
                 set education-values replace-item y education-values tmp
-                let try random length cejasX-list
-                set school patch item try cejasX-list item try cejasY-list
+                set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
               ]
 
 
@@ -726,8 +824,7 @@ to create-ibirama-civilians
             let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
-            let try random length universidadeX-list
-            set school patch item try universidadeX-list item try universidadeY-list
+            set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
           ]
         ]
       ]
@@ -772,72 +869,7 @@ to display-roads
   ]
 end
 
-to init-point-coordinates
-  foreach gis:feature-list-of escolas-ceis-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set ceisX-list lput item 0 location ceisX-list
-      set ceisY-list lput item 1 location ceisY-list
-    ]
-  ]
 
-  foreach gis:feature-list-of escolas-fundamental1-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set fundamental1X-list lput item 0 location fundamental1X-list
-      set fundamental1Y-list lput item 1 location fundamental1Y-list
-    ]
-  ]
-
-  foreach gis:feature-list-of escolas-fundamental2-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set fundamental2X-list lput item 0 location fundamental2X-list
-      set fundamental2Y-list lput item 1 location fundamental2Y-list
-    ]
-  ]
-
-  foreach gis:feature-list-of escolas-medio-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set medioX-list lput item 0 location medioX-list
-      set medioY-list lput item 1 location medioY-list
-    ]
-  ]
-
-  foreach gis:feature-list-of escolas-cejas-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set cejasX-list lput item 0 location cejasX-list
-      set cejasY-list lput item 1 location cejasY-list
-    ]
-  ]
-
-  foreach gis:feature-list-of escolas-universidades-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set universidadeX-list lput item 0 location universidadeX-list
-      set universidadeY-list lput item 1 location universidadeY-list
-    ]
-  ]
-
-  foreach gis:feature-list-of empresas-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set empresasX-list lput item 0 location empresasX-list
-      set empresasY-list lput item 1 location empresasY-list
-    ]
-  ]
-
-  foreach gis:feature-list-of pracas-parques-dataset [ feature ->
-     foreach gis:vertex-lists-of feature [ vertex ->
-      let location gis:location-of item 0 vertex
-      set parksX-list lput item 0 location parksX-list
-      set parksY-list lput item 1 location parksY-list
-    ]
-  ]
-
-end
 
 ;to display-pontos-interesse
 ;  ask ponto-de-interesse-labels [ die ]
@@ -1071,6 +1103,7 @@ to human-state
       if state = 1 [
         let lista  sort  other civilians-here
         while [ length lista != 0 ] [
+
           let prim first lista
           if [state] of prim = 3 [
             if contamined? = false [
@@ -1084,7 +1117,7 @@ to human-state
 
                 ask prim [ set how_many_i_infected how_many_i_infected + 1 ];FDS, Lucas, does this work?
                 ;FDS Lucas, what do you think of checking whether the 'target' of the agents is the same, instead of using the 'distance'?
-                ;FDS I'm afraid of an agent is getting infected by other agent located at a different target (eg., a student is being infected by a worker located at a company near the school)
+
               ]
 
             ]
