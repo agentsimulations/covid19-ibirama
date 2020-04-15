@@ -26,6 +26,8 @@ globals [
   families_number
   education-labels
   education-values
+  mortality_labels
+  mortality_values
   init med fin ;; Variables to control the turns logic flow
   elapsed-days ;FDS magic variables?
   min-distance dead
@@ -56,6 +58,7 @@ civilians-own[
   testar stay-home
   closest-distance
   how_many_i_infected
+  mortality-rate
 ]
 
 houses-own[
@@ -98,6 +101,7 @@ to setup
   initialize-population-pyramid
   initialize-families-data
   initialize-education-data
+  initialize-mortality-data
 
   gis:load-coordinate-system (word "shapes/ruas/ruas-e-rodovias-ibirama-osm.prj")
   ; roads dataset
@@ -130,7 +134,6 @@ to setup
   ; creation of houses and agents
   create-ibirama-houses
   create-ibirama-civilians
-  adjust-age-range
 
   if label-points-of-interest  [
       ask locations [ set label location_label]
@@ -299,6 +302,18 @@ to initialize-education-data
   ]
 end
 
+to initialize-mortality-data
+  set mortality_labels []
+  set mortality_values []
+
+  let mortality_data csv:from-file mortality-rates-file
+
+  foreach mortality_data [ mortality ->
+    set mortality_labels lput (item 0 mortality) mortality_labels
+    set mortality_values lput (item 1 mortality) mortality_values
+  ]
+end
+
 to create-ibirama-companies
   foreach gis:feature-list-of empresas-dataset [ feature ->
      foreach gis:vertex-lists-of feature [ vertex ->
@@ -320,7 +335,8 @@ to create-ibirama-companies
   show companies_data
   foreach companies_data [ company ->
     show item 0 company
-    ask locations with [ location_label = item 0 company] [
+    ask one-of companies with [ location_label = item 0 company] [
+    ;ask locations with [ location_label = item 0 company] [
       set location_places item 1 company
     ]
   ]
@@ -1094,21 +1110,6 @@ to move-backhome
   set testar testar + 1
 end
 
-to adjust-age-range
-  let b (max-infected - min-infected) + 1
-  let days-in-states min-infected + random b
-
-  set age-range-1 age-range-1 / days-in-states
-  set age-range-2 age-range-2 / days-in-states
-  set age-range-3 age-range-3 / days-in-states
-  set age-range-4 age-range-4 / days-in-states
-  set age-range-5 age-range-5 / days-in-states
-  set age-range-6 age-range-6 / days-in-states
-  set age-range-7 age-range-7 / days-in-states
-
-
-end
-
 to human-state
   ; ask walkers[
   foreach sort civilians [ the-turtle ->
@@ -1149,25 +1150,22 @@ to human-state
           set state 3
           let b (max-infected - min-infected) + 1
           set days-in-state min-infected + random b
+          set mortality-rate ( find-mortality-rate age) / days-in-state
+          ; show (word "age " age " mortality rate " find-mortality-rate age); for debugging
           set current-days 0
         ]
       ]
       if state = 3 [
+        ; the agent can dead in any of the days it is infected
+        let try random-float 1
+        if try < mortality-rate [
+          set dead dead + 1
+          die
+        ]
         if current-days > days-in-state [
           set current-days 0
-          let mortality-rate 0
-          let try random-float 1
-         ( ifelse
-            age <= 9 [ set mortality-rate age-range-1]
-            age > 9 and age <= 19  [ set mortality-rate age-range-2 ]
-            age > 19 and age <= 49 [ set mortality-rate age-range-3 ]
-            age > 49 and age <= 59 [ set mortality-rate age-range-4 ]
-            age > 59 and age <= 69 [ set mortality-rate age-range-5 ]
-            age > 69 and age <= 79 [ set mortality-rate age-range-6 ]
-            age >= 80 [ set mortality-rate age-range-7 ] )
-
-          ifelse try >= mortality-rate [ set state 4  set color blue ]
-                                       [ set dead dead + 1  die ]
+          set state 4
+          set color blue
         ]
       ]
     ]
@@ -1177,8 +1175,22 @@ to human-state
   ;]
 
 
+end
 
-
+to-report find-mortality-rate [ civilian_age ]
+  ; given a particular range (min_value, max_value), we assume that
+  ; the list 'mortality_labels' contains just the 'min_values', and therefore
+  let i 0
+  repeat length mortality_labels [
+    let mort_label item i mortality_labels
+    if civilian_age <  mort_label [
+      report item (i - 1) mortality_values
+    ]
+    set i i + 1
+  ]
+  ; the last mortality_value is assumed to be the mortality rate
+  ; for ages >= its 'min_value'
+  report item (i - 1) mortality_values
 end
 
 
@@ -1319,10 +1331,10 @@ PENS
 "default" 1.0 1 -16777216 true "" "histogram [family_members] of houses with [ family_members > 0 ]"
 
 TEXTBOX
-11
-413
-161
-432
+9
+492
+159
+511
 Isolation parameters
 14
 0.0
@@ -1437,10 +1449,10 @@ NIL
 0
 
 INPUTBOX
-150
-434
-281
-494
+148
+513
+279
+573
 workers-isolation-fraction
 0.0
 1
@@ -1448,10 +1460,10 @@ workers-isolation-fraction
 Number
 
 INPUTBOX
-9
-434
-145
-494
+7
+513
+143
+573
 students-isolation-fraction
 0.0
 1
@@ -1459,10 +1471,10 @@ students-isolation-fraction
 Number
 
 INPUTBOX
-12
-334
-100
-394
+10
+413
+98
+473
 infected-people
 1000.0
 1
@@ -1575,10 +1587,10 @@ Transmission probability:
 1
 
 TEXTBOX
-15
-318
-199
-346
+13
+397
+197
+425
 Number of initially infected agents:
 11
 0.0
@@ -1672,101 +1684,25 @@ mean [how_many_i_infected] of civilians with [state > 1]
 11
 
 TEXTBOX
-11
-520
-161
-538
-Mortality rates:
+12
+310
+162
+328
+Mortality:
 11
 0.0
 1
 
 INPUTBOX
 9
-542
-78
-602
-age-range-1
-0.0
+327
+282
+387
+mortality-rates-file
+data/disease/mortality-rates-china.csv
 1
 0
-Number
-
-INPUTBOX
-93
-542
-161
-602
-age-range-2
-2.25E-4
-1
-0
-Number
-
-INPUTBOX
-182
-542
-252
-602
-age-range-3
-4.0E-4
-1
-0
-Number
-
-INPUTBOX
-8
-618
-78
-678
-age-range-4
-0.001625
-1
-0
-Number
-
-INPUTBOX
-93
-618
-161
-678
-age-range-5
-0.0045
-1
-0
-Number
-
-INPUTBOX
-176
-619
-255
-681
-age-range-6
-0.01
-1
-0
-Number
-
-INPUTBOX
-8
-691
-78
-751
-age-range-7
-0.0185
-1
-0
-Number
-
-TEXTBOX
-97
-703
-247
-721
-*check table for ages range
-11
-0.0
-1
+String
 
 @#$#@#$#@
 ## WHAT IS IT?
