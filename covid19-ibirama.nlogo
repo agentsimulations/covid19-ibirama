@@ -41,6 +41,7 @@ globals [
   NUMBER_HOUSES
   NUMBER_CIVILIANS
   NUMBER_WORKERS
+  NUMBER_STUDENTS
   NUMBER_PERIODS_OF_DAY ; 4 = morning, afternoon, evening, night
   population_pyramid_labels
   population_pyramid_values
@@ -63,9 +64,9 @@ civilians-own[
   homes work school park
   age types worker
   period-of-day ;; Variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
-  state infected days
-  sick trancar ;FDS magic variable?
-  testar casa  ;FDS magic variable?
+  state days-in-state current-days
+  contamined?
+  testar stay-home
   closest-distance
   how_many_i_infected
 ]
@@ -82,6 +83,7 @@ to setup
   set NUMBER_HOUSES 5515
   set NUMBER_CIVILIANS 17330
   set NUMBER_WORKERS 2462
+  set NUMBER_STUDENTS 4230
   set NUMBER_PERIODS_OF_DAY 4 ;morning, afternoon, evening, night
   set init "mat" ;; Stands for matutino (morning)
   set med "vesp" ;; Stands for vespertino (afternoon)
@@ -326,11 +328,12 @@ to create-ibirama-civilians
               set work one-of houses
               set state 1
               set period-of-day 0
-              set days 0
+              set current-days 0
+              set testar 0
               set worker false
-              set sick false
-              set trancar false
-              set casa false
+
+              set contamined? false
+              set stay-home false
               let x random 39
               while [ item x population_pyramid_values = 0 ][
                 set x random 39
@@ -438,11 +441,12 @@ to create-ibirama-civilians
               set work one-of houses
               set state 1
               set period-of-day 0
-              set days 0
+              set current-days 0
+              set testar 0
               set worker false
-              set sick false
-              set trancar false
-              set casa false
+
+              set contamined? false
+              set stay-home false
               let x  16 + random 23
               while [ item x population_pyramid_values = 0 ][
                 set x 16 + random 23
@@ -487,7 +491,6 @@ to create-ibirama-civilians
                 set period-of-day 2
 
 
-
                 let y position types education-labels
                 if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
                 let tmp item y education-values
@@ -528,11 +531,12 @@ to create-ibirama-civilians
           set work one-of houses
           set state 1
           set period-of-day 0
-          set days 0
+          set current-days 0
+          set testar 0
           set worker false
-          set sick false
-          set trancar false
-          set casa false
+
+          set contamined? false
+          set stay-home false
           let x random 39
           while [ item x population_pyramid_values = 0 ][
             set x random 39
@@ -637,11 +641,12 @@ to create-ibirama-civilians
           set work one-of houses
           set state 1
           set period-of-day 0
-          set days 0
+          set current-days 0
+          set testar 0
           set worker false
-          set sick false
-          set trancar false
-          set casa false
+
+          set contamined? false
+          set stay-home false
           let x random 39
           while [ item x population_pyramid_values = 0 ][ set x random 39 ]
 
@@ -732,8 +737,9 @@ to create-ibirama-civilians
   show "done create-ibirama-civilians"
 
   ask n-of infected-people civilians   [ ;FDS infected-people are initialized as 'exposed', why? (I just want to understand your reasons for doing that. Maybe you have read it on some paper)
-    set sick true
     set state 2
+    let b (max-exposed - min-exposed) + 1
+    set days-in-state min-exposed + random b
   ]
   agents-turns
   isolar
@@ -962,38 +968,38 @@ to move
   ;ask walkers[ ;FDS why not 'ask'?
   foreach sort civilians [ the-turtle ->  ;; EI EF1 EF2 EM CEJA UNI ;FDS why 'sort'?
     ask the-turtle [                      ;; 'n' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
-      ifelse casa = true [][
+      ifelse stay-home = true [][
       ifelse ticks = elapsed-days [                 ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
-         if period-of-day = 2 and types != "NE" [ move-backhome ] ;FDS 'n' and 'ss' -> magic variables?
+         if period-of-day = 2 and types != "NE" [ move-backhome show word "Coe to movendo errado hein! " types print worker print stay-home] ;FDS 'n' and 'ss' -> magic variables?
       ][
       if init = "mat" [
-          if (period-of-day = 0 and types != "NE") [ move-to-school ]
-          if (worker = true and period-of-day != 0) [ move-to-work ]
-          if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work ]
-      ]   ;;talvez abrir mais um if pra n=0 e worker=true com types="NE" ir trabalhar
-      if init = "vesp" [
-          if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome] ;; <- Rotina da escola pra casa
-          if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work] ;; <- Rotina da escola pro trabalho
+            if (period-of-day = 0 and types != "NE") [ move-to-school show word "Coe to movendo errado hein! " types print  worker print stay-home]
+            if (worker = true and period-of-day != 0) [ move-to-work show word "Coe to movendo errado hein! " types  print worker print stay-home]
+            if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work show word "Coe to movendo errado hein! " types print   worker print stay-home]
+          ]   ;;talvez abrir mais um if pra n=0 e worker=true com types="NE" ir trabalhar
+          if init = "vesp" [
+            if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome show word "Coe to movendo errado hein! " types print  worker print stay-home ] ;; <- Rotina da escola pra casa
+            if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work show word "Coe to movendo errado hein! " types  print worker print stay-home] ;; <- Rotina da escola pro trabalho
 
-          if (period-of-day = 1 and worker = false and types != "NE") [ move-to-school] ;; <- Rotina de casa para a escola
+            if (period-of-day = 1 and worker = false and types != "NE") [ move-to-school show word "Coe to movendo errado hein! " types  print worker print stay-home] ;; <- Rotina de casa para a escola
 
-          if (period-of-day = 1 and worker = true  and types != "NE") [ move-to-school] ;; <- Rotina do trabalho para a escola
+            if (period-of-day = 1 and worker = true  and types != "NE") [ move-to-school show word "Coe to movendo errado hein! " types  print worker print stay-home ] ;; <- Rotina do trabalho para a escola
+          ]
+          if init = "not" [
+            if period-of-day = 1 [ move-backhome show word "Coe to movendo errado hein! " types  print worker print stay-home ]
+            if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome show word "Coe to movendo errado hein! " types print  worker print stay-home ]
+            if (types = "NE") and (worker = true) [ move-backhome show word "Coe to movendo errado hein! " types print worker ] ;;Somar as 3 rotinas de backhome para dar valor total
+
+            if period-of-day = 2 and worker = false and types != "NE" [ move-to-school show word "Coe to movendo errado hein! " types print  worker print stay-home ] ;; <- Rotina de casa pra escola
+            if period-of-day = 2 and worker = true  and types != "NE" [ move-to-school show word "Coe to movendo errado hein! " types  print worker print stay-home ] ;; <- Rotina do trabalho pra escola
+          ]
+        ]
       ]
-      if init = "not" [
-          if period-of-day = 1 [ move-backhome ]
-          if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome ]
-          if (types = "NE") and (worker = true) [ move-backhome ] ;;Somar as 3 rotinas de backhome para dar valor total
-
-          if period-of-day = 2 and worker = false and types != "NE" [ move-to-school ] ;; <- Rotina de casa pra escola
-          if period-of-day = 2 and worker = true  and types != "NE" [ move-to-school ] ;; <- Rotina do trabalho pra escola
-      ]
-      ]
-      ]
 
 
 
+    ]
   ]
-]
   ;]
 
 end
@@ -1013,15 +1019,19 @@ to isolar
 ;    set casa true
 ;  ]
 ;  ][
-   let try  workers-isolation-fraction * NUMBER_WORKERS
+  let try 0
+   set try workers-isolation-fraction * NUMBER_WORKERS
+  show try
     ask n-of try civilians with [ worker = true ][
-      set casa true
+      set stay-home true
+
     ]
 
-    let number-people 4230 ; FDS: magic number? additionally, you must use meaningful variable names ;-)
-    set try students-isolation-fraction * number-people
+    ; FDS: magic number? additionally, you must use meaningful variable names ;-)
+    set try students-isolation-fraction * NUMBER_STUDENTS
+  show try
     ask n-of try civilians with [ types != "NE" ][
-      set casa true
+      set stay-home true
     ]
 
 ;  ]
@@ -1054,77 +1064,55 @@ to human-state
     ask the-turtle [
       if state != 1 [
         if ticks >= elapsed-days [
-          set days days + 1
+          set current-days current-days + 1
         ]
       ]
 
-
-
-
       if state = 1 [
         let lista  sort  other civilians-here
-
         while [ length lista != 0 ] [
-          if sick = false[
-            let prim first lista
-            set closest-distance distance prim
-            if closest-distance <= min-distance [
-              if [state] of prim = 3 [  ;;Verificar quantidade de pessoas em um raio N, ver se elas ja estão infectadas, se não elas devem se infectar com chance X
+          let prim first lista
+          if [state] of prim = 3 [
+            if contamined? = false [
+              let try random-float 1
+              if try <= transmission-probability [
+                set contamined? true
+                set color orange
+                set state 2
+                let b (max-exposed - min-exposed) + 1
+                set days-in-state min-exposed + random b
 
-                let pegar false
-                ask prim [ set pegar sick ]
-                if trancar = false [
-                  if pegar = true [ ;FDS when 'pegar' is true? (3 lines above it was set to false)
-                    let try random-float 1
-                    if try <= transmission-probability [
-                      set sick pegar
-                      set trancar true ;FDS why trancar is set true?
-
-                      ask prim [ set how_many_i_infected how_many_i_infected + 1 ];FDS, Lucas, does this work?
-                      ;FDS Lucas, what do you think of checking whether the 'target' of the agents is the same, instead of using the 'distance'?
-                      ;FDS I'm afraid of an agent is getting infected by other agent located at a different target (eg., a student is being infected by a worker located at a company near the school)
-                    ]
-                  ]
-                ]
+                ask prim [ set how_many_i_infected how_many_i_infected + 1 ];FDS, Lucas, does this work?
+                ;FDS Lucas, what do you think of checking whether the 'target' of the agents is the same, instead of using the 'distance'?
+                ;FDS I'm afraid of an agent is getting infected by other agent located at a different target (eg., a student is being infected by a worker located at a company near the school)
               ]
-            ]
 
-            if sick = true [
-              set color orange
-              set state 2
-              let b (max-exposed - min-exposed) + 1
-              set infected min-exposed + random b
             ]
           ]
           set lista but-first lista
         ]
-
       ]
+
       if state = 2 [
-        if days >= infected [
+        if current-days >= days-in-state [
           set color red
           set state 3
           let b (max-infected - min-infected) + 1
-          set infected min-infected + random b
-          set days 0
+          set days-in-state min-infected + random b
+          set current-days 0
         ]
       ]
       if state = 3 [
-        if days > infected [
-          set days 0
-          set state 4
-
-          ; set dead dead + 1
-          ;die
-          ;let try random-float 1
-
-          ;          ifelse try > 0.95 [ set state 5  set color blue ]
-          ;                          [ set state 4   set color green ]
+        if current-days > days-in-state [
+          set current-days 0
+          let try random-float 1
+          ifelse try >= mortality-probability [ set state 4  set color blue ]
+                                              [ set dead dead + 1  die ]
         ]
       ]
     ]
   ]
-  ;; Susceptible(White); Exposed(Orange); Infected(Red); Recovered(Blue); Chronic Recovered(Green)
+  ;; Susceptible(White); Exposed(Orange); Infected(Red); Recovered(Blue)
   ;; Color patterns for agents following a SEIR model
   ;]
 
@@ -1287,7 +1275,7 @@ BUTTON
 541
 NIL
 go
-T
+NIL
 1
 T
 OBSERVER
@@ -1318,6 +1306,7 @@ PENS
 "Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ state = 3 ]]"
 "Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with[ state = 4]]"
 "Population" 1.0 0 -16777216 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians]"
+"Dead" 1.0 0 -10402772 true "" "plot dead"
 
 BUTTON
 1826
@@ -1393,7 +1382,7 @@ INPUTBOX
 281
 494
 workers-isolation-fraction
-0.0
+1.0
 1
 0
 Number
@@ -1404,7 +1393,7 @@ INPUTBOX
 145
 494
 students-isolation-fraction
-0.0
+1.0
 1
 0
 Number
@@ -1415,7 +1404,7 @@ INPUTBOX
 100
 394
 infected-people
-100.0
+1000.0
 1
 0
 Number
@@ -1621,6 +1610,27 @@ mean [how_many_i_infected] of civilians with [state > 1]
 17
 1
 11
+
+TEXTBOX
+159
+135
+309
+153
+Mortality probability:
+11
+0.0
+1
+
+INPUTBOX
+158
+150
+266
+210
+mortality-probability
+0.057
+1
+0
+Number
 
 @#$#@#$#@
 ## WHAT IS IT?
