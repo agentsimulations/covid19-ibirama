@@ -20,6 +20,7 @@ globals [
   NUMBER_WORKERS
   NUMBER_STUDENTS
   NUMBER_PERIODS_OF_DAY ; 4 = morning, afternoon, evening, night
+  STUDENTS_LIMIT
   population_pyramid_labels
   population_pyramid_values
   families_size
@@ -78,6 +79,7 @@ to setup
   set NUMBER_CIVILIANS 17330
   set NUMBER_WORKERS 2462
   set NUMBER_STUDENTS 4230
+  set STUDENTS_LIMIT 0
   set NUMBER_PERIODS_OF_DAY 4 ;morning, afternoon, evening, night
 
   set LOCATION_COMPANY "COMP"
@@ -329,14 +331,17 @@ to create-ibirama-companies
         set size 1
         set location_type LOCATION_COMPANY
         set location_label gis:property-value feature "NAME"
+
       ]
     ]
   ]
 
   ; read the CSV file and initialize the number of employees for each company
   let companies locations with [location_type = LOCATION_COMPANY]
+  show (word "created companies: " count companies )
   let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
   foreach companies_data [ company ->
+
     ask one-of companies with [ location_label = item 0 company and location_capacity = 0] [
       ;ask locations with [ location_label = item 0 company and location_capacity = 0] [
       if location_capacity > 0 [ error "ja tem" ]
@@ -471,6 +476,7 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
+              set types "NE"
               set state 1
               set period-of-day 0
               set current-days 0
@@ -491,6 +497,7 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
+              set types "NE"
               set state 1
               set period-of-day 0
               set current-days 0
@@ -528,6 +535,7 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
+          set types "NE"
           set state 1
           set period-of-day 0
           set current-days 0
@@ -558,6 +566,7 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
+          set types "NE"
           set state 1
           set period-of-day 0
           set current-days 0
@@ -589,38 +598,47 @@ to create-ibirama-civilians
 end
 
 to assign-civilians-school
-  ask n-of NUMBER_STUDENTS civilians [
+  while [STUDENTS_LIMIT < NUMBER_STUDENTS] [
+    ask one-of civilians with [types = "NE"] [
     ( ifelse
+
       age <= 5 [
 
         set types "EI"
         let y position types education-labels
-        if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-        let tmp item y education-values
+        ifelse item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        [let tmp item y education-values
         set tmp tmp - 1
         set education-values replace-item y education-values tmp
         set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
+            set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+          ]
+
 
       ]
       age >= 6 and age <= 10 [
 
         set types "EF1"
         let y position types education-labels
-        if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-        let tmp item y education-values
+        ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        [let tmp item y education-values
         set tmp tmp - 1
         set education-values replace-item y education-values tmp
         set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
+          set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+            ]
       ]
       age >= 11 and age <= 14 [
 
         set types "EF2"
         let y position types education-labels
-        if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-        let tmp item y education-values
+        ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        [let tmp item y education-values
         set tmp tmp - 1
         set education-values replace-item y education-values tmp
         set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
+          set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+          ]
       ]
       age >= 15 [
         let k position "CEJA" education-labels
@@ -628,11 +646,13 @@ to assign-civilians-school
           if age >= 15 and age <= 17 [
             set types "EM"
             let y position types education-labels
-            if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-            let tmp item y education-values
+            ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+            [let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
             set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
+              set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+                ]
           ]
         ][
           set types "CEJA"
@@ -641,6 +661,8 @@ to assign-civilians-school
           set tmp tmp - 1
           set education-values replace-item y education-values tmp
           set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
+        set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+
         ]
 
 
@@ -650,17 +672,20 @@ to assign-civilians-school
       set types "UNI"
       set period-of-day 2
       let y position types education-labels
-      if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-      let tmp item y education-values
+      ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+      [let tmp item y education-values
       set tmp tmp - 1
       set education-values replace-item y education-values tmp
       set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
+        set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+        ]
     ]
+  ]
   ]
 end
 
 to assign-civilians-workplace
-  ask n-of 2462 civilians with [ age >= 10 ]  [
+  ask n-of NUMBER_WORKERS civilians with [ age >= 10 ]  [
     ;FDS magic numbers (2462) again? :-( You must always avoid them! Please fix this.
     ;FDS In this case, you can compute this value by summing the 'location_capacity' value of locations whose type is LOCATION_COMPANY
 
@@ -828,31 +853,31 @@ end
 to move
   ;ask walkers[ ;FDS why not 'ask'?
   foreach sort civilians [ the-turtle ->  ;; EI EF1 EF2 EM CEJA UNI ;FDS why 'sort'?
-    ask the-turtle [                      ;; 'n' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
+    ask the-turtle [                      ;; 'period-of-day' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
       ifelse stay-home = true [][
       ifelse ticks = elapsed-days [                 ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
-         if period-of-day = 2 and types != "NE" [ move-backhome ] ;FDS 'n' and 'ss' -> magic variables?
+         if period-of-day = 2 and types != "NE" [ move-backhome ]
       ][
       if init = "mat" [
-            if (period-of-day = 0 and types != "NE") [ move-to-school]
+            if (period-of-day = 0 and types != "NE") [  move-to-school ]
             if (worker = true and period-of-day != 0) [ move-to-work ]
             if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work]
-          ]   ;;talvez abrir mais um if pra n=0 e worker=true com types="NE" ir trabalhar
+          ]
           if init = "vesp" [
             if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome ] ;; <- Rotina da escola pra casa
             if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work] ;; <- Rotina da escola pro trabalho
 
-            if (period-of-day = 1 and worker = false and types != "NE") [ move-to-school] ;; <- Rotina de casa para a escola
+            if (period-of-day = 1 and worker = false and types != "NE") [   move-to-school  ] ;; <- Rotina de casa para a escola
 
-            if (period-of-day = 1 and worker = true  and types != "NE") [ move-to-school ] ;; <- Rotina do trabalho para a escola
+            if (period-of-day = 1 and worker = true  and types != "NE") [   move-to-school  ] ;; <- Rotina do trabalho para a escola
           ]
           if init = "not" [
             if period-of-day = 1 [ move-backhome ]
             if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome]
             if (types = "NE") and (worker = true) [ move-backhome] ;;Somar as 3 rotinas de backhome para dar valor total
 
-            if period-of-day = 2 and worker = false and types != "NE" [ move-to-school] ;; <- Rotina de casa pra escola
-            if period-of-day = 2 and worker = true  and types != "NE" [ move-to-school] ;; <- Rotina do trabalho pra escola
+            if period-of-day = 2 and worker = false and types != "NE" [  move-to-school  ] ;; <- Rotina de casa pra escola
+            if period-of-day = 2 and worker = true  and types != "NE" [  move-to-school  ] ;; <- Rotina do trabalho pra escola
           ]
         ]
       ]
@@ -881,7 +906,7 @@ to isolar
 ;  ]
 ;  ][
   let try 0
-   set try workers-isolation-fraction * 2462 ;FDS - magic numbers :-( verify comment on method "assign-civilians-workplace"
+   set try workers-isolation-fraction * NUMBER_WORKERS ;FDS - magic numbers :-( verify comment on method "assign-civilians-workplace"
   show try
     ask n-of try civilians with [ worker = true ][
       set stay-home true
