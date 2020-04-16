@@ -333,13 +333,18 @@ to create-ibirama-companies
   let companies locations with [location_type = LOCATION_COMPANY]
   let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
   show companies_data
+  let x 0;
   foreach companies_data [ company ->
     show item 0 company
-    ask one-of companies with [ location_label = item 0 company] [
+    ask one-of companies with [ location_label = item 0 company and location_places = 0] [
     ;ask locations with [ location_label = item 0 company] [
+      if location_places > 0 [ error "ja tem" ]
       set location_places item 1 company
+      set x x + location_places
     ]
   ]
+  show (word "overall capacity " x)
+  show sum [ location_places ] of locations with [ location_type = LOCATION_COMPANY ]
  show "Companies created!"
   ;TODO Lucas: now the companies have the number of employees saved in the 'location_places' attribute
   ;TODO Lucas: please modify the initialization of the 'work' place of the agents to be consistent with the number of employees
