@@ -28,7 +28,7 @@ globals [
   education-values
   init med fin ;; Variables to control the turns logic flow
   elapsed-days ;FDS magic variables?
-  min-distance dead
+   dead
 
   ; constants
   LOCATION_COMPANY
@@ -54,7 +54,6 @@ civilians-own[
   state days-in-state current-days
   contamined?
   testar stay-home
-  closest-distance
   how_many_i_infected
 ]
 
@@ -65,7 +64,7 @@ houses-own[
 locations-own [
   location_type
   location_label
-  location_places
+  location_capacity
 ]
 
 to setup
@@ -93,7 +92,7 @@ to setup
   set fin "not"  ;; Stands for noturno (evening)
   set elapsed-days 3
   set dead 0
-  set min-distance 1
+
 
   initialize-population-pyramid
   initialize-families-data
@@ -130,6 +129,8 @@ to setup
   ; creation of houses and agents
   create-ibirama-houses
   create-ibirama-civilians
+  assign-civilians-school
+  assign-civilians-workplace
   adjust-age-range
 
   if label-points-of-interest  [
@@ -317,15 +318,16 @@ to create-ibirama-companies
   ; read the CSV file and initialize the number of employees for each company
   let companies locations with [location_type = LOCATION_COMPANY]
   let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
-  show companies_data
+
   foreach companies_data [ company ->
-    show item 0 company
+
     ask locations with [ location_label = item 0 company] [
-      set location_places item 1 company
+      set location_capacity item 1 company
     ]
   ]
  show "Companies created!"
-  ;TODO Lucas: now the companies have the number of employees saved in the 'location_places' attribute
+  show count locations with [ location_type = LOCATION_COMPANY and location_capacity > 0 ]
+  ;TODO Lucas: now the companies have the number of employees saved in the 'location_capacity' attribute
   ;TODO Lucas: please modify the initialization of the 'work' place of the agents to be consistent with the number of employees
 end
 
@@ -452,173 +454,41 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
-
               set state 1
               set period-of-day 0
               set current-days 0
               set testar 0
               set worker false
-
               set contamined? false
               set stay-home false
               let x random 39
               while [ item x population_pyramid_values = 0 ][
                 set x random 39
               ]
-
               set age item x population_pyramid_labels
-
               let nro item x population_pyramid_values
               set nro nro - 1
               set population_pyramid_values replace-item x population_pyramid_values nro
-
-
-              ( ifelse
-                age <= 5 [
-
-                  set types "EI"
-                  let y position types education-labels
-                  if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                  let tmp item y education-values
-                  set tmp tmp - 1
-                  set education-values replace-item y education-values tmp
-                  set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
-
-                ]
-                age >= 6 and age <= 10 [
-
-                  set types "EF1"
-                  let y position types education-labels
-                  if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                  let tmp item y education-values
-                  set tmp tmp - 1
-                  set education-values replace-item y education-values tmp
-                  set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
-                ]
-                age >= 11 and age <= 14 [
-
-                  set types "EF2"
-                  let y position types education-labels
-                  if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                  let tmp item y education-values
-                  set tmp tmp - 1
-                  set education-values replace-item y education-values tmp
-                  set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
-                ]
-                age >= 15 [
-                  let k position "CEJA" education-labels
-                  ifelse item k education-values <= 0 [
-                    if age >= 15 and age <= 17 [
-                      set types "EM"
-                      let y position types education-labels
-                      if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                      let tmp item y education-values
-                      set tmp tmp - 1
-                      set education-values replace-item y education-values tmp
-                      set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
-                    ]
-                  ][
-                    set types "CEJA"
-                    let y position types education-labels
-                    let tmp item y education-values
-                    set tmp tmp - 1
-                    set education-values replace-item y education-values tmp
-                    set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
-                  ]
-
-
-              ])
-              if age >= 18 and types != "CEJA" [
-
-                set types "UNI"
-                set period-of-day 2
-                let y position types education-labels
-                if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                let tmp item y education-values
-                set tmp tmp - 1
-                set education-values replace-item y education-values tmp
-                set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
-              ]
-
-              if age >= 10 [
-                if NUMBER_WORKERS > 0 [
-                  set worker true
-                  set NUMBER_WORKERS NUMBER_WORKERS - 1
-                  set work one-of locations with [ location_type = LOCATION_COMPANY ]
-                ]
-              ]
-
-
-
             ]
           ][
             sprout-civilians 1 [
               set shape "person"
               set homes house me
-
               set state 1
               set period-of-day 0
               set current-days 0
               set testar 0
               set worker false
-
               set contamined? false
               set stay-home false
               let x  16 + random 23
               while [ item x population_pyramid_values = 0 ][
                 set x 16 + random 23
               ]
-
               set age item x population_pyramid_labels
-
               let nro item x population_pyramid_values
               set nro nro - 1
               set population_pyramid_values replace-item x population_pyramid_values nro
-
-              if
-              age >= 15 [
-                let k position "CEJA" education-labels
-                ifelse item k education-values <= 0 [
-                  if age >= 15 and age <= 17 [
-                    set types "EM"
-                    let y position types education-labels
-                    if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                    let tmp item y education-values
-                    set tmp tmp - 1
-                    set education-values replace-item y education-values tmp
-                    set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
-                  ]
-                ][
-                  set types "CEJA"
-                  let y position types education-labels
-                  let tmp item y education-values
-                  set tmp tmp - 1
-                  set education-values replace-item y education-values tmp
-                  set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
-                ]
-
-
-              ]
-              if age >= 18 and types != "CEJA" [
-
-                set types "UNI"
-
-                set period-of-day 2
-
-
-                let y position types education-labels
-                if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                let tmp item y education-values
-                set tmp tmp - 1
-                set education-values replace-item y education-values tmp ]
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ] ;FDS: Lucas please check this. Why this statement isn't within the ] of the if block? is that correct?
-
-              if NUMBER_WORKERS > 0 [
-                set worker true
-                set NUMBER_WORKERS NUMBER_WORKERS - 1
-                set work one-of locations with [ location_type = LOCATION_COMPANY ]
-
-              ]
             ]
           ]
         ]
@@ -641,95 +511,21 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
-
           set state 1
           set period-of-day 0
           set current-days 0
           set testar 0
           set worker false
-
           set contamined? false
           set stay-home false
           let x random 39
           while [ item x population_pyramid_values = 0 ][
             set x random 39
           ]
-
           set age item x population_pyramid_labels
-
           let nro item x population_pyramid_values
           set nro nro - 1
           set population_pyramid_values replace-item x population_pyramid_values nro
-
-          ( ifelse
-            age <= 5 [
-
-              set types "EI"
-              let y position types education-labels
-              if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-              let tmp item y education-values
-              set tmp tmp - 1
-              set education-values replace-item y education-values tmp
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
-
-            ]
-            age >= 6 and age <= 10 [
-
-              set types "EF1"
-              let y position types education-labels
-              if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-              let tmp item y education-values
-              set tmp tmp - 1
-              set education-values replace-item y education-values tmp
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
-
-            ]
-            age >= 11 and age <= 14 [
-
-              set types "EF2"
-              let y position types education-labels
-              if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-              let tmp item y education-values
-              set tmp tmp - 1
-              set education-values replace-item y education-values tmp
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
-            ]
-            age >= 15 [
-              let k position "CEJA" education-labels
-              ifelse item k education-values <= 0 [
-                if age >= 15 and age <= 17 [
-                  set types "EM"
-                  let y position types education-labels
-                  if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                  let tmp item y education-values
-                  set tmp tmp - 1
-                  set education-values replace-item y education-values tmp
-                  set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
-                ]
-              ][
-                set types "CEJA"
-                let y position types education-labels
-                let tmp item y education-values
-                set tmp tmp - 1
-                set education-values replace-item y education-values tmp
-                set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
-              ]
-
-
-          ] )
-          if age >= 18 and types != "CEJA"  [
-
-            set types "UNI"
-            set period-of-day 2
-            let y position types education-labels
-            if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-            let tmp item y education-values
-            set tmp tmp - 1
-            set education-values replace-item y education-values tmp
-           set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
-          ]
-
-
         ]
       ]
     ]
@@ -745,91 +541,19 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
-
           set state 1
           set period-of-day 0
           set current-days 0
           set testar 0
           set worker false
-
           set contamined? false
           set stay-home false
           let x random 39
           while [ item x population_pyramid_values = 0 ][ set x random 39 ]
-
           set age item x population_pyramid_labels
-
           let nro item x population_pyramid_values
           set nro nro - 1
           set population_pyramid_values replace-item x population_pyramid_values nro
-
-          ( ifelse
-            age <= 5 [
-
-              set types "EI"
-              let y position types education-labels
-              if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-              let tmp item y education-values
-              set tmp tmp - 1
-              set education-values replace-item y education-values tmp
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ] ;FDS now that you have (x,y) of the targed, do you stil need to use the patch? why not use (x,y) directly, and then change the agent location using the 'setxy' command?
-
-            ]
-            age >= 6 and age <= 10 [
-
-              set types "EF1"
-              let y position types education-labels
-              if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-              let tmp item y education-values
-              set tmp tmp - 1
-              set education-values replace-item y education-values tmp
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
-
-            ]
-            age >= 11 and age <= 14 [
-
-              set types "EF2"
-              let y position types education-labels
-              if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-              let tmp item y education-values
-              set tmp tmp - 1
-              set education-values replace-item y education-values tmp
-              set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
-            ]
-            age >= 15 [
-              let k position "CEJA" education-labels
-              ifelse item k education-values <= 0 [
-                if age >= 15 and age <= 17 [
-                  set types "EM"
-                  let y position types education-labels
-                  if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-                  let tmp item y education-values
-                  set tmp tmp - 1
-                  set education-values replace-item y education-values tmp
-                  set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
-                ]
-              ][
-                set types "CEJA"
-                let y position types education-labels
-                let tmp item y education-values
-                set tmp tmp - 1
-                set education-values replace-item y education-values tmp
-                set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
-              ]
-
-
-          ])
-          if age >= 18 and types != "CEJA"  [
-
-            set types "UNI"
-            set period-of-day 2
-            let y position types education-labels
-            if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-            let tmp item y education-values
-            set tmp tmp - 1
-            set education-values replace-item y education-values tmp
-            set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
-          ]
         ]
       ]
     ]
@@ -837,13 +561,95 @@ to create-ibirama-civilians
 
   show "done create-ibirama-civilians"
 
-  ask n-of infected-people civilians   [ ;FDS infected-people are initialized as 'exposed', why? (I just want to understand your reasons for doing that. Maybe you have read it on some paper)
+  ask n-of infected-people civilians   [
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
   ]
   agents-turns
   isolar
+
+end
+
+to assign-civilians-school
+  ask n-of NUMBER_STUDENTS civilians [
+    ( ifelse
+      age <= 5 [
+
+        set types "EI"
+        let y position types education-labels
+        if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        let tmp item y education-values
+        set tmp tmp - 1
+        set education-values replace-item y education-values tmp
+        set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
+
+      ]
+      age >= 6 and age <= 10 [
+
+        set types "EF1"
+        let y position types education-labels
+        if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        let tmp item y education-values
+        set tmp tmp - 1
+        set education-values replace-item y education-values tmp
+        set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
+      ]
+      age >= 11 and age <= 14 [
+
+        set types "EF2"
+        let y position types education-labels
+        if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        let tmp item y education-values
+        set tmp tmp - 1
+        set education-values replace-item y education-values tmp
+        set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
+      ]
+      age >= 15 [
+        let k position "CEJA" education-labels
+        ifelse item k education-values <= 0 [
+          if age >= 15 and age <= 17 [
+            set types "EM"
+            let y position types education-labels
+            if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+            let tmp item y education-values
+            set tmp tmp - 1
+            set education-values replace-item y education-values tmp
+            set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
+          ]
+        ][
+          set types "CEJA"
+          let y position types education-labels
+          let tmp item y education-values
+          set tmp tmp - 1
+          set education-values replace-item y education-values tmp
+          set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
+        ]
+
+
+    ])
+    if age >= 18 and types != "CEJA" [
+
+      set types "UNI"
+      set period-of-day 2
+      let y position types education-labels
+      if  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+      let tmp item y education-values
+      set tmp tmp - 1
+      set education-values replace-item y education-values tmp
+      set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
+    ]
+  ]
+end
+
+to assign-civilians-workplace
+  ask n-of 2462 civilians with [ age >= 10 ]  [
+
+        set worker true
+        set work one-of locations with [ location_type = LOCATION_COMPANY and location_capacity > 0 ]
+        show work
+        ask work [set location_capacity location_capacity - 1 ]
+  ]
 
 end
 
@@ -1366,7 +1172,7 @@ PENS
 "Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ state = 3 ]]"
 "Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with[ state = 4]]"
 "Population" 1.0 0 -16777216 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians]"
-"Dead" 1.0 0 -10402772 true "" "plot dead"
+"Dead" 1.0 0 -10402772 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [ plot dead ]"
 
 BUTTON
 1826
@@ -1698,7 +1504,7 @@ INPUTBOX
 161
 602
 age-range-2
-2.25E-4
+4.39453125E-7
 1
 0
 Number
@@ -1709,7 +1515,7 @@ INPUTBOX
 252
 602
 age-range-3
-4.0E-4
+7.8125E-7
 1
 0
 Number
@@ -1720,7 +1526,7 @@ INPUTBOX
 78
 678
 age-range-4
-0.001625
+3.173828125E-6
 1
 0
 Number
@@ -1731,7 +1537,7 @@ INPUTBOX
 161
 678
 age-range-5
-0.0045
+8.7890625E-6
 1
 0
 Number
@@ -1742,7 +1548,7 @@ INPUTBOX
 255
 681
 age-range-6
-0.01
+1.953125E-5
 1
 0
 Number
@@ -1753,7 +1559,7 @@ INPUTBOX
 78
 751
 age-range-7
-0.0185
+3.61328125E-5
 1
 0
 Number
