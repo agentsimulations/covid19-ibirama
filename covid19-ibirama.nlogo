@@ -336,21 +336,14 @@ to create-ibirama-companies
   ; read the CSV file and initialize the number of employees for each company
   let companies locations with [location_type = LOCATION_COMPANY]
   let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
-  show companies_data
-  let x 0;
   foreach companies_data [ company ->
-    show item 0 company
-    ask one-of companies with [ location_label = item 0 company and location_places = 0] [
-    ;ask locations with [ location_label = item 0 company] [
-      if location_places > 0 [ error "ja tem" ]
-      set location_places item 1 company
-      set x x + location_places
+    ask one-of companies with [ location_label = item 0 company and location_capacity = 0] [
+      ;ask locations with [ location_label = item 0 company and location_capacity = 0] [
+      if location_capacity > 0 [ error "ja tem" ]
+      set location_capacity item 1 company
     ]
   ]
-  show (word "overall capacity " x)
-  show sum [ location_places ] of locations with [ location_type = LOCATION_COMPANY ]
- show "Companies created!"
-  show count locations with [ location_type = LOCATION_COMPANY and location_capacity > 0 ]
+  show "Companies created!"
   ;TODO Lucas: now the companies have the number of employees saved in the 'location_capacity' attribute
   ;TODO Lucas: please modify the initialization of the 'work' place of the agents to be consistent with the number of employees
 end
@@ -668,11 +661,13 @@ end
 
 to assign-civilians-workplace
   ask n-of 2462 civilians with [ age >= 10 ]  [
+    ;FDS magic numbers (2462) again? :-( You must always avoid them! Please fix this.
+    ;FDS In this case, you can compute this value by summing the 'location_capacity' value of locations whose type is LOCATION_COMPANY
 
-        set worker true
-        set work one-of locations with [ location_type = LOCATION_COMPANY and location_capacity > 0 ]
-        show work
-        ask work [set location_capacity location_capacity - 1 ]
+    set worker true
+    set work one-of locations with [ location_type = LOCATION_COMPANY and location_capacity > 0 ]
+    ;show work
+    ask work [set location_capacity location_capacity - 1 ]
   ]
 
 end
@@ -886,7 +881,7 @@ to isolar
 ;  ]
 ;  ][
   let try 0
-   set try workers-isolation-fraction * 2462
+   set try workers-isolation-fraction * 2462 ;FDS - magic numbers :-( verify comment on method "assign-civilians-workplace"
   show try
     ask n-of try civilians with [ worker = true ][
       set stay-home true
