@@ -135,9 +135,12 @@ to setup
   ; creation of houses and agents
   create-ibirama-houses
   create-ibirama-civilians
-
-  assign-civilians-school
   assign-civilians-workplace
+  assign-civilians-school
+
+  isolar
+
+
 
 
 
@@ -349,8 +352,6 @@ to create-ibirama-companies
     ]
   ]
   show "Companies created!"
-  ;TODO Lucas: now the companies have the number of employees saved in the 'location_capacity' attribute
-  ;TODO Lucas: please modify the initialization of the 'work' place of the agents to be consistent with the number of employees
 end
 
 
@@ -593,7 +594,7 @@ to create-ibirama-civilians
     set days-in-state min-exposed + random b
   ]
   agents-turns
-  isolar
+
 
 end
 
@@ -686,12 +687,8 @@ end
 
 to assign-civilians-workplace
   ask n-of NUMBER_WORKERS civilians with [ age >= 10 ]  [
-    ;FDS magic numbers (2462) again? :-( You must always avoid them! Please fix this.
-    ;FDS In this case, you can compute this value by summing the 'location_capacity' value of locations whose type is LOCATION_COMPANY
-
     set worker true
     set work one-of locations with [ location_type = LOCATION_COMPANY and location_capacity > 0 ]
-    ;show work
     ask work [set location_capacity location_capacity - 1 ]
   ]
 
@@ -818,7 +815,6 @@ end
 
 to turns
 
-
   if ticks != elapsed-days [
     Show "---------------------------------------------------"
     show word "Turno atual que se passou é: " init
@@ -833,11 +829,7 @@ to turns
   if ticks >= elapsed-days [
     set elapsed-days elapsed-days + 4
     show "madrugada!"
-
   ]
-
-
-
   ;; Resembles something like a bubbleSort for a simple logic to be used
 end
 
@@ -856,28 +848,28 @@ to move
     ask the-turtle [                      ;; 'period-of-day' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
       ifelse stay-home = true [][
       ifelse ticks = elapsed-days [                 ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
-         if period-of-day = 2 and types != "NE" [ move-backhome ]
+         if period-of-day = 2 and types != "NE" [ if types = "NE" [ show "Agente se movendo errado" ] move-backhome ]
       ][
       if init = "mat" [
-            if (period-of-day = 0 and types != "NE") [  move-to-school ]
-            if (worker = true and period-of-day != 0) [ move-to-work ]
-            if (worker = true and period-of-day = 0 and types = "NE") [ move-to-work]
+            if (period-of-day = 0 and types != "NE") [  if types = "NE" [ show "Agente se movendo errado" ] move-to-school ]
+            if (worker = true and period-of-day != 0) [if worker = false [ show "Agente se movendo errado" ] move-to-work ]
+            if (worker = true and period-of-day = 0 and types = "NE") [ if worker = false [ show "Agente se movendo errado" ] move-to-work]
           ]
           if init = "vesp" [
-            if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ move-backhome ] ;; <- Rotina da escola pra casa
-            if ( period-of-day = 0 and worker = true and types != "NE") [ move-to-work] ;; <- Rotina da escola pro trabalho
+            if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ if worker = true or types = "EI" [ show "Agente se movendo errado" ] move-backhome ] ;; <- Rotina da escola pra casa
+            if ( period-of-day = 0 and worker = true and types != "NE") [if types = "NE" [ show "Agente se movendo errado" ]  move-to-work] ;; <- Rotina da escola pro trabalho
 
-            if (period-of-day = 1 and worker = false and types != "NE") [   move-to-school  ] ;; <- Rotina de casa para a escola
+            if (period-of-day = 1 and worker = false and types != "NE") [if types = "NE" [ show "Agente se movendo errado" ]   move-to-school  ] ;; <- Rotina de casa para a escola
 
-            if (period-of-day = 1 and worker = true  and types != "NE") [   move-to-school  ] ;; <- Rotina do trabalho para a escola
+            if (period-of-day = 1 and worker = true  and types != "NE") [ if types = "NE" [ show "Agente se movendo errado" ]  move-to-school  ] ;; <- Rotina do trabalho para a escola
           ]
           if init = "not" [
             if period-of-day = 1 [ move-backhome ]
             if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome]
             if (types = "NE") and (worker = true) [ move-backhome] ;;Somar as 3 rotinas de backhome para dar valor total
 
-            if period-of-day = 2 and worker = false and types != "NE" [  move-to-school  ] ;; <- Rotina de casa pra escola
-            if period-of-day = 2 and worker = true  and types != "NE" [  move-to-school  ] ;; <- Rotina do trabalho pra escola
+            if period-of-day = 2 and worker = false and types != "NE" [ if types = "NE" [ show "Agente se movendo errado" ] move-to-school  ] ;; <- Rotina de casa pra escola
+            if period-of-day = 2 and worker = true  and types != "NE" [if types = "NE" [ show "Agente se movendo errado" ]  move-to-school  ] ;; <- Rotina do trabalho pra escola
           ]
         ]
       ]
@@ -891,36 +883,23 @@ to move
 end
 
 to isolar
-;ifelse isolation != 0 [
-;  let try Isolation * NUMBER_WORKERS
-;  ask n-of try civilians with [worker = true ]
-; [
-;    set casa true
-;  ]
-;
-;  let nbe 4230
-;  set try Isolation * nbe
-;  ask n-of try civilians with [types != "NE" ]
-;  [
-;    set casa true
-;  ]
-;  ][
+
   let try 0
-   set try workers-isolation-fraction * NUMBER_WORKERS ;FDS - magic numbers :-( verify comment on method "assign-civilians-workplace"
+   set try workers-isolation-fraction * NUMBER_WORKERS
   show try
     ask n-of try civilians with [ worker = true ][
       set stay-home true
 
     ]
 
-    ; FDS: magic number? additionally, you must use meaningful variable names ;-)
+
     set try students-isolation-fraction * NUMBER_STUDENTS
   show try
     ask n-of try civilians with [ types != "NE" ][
       set stay-home true
     ]
 
-;  ]
+
 
 end
 
@@ -1027,21 +1006,6 @@ to-report find-mortality-rate [ civilian_age ]
   report item (i - 1) mortality_values
 end
 
-
-;;ideia pra pegar empresas e limitar funcionarios nelas
-;; business-own[ employees maxHired]
-;; ask business [
-;;   set employees 0
-;;   set maxHired random 9
-;;]
-;; ask civilians [
-;;   let try false
-;;   set work one-of business
-;;   while try = false [ ifelse [employees] of work < [maxHired] of work [ ask work [set employees employees +1]  set try true ] [ set work one-of business ] ]
-;;
-
-
-
 ; Public Domain:
 ; To the extent possible under law, Uri Wilensky has waived all
 ; copyright and related or neighboring rights to this model.
@@ -1074,10 +1038,10 @@ periods-of-day
 30.0
 
 BUTTON
-134
-753
-199
-786
+145
+580
+210
+613
 NIL
 setup\n
 NIL
@@ -1175,10 +1139,10 @@ Isolation parameters
 1
 
 BUTTON
-227
-753
-290
-786
+223
+580
+286
+613
 NIL
 go
 T
@@ -1193,9 +1157,9 @@ NIL
 
 PLOT
 0
-809
+630
 328
-1053
+874
 COVID-19 Daily Monitoring
 Days
 Number of people
@@ -1212,7 +1176,7 @@ PENS
 "Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ state = 3 ]]"
 "Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with[ state = 4]]"
 "Population" 1.0 0 -16777216 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians]"
-"Dead" 1.0 0 -10402772 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [ plot dead ]"
+"Deaths" 1.0 0 -10402772 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [ plot dead ]"
 
 BUTTON
 1826
@@ -1310,7 +1274,7 @@ INPUTBOX
 98
 473
 infected-people
-1000.0
+1.0
 1
 0
 Number
@@ -1432,19 +1396,19 @@ Number of initially infected agents:
 
 TEXTBOX
 6
-791
+612
 156
-809
+630
 Simulation monitoring
 14
 0.0
 1
 
 MONITOR
-188
-1113
-274
-1158
+190
+930
+276
+975
 Elapsed days
 ticks / NUMBER_PERIODS_OF_DAY
 0
@@ -1452,10 +1416,10 @@ ticks / NUMBER_PERIODS_OF_DAY
 11
 
 MONITOR
-10
-1061
-84
-1106
+8
+882
+82
+927
 Susceptibles
 count civilians with [ state = 1 ]
 0
@@ -1464,9 +1428,9 @@ count civilians with [ state = 1 ]
 
 MONITOR
 87
-1061
+882
 163
-1106
+927
 Exposed
 count civilians with [ state = 2 ]
 0
@@ -1475,9 +1439,9 @@ count civilians with [ state = 2 ]
 
 MONITOR
 167
-1061
+882
 242
-1106
+927
 Infected
 count civilians with [ state = 3 ]
 0
@@ -1485,10 +1449,10 @@ count civilians with [ state = 3 ]
 11
 
 MONITOR
-50
-1114
-120
-1159
+54
+931
+124
+976
 Deaths
 dead
 0
@@ -1497,9 +1461,9 @@ dead
 
 MONITOR
 246
-1062
+882
 318
-1107
+927
 Recovered
 count civilians with [ state = 4 ]
 0
