@@ -59,6 +59,7 @@ civilians-own[
   testar stay-home
   how_many_i_infected
   mortality-rate
+  currentPlace
 ]
 
 houses-own[
@@ -924,21 +925,25 @@ end
 
 to move-to-school
   move-to school
+  set currentPlace [location_label] of school
   set testar testar + 1
 end
 
 to move-to-work
   move-to work
+  set currentPlace [location_label] of work
   set testar testar + 1
 end
 
 to move-to-park
   move-to park
+  set currentPlace [location_label] of park
   set testar testar + 1
 end
 
 to move-backhome
   move-to homes
+  set currentPlace "at home"
   set testar testar + 1
 end
 
@@ -1164,7 +1169,7 @@ BUTTON
 613
 NIL
 go
-T
+NIL
 1
 T
 OBSERVER
