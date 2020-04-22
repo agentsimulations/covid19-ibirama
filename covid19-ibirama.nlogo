@@ -138,11 +138,9 @@ to setup
   assign-civilians-workplace
   assign-civilians-school
 
+  infect-people
+
   isolar
-
-
-
-
 
   if label-points-of-interest  [
       ask locations [ set label location_label]
@@ -588,13 +586,7 @@ to create-ibirama-civilians
 
   show "done create-ibirama-civilians"
 
-  ask n-of infected-people civilians   [
-    set state 2
-    let b (max-exposed - min-exposed) + 1
-    set days-in-state min-exposed + random b
-  ]
   agents-turns
-
 
 end
 
@@ -693,6 +685,26 @@ to assign-civilians-workplace
   ]
 
 end
+
+to infect-people
+  show (word "infecting " infected-students" students...")
+
+  ask n-of infected-students civilians with [ types != "NE" ][
+    set state 2
+    let b (max-exposed - min-exposed) + 1
+    set days-in-state min-exposed + random b
+  ]
+  show "infection of students is done"
+
+  show (word "infecting " infected-workers" workers...")
+  ask n-of infected-workers civilians with [ worker = true ]   [
+    set state 2
+    let b (max-exposed - min-exposed) + 1
+    set days-in-state min-exposed + random b
+  ]
+  show "infection of workers is done"
+end
+
 
 to create-ibirama-houses
   display-roads-in-patches ; first we need to identify the patches that are roads
@@ -1269,12 +1281,12 @@ students-isolation-fraction
 Number
 
 INPUTBOX
-10
-413
-98
-473
-infected-people
-1.0
+9
+412
+114
+472
+infected-students
+0.0
 1
 0
 Number
@@ -1501,6 +1513,17 @@ data/disease/mortality-rates-china.csv
 1
 0
 String
+
+INPUTBOX
+121
+413
+220
+473
+infected-workers
+1.0
+1
+0
+Number
 
 @#$#@#$#@
 ## WHAT IS IT?
