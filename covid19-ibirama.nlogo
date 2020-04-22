@@ -593,88 +593,95 @@ end
 to assign-civilians-school
   while [STUDENTS_LIMIT < NUMBER_STUDENTS] [
     ask one-of civilians with [types = "NE"] [
-    ( ifelse
+      ( ifelse
 
-      age <= 5 [
+        age <= 5 [
 
-        set types "EI"
-        let y position types education-labels
-        ifelse item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-        [let tmp item y education-values
-        set tmp tmp - 1
-        set education-values replace-item y education-values tmp
-        set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
+          set types "EI"
+          let y position types education-labels
+          ifelse item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+          [let tmp item y education-values
+            set tmp tmp - 1
+            set education-values replace-item y education-values tmp
+            set school one-of locations with [ location_type = LOCATION_EDUCATION_INFANTIL ]
             set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
           ]
 
 
-      ]
-      age >= 6 and age <= 10 [
+        ]
+        age >= 6 and age <= 10 [
 
-        set types "EF1"
-        let y position types education-labels
-        ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-        [let tmp item y education-values
-        set tmp tmp - 1
-        set education-values replace-item y education-values tmp
-        set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
-          set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
-            ]
-      ]
-      age >= 11 and age <= 14 [
-
-        set types "EF2"
-        let y position types education-labels
-        ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-        [let tmp item y education-values
-        set tmp tmp - 1
-        set education-values replace-item y education-values tmp
-        set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
-          set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
-          ]
-      ]
-      age >= 15 [
-        let k position "CEJA" education-labels
-        ifelse item k education-values <= 0 [
-          if age >= 15 and age <= 17 [
-            set types "EM"
-            let y position types education-labels
-            ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-            [let tmp item y education-values
+          set types "EF1"
+          let y position types education-labels
+          ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+          [let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
-            set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
-              set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
-                ]
+            set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL1 ]
+            set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
           ]
-        ][
-          set types "CEJA"
+        ]
+        age >= 11 and age <= 14 [
+
+          set types "EF2"
           let y position types education-labels
-          let tmp item y education-values
+          ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+          [let tmp item y education-values
+            set tmp tmp - 1
+            set education-values replace-item y education-values tmp
+            set school one-of locations with [ location_type = LOCATION_EDUCATION_FUNDAMENTAL2 ]
+            set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+          ]
+        ]
+        age >= 15 [
+          let k position "CEJA" education-labels
+          ifelse item k education-values <= 0 [
+            if age >= 15 and age <= 17 [
+              set types "EM"
+              let y position types education-labels
+              ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+              [let tmp item y education-values
+                set tmp tmp - 1
+                set education-values replace-item y education-values tmp
+                set school one-of locations with [ location_type = LOCATION_EDUCATION_MEDIO ]
+                set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+              ]
+            ]
+          ][
+            set types "CEJA"
+            let y position types education-labels
+            let tmp item y education-values
+            set tmp tmp - 1
+            set education-values replace-item y education-values tmp
+            set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
+            set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
+
+          ]
+
+
+      ])
+      if age >= 18 and types != "CEJA" [
+
+        set types "UNI"
+        set period-of-day 2
+        let y position types education-labels
+        ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        [let tmp item y education-values
           set tmp tmp - 1
           set education-values replace-item y education-values tmp
-          set school one-of locations with [ location_type = LOCATION_EDUCATION_CEJA ]
-        set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
-
+          set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
+          set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
         ]
-
-
-    ])
-    if age >= 18 and types != "CEJA" [
-
-      set types "UNI"
-      set period-of-day 2
-      let y position types education-labels
-      ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
-      [let tmp item y education-values
-      set tmp tmp - 1
-      set education-values replace-item y education-values tmp
-      set school one-of locations with [ location_type = LOCATION_EDUCATION_UNIVERSIDADE ]
-        set  STUDENTS_LIMIT  STUDENTS_LIMIT + 1
-        ]
+      ]
     ]
   ]
-  ]
+
+  show (word "Educação Infantil: " count civilians with [ types = "EI"] " alunos")
+  show (word "Ensino Fundamental 1: " count civilians with [ types = "EF1"] " alunos")
+  show (word "Ensino Fundamental 2: " count civilians with [ types = "EF2"] " alunos")
+  show (word "Ensino Médio: " count civilians with [ types = "EM"] " alunos")
+  show (word "CEJA: " count civilians with [ types = "CEJA"] " alunos")
+  show (word "Universidade: " count civilians with [ types = "UNI"] " alunos")
 end
 
 to assign-civilians-workplace
@@ -1124,9 +1131,9 @@ label-points-of-interest
 
 PLOT
 1827
-1375
-2087
-1601
+1374
+2176
+1600
 families
 members
 number of families
@@ -1143,9 +1150,9 @@ PENS
 TEXTBOX
 9
 492
-159
-511
-Isolation parameters
+189
+526
+Social isolation parameters:
 14
 0.0
 1
@@ -1483,10 +1490,10 @@ count civilians with [ state = 4 ]
 11
 
 MONITOR
-1827
-1626
-1998
-1671
+1989
+1316
+2126
+1361
 R0
 mean [how_many_i_infected] of civilians with [state > 1]
 17
