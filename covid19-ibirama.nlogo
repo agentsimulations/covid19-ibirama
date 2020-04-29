@@ -42,6 +42,14 @@ globals [
   LOCATION_EDUCATION_CEJA
   LOCATION_EDUCATION_UNIVERSIDADE
   LOCATION_PARK
+
+  CIVILIAN_EDUCATION_INFANTIL
+  CIVILIAN_EDUCATION_FUNDAMENTAL1
+  CIVILIAN_EDUCATION_FUNDAMENTAL2
+  CIVILIAN_EDUCATION_MEDIO
+  CIVILIAN_EDUCATION_CEJA
+  CIVILIAN_EDUCATION_UNIVERSIDADE
+  CIVILIAN_NAO_ESTUDANTE
 ]
 
 breed [ road-labels road-label ]
@@ -59,7 +67,11 @@ civilians-own[
   testar stay-home
   how_many_i_infected
   mortality-rate
+  already-spread
+  currentPlaceName
   currentPlace
+  anteriorPlace
+  contLocal
 ]
 
 houses-own[
@@ -82,6 +94,14 @@ to setup
   set NUMBER_STUDENTS 4230
   set STUDENTS_LIMIT 0
   set NUMBER_PERIODS_OF_DAY 4 ;morning, afternoon, evening, night
+
+  set CIVILIAN_EDUCATION_INFANTIL "EI"
+  set CIVILIAN_EDUCATION_FUNDAMENTAL1 "EF1"
+  set CIVILIAN_EDUCATION_FUNDAMENTAL2 "EF2"
+  set CIVILIAN_EDUCATION_MEDIO "EM"
+  set CIVILIAN_EDUCATION_CEJA "CEJA"
+  set CIVILIAN_EDUCATION_UNIVERSIDADE "UNI"
+  set CIVILIAN_NAO_ESTUDANTE "NE"
 
   set LOCATION_COMPANY "COMP"
   set LOCATION_EDUCATION_INFANTIL "EI"
@@ -476,7 +496,7 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
-              set types "NE"
+              set types CIVILIAN_NAO_ESTUDANTE
               set state 1
               set period-of-day 0
               set current-days 0
@@ -484,6 +504,7 @@ to create-ibirama-civilians
               set worker false
               set contamined? false
               set stay-home false
+              set already-spread false
               let x random 39
               while [ item x population_pyramid_values = 0 ][
                 set x random 39
@@ -497,7 +518,7 @@ to create-ibirama-civilians
             sprout-civilians 1 [
               set shape "person"
               set homes house me
-              set types "NE"
+              set types CIVILIAN_NAO_ESTUDANTE
               set state 1
               set period-of-day 0
               set current-days 0
@@ -505,6 +526,7 @@ to create-ibirama-civilians
               set worker false
               set contamined? false
               set stay-home false
+              set already-spread false
               let x  16 + random 23
               while [ item x population_pyramid_values = 0 ][
                 set x 16 + random 23
@@ -535,7 +557,7 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
-          set types "NE"
+          set types CIVILIAN_NAO_ESTUDANTE
           set state 1
           set period-of-day 0
           set current-days 0
@@ -543,6 +565,7 @@ to create-ibirama-civilians
           set worker false
           set contamined? false
           set stay-home false
+          set already-spread false
           let x random 39
           while [ item x population_pyramid_values = 0 ][
             set x random 39
@@ -566,7 +589,7 @@ to create-ibirama-civilians
         sprout-civilians 1 [
           set shape "person"
           set homes house me
-          set types "NE"
+          set types CIVILIAN_NAO_ESTUDANTE
           set state 1
           set period-of-day 0
           set current-days 0
@@ -574,6 +597,7 @@ to create-ibirama-civilians
           set worker false
           set contamined? false
           set stay-home false
+          set already-spread false
           let x random 39
           while [ item x population_pyramid_values = 0 ][ set x random 39 ]
           set age item x population_pyramid_labels
@@ -593,14 +617,14 @@ end
 
 to assign-civilians-school
   while [STUDENTS_LIMIT < NUMBER_STUDENTS] [
-    ask one-of civilians with [types = "NE"] [
+    ask one-of civilians with [types = CIVILIAN_NAO_ESTUDANTE] [
       ( ifelse
 
         age <= 5 [
 
-          set types "EI"
+          set types CIVILIAN_EDUCATION_INFANTIL
           let y position types education-labels
-          ifelse item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+          ifelse item y education-values <= 0  [ set types CIVILIAN_NAO_ESTUDANTE  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
           [let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
@@ -612,9 +636,9 @@ to assign-civilians-school
         ]
         age >= 6 and age <= 10 [
 
-          set types "EF1"
+          set types CIVILIAN_EDUCATION_FUNDAMENTAL1
           let y position types education-labels
-          ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+          ifelse  item y education-values <= 0  [ set types CIVILIAN_NAO_ESTUDANTE  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
           [let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
@@ -624,9 +648,9 @@ to assign-civilians-school
         ]
         age >= 11 and age <= 14 [
 
-          set types "EF2"
+          set types CIVILIAN_EDUCATION_FUNDAMENTAL2
           let y position types education-labels
-          ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+          ifelse  item y education-values <= 0  [ set types CIVILIAN_NAO_ESTUDANTE  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
           [let tmp item y education-values
             set tmp tmp - 1
             set education-values replace-item y education-values tmp
@@ -635,12 +659,12 @@ to assign-civilians-school
           ]
         ]
         age >= 15 [
-          let k position "CEJA" education-labels
+          let k position CIVILIAN_EDUCATION_CEJA education-labels
           ifelse item k education-values <= 0 [
             if age >= 15 and age <= 17 [
-              set types "EM"
+              set types CIVILIAN_EDUCATION_MEDIO
               let y position types education-labels
-              ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+              ifelse  item y education-values <= 0  [ set types CIVILIAN_NAO_ESTUDANTE  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
               [let tmp item y education-values
                 set tmp tmp - 1
                 set education-values replace-item y education-values tmp
@@ -649,7 +673,7 @@ to assign-civilians-school
               ]
             ]
           ][
-            set types "CEJA"
+            set types CIVILIAN_EDUCATION_CEJA
             let y position types education-labels
             let tmp item y education-values
             set tmp tmp - 1
@@ -661,12 +685,12 @@ to assign-civilians-school
 
 
       ])
-      if age >= 18 and types != "CEJA" [
+      if age >= 18 and types != CIVILIAN_EDUCATION_CEJA [
 
-        set types "UNI"
+        set types CIVILIAN_EDUCATION_UNIVERSIDADE
         set period-of-day 2
         let y position types education-labels
-        ifelse  item y education-values <= 0  [ set types "NE"  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
+        ifelse  item y education-values <= 0  [ set types CIVILIAN_NAO_ESTUDANTE  ] ; NE = Nao estudante, se for trabalhador pode sair de casa, caso contrario deve ficar
         [let tmp item y education-values
           set tmp tmp - 1
           set education-values replace-item y education-values tmp
@@ -677,12 +701,12 @@ to assign-civilians-school
     ]
   ]
 
-  show (word "Educação Infantil: " count civilians with [ types = "EI"] " alunos")
-  show (word "Ensino Fundamental 1: " count civilians with [ types = "EF1"] " alunos")
-  show (word "Ensino Fundamental 2: " count civilians with [ types = "EF2"] " alunos")
-  show (word "Ensino Médio: " count civilians with [ types = "EM"] " alunos")
-  show (word "CEJA: " count civilians with [ types = "CEJA"] " alunos")
-  show (word "Universidade: " count civilians with [ types = "UNI"] " alunos")
+  show (word "Educação Infantil: " count civilians with [ types = CIVILIAN_EDUCATION_INFANTIL] " alunos")
+  show (word "Ensino Fundamental 1: " count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL1] " alunos")
+  show (word "Ensino Fundamental 2: " count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL2] " alunos")
+  show (word "Ensino Médio: " count civilians with [ types = CIVILIAN_EDUCATION_MEDIO] " alunos")
+  show (word "CEJA: " count civilians with [ types = CIVILIAN_EDUCATION_CEJA] " alunos")
+  show (word "Universidade: " count civilians with [ types = CIVILIAN_EDUCATION_UNIVERSIDADE] " alunos")
 end
 
 to assign-civilians-workplace
@@ -697,7 +721,7 @@ end
 to infect-people
   show (word "infecting " infected-students" students...")
 
-  ask n-of infected-students civilians with [ types != "NE" ][
+  ask n-of infected-students civilians with [ types != CIVILIAN_NAO_ESTUDANTE ][
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
@@ -801,33 +825,33 @@ to match-cells-to-patches
 end
 
 to agents-turns
-  let cont count civilians with [ types = "EF1" ]
+  let cont count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL1 ]
   set cont cont / 2
-   ask n-of cont civilians with [ types = "EF1" ] [
+   ask n-of cont civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL1 ] [
     set period-of-day 1
   ]
 
-  set cont count civilians with [ types = "EF2" ]
+  set cont count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL2 ]
   set cont cont / 2
-   ask n-of cont civilians with [ types = "EF2" ] [
+   ask n-of cont civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL2 ] [
     set period-of-day 1
   ]
 
-  set cont count civilians with [ types = "EM" ]
+  set cont count civilians with [ types = CIVILIAN_EDUCATION_MEDIO ]
   set cont cont / 3
-  ask n-of cont civilians with [ types = "EM" ] [
+  ask n-of cont civilians with [ types = CIVILIAN_EDUCATION_MEDIO ] [
     set period-of-day 1
   ]
-  ask n-of cont civilians with [ types = "EM" and period-of-day != 1 ] [
+  ask n-of cont civilians with [ types = CIVILIAN_EDUCATION_MEDIO and period-of-day != 1 ] [
     set period-of-day 2
   ]
 
-  set cont count civilians with [ types = "CEJA" ]
+  set cont count civilians with [ types = CIVILIAN_EDUCATION_CEJA ]
   set cont cont / 3
-  ask n-of cont civilians with [ types = "CEJA" ] [
+  ask n-of cont civilians with [ types = CIVILIAN_EDUCATION_CEJA ] [
     set period-of-day 1
   ]
-  ask n-of cont civilians with [ types = "CEJA" and period-of-day != 1 ] [
+  ask n-of cont civilians with [ types = CIVILIAN_EDUCATION_CEJA and period-of-day != 1 ] [
     set period-of-day 2
   ]
 
@@ -849,6 +873,7 @@ to turns
   if ticks >= elapsed-days [
     set elapsed-days elapsed-days + 4
     show "madrugada!"
+
   ]
   ;; Resembles something like a bubbleSort for a simple logic to be used
 end
@@ -859,6 +884,21 @@ to go
   human-state
   turns
   show ticks
+ask civilians  [
+    if (xcor = item 0 currentPlace) and (ycor = item 1 currentPlace)  [
+      set contLocal contLocal + 1
+      if worker = true or types != CIVILIAN_NAO_ESTUDANTE [
+        ifelse worker = true and types != CIVILIAN_NAO_ESTUDANTE and period-of-day = 2 [
+          ifelse ( [xcor] of work != [xcor] of school ) and ( [ycor] of work != [ycor] of school ) [
+            if contLocal >= 3 [ show "Agente se movendo errado!" ]
+          ][ if contLocal > 3 [ show "Agente se movendo errado!" ] ]
+        ][
+          if contLocal >= 3 [ show "Agente se movendo errado!" ]
+        ]
+      ]
+    ]
+  ]
+
   tick
 end
 
@@ -867,35 +907,48 @@ to move
   foreach sort civilians [ the-turtle ->  ;; EI EF1 EF2 EM CEJA UNI ;FDS why 'sort'?
     ask the-turtle [                      ;; 'period-of-day' represents the variable to control at which turn the agent should move ( 0 = Matutino, 1 = Vespertino, 2 = Noturno )
       ifelse stay-home = true [][
-      ifelse ticks = elapsed-days [                 ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
-         if period-of-day = 2 and types != "NE" [ if types = "NE" [ show "Agente se movendo errado" ] move-backhome ]
+      ifelse ticks >= elapsed-days [      ;; EF1 e EF2 sao dividos em 0 e 1, CEJA e EM sao dividos em 0;1;2, UNI sempre será 2, EI é 0 mas deve permanecer no turno vespertino
+         if period-of-day = 2 and types != CIVILIAN_NAO_ESTUDANTE [ if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ] move-backhome ]
+          set currentPlace [ 0 0 ]
+          set contLocal 0
+          set already-spread false
       ][
       if init = "mat" [
-            if (period-of-day = 0 and types != "NE") [  if types = "NE" [ show "Agente se movendo errado" ] move-to-school ]
+            if (period-of-day = 0 and types != CIVILIAN_NAO_ESTUDANTE) [  if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ] move-to-school  ]
             if (worker = true and period-of-day != 0) [if worker = false [ show "Agente se movendo errado" ] move-to-work ]
-            if (worker = true and period-of-day = 0 and types = "NE") [ if worker = false [ show "Agente se movendo errado" ] move-to-work]
+            if (worker = true and period-of-day = 0 and types = CIVILIAN_NAO_ESTUDANTE) [ if worker = false [ show "Agente se movendo errado" ] move-to-work]
+
+
+            set anteriorPlace list xcor ycor
+            set currentPlace anteriorPlace
+
           ]
           if init = "vesp" [
-            if ( period-of-day = 0 and worker = false and types != "EI" and types != "NE") [ if worker = true or types = "EI" [ show "Agente se movendo errado" ] move-backhome ] ;; <- Rotina da escola pra casa
-            if ( period-of-day = 0 and worker = true and types != "NE") [if types = "NE" [ show "Agente se movendo errado" ]  move-to-work] ;; <- Rotina da escola pro trabalho
+            if ( period-of-day = 0 and worker = false and types != CIVILIAN_EDUCATION_INFANTIL and types != CIVILIAN_NAO_ESTUDANTE) [ if worker = true or types = CIVILIAN_EDUCATION_INFANTIL [ show "Agente se movendo errado" ] move-backhome ] ;; <- Rotina da escola pra casa
+            if ( period-of-day = 0 and worker = true and types != CIVILIAN_NAO_ESTUDANTE) [if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ]  move-to-work] ;; <- Rotina da escola pro trabalho
 
-            if (period-of-day = 1 and worker = false and types != "NE") [if types = "NE" [ show "Agente se movendo errado" ]   move-to-school  ] ;; <- Rotina de casa para a escola
+            if (period-of-day = 1 and worker = false and types != CIVILIAN_NAO_ESTUDANTE) [if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ]   move-to-school  ] ;; <- Rotina de casa para a escola
 
-            if (period-of-day = 1 and worker = true  and types != "NE") [ if types = "NE" [ show "Agente se movendo errado" ]  move-to-school  ] ;; <- Rotina do trabalho para a escola
+            if (period-of-day = 1 and worker = true  and types != CIVILIAN_NAO_ESTUDANTE) [ if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ]  move-to-school  ] ;; <- Rotina do trabalho para a escola
+
+            set currentPlace anteriorPlace
+            set anteriorPlace list xcor ycor
           ]
           if init = "not" [
             if period-of-day = 1 [ move-backhome ]
-            if (period-of-day = 0 and worker = true) or (types = "EI") [ move-backhome]
-            if (types = "NE") and (worker = true) [ move-backhome] ;;Somar as 3 rotinas de backhome para dar valor total
+            if (period-of-day = 0 and worker = true) or (types = CIVILIAN_EDUCATION_INFANTIL) [ move-backhome]
+            if (types = CIVILIAN_NAO_ESTUDANTE) and (worker = true) [ move-backhome] ;;Somar as 3 rotinas de backhome para dar valor total
 
-            if period-of-day = 2 and worker = false and types != "NE" [ if types = "NE" [ show "Agente se movendo errado" ] move-to-school  ] ;; <- Rotina de casa pra escola
-            if period-of-day = 2 and worker = true  and types != "NE" [if types = "NE" [ show "Agente se movendo errado" ]  move-to-school  ] ;; <- Rotina do trabalho pra escola
+            if period-of-day = 2 and worker = false and types != CIVILIAN_NAO_ESTUDANTE [ if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ] move-to-school  ] ;; <- Rotina de casa pra escola
+            if period-of-day = 2 and worker = true  and types != CIVILIAN_NAO_ESTUDANTE [if types = CIVILIAN_NAO_ESTUDANTE [ show "Agente se movendo errado" ]  move-to-school  ] ;; <- Rotina do trabalho pra escola
+
+            set already-spread false
+
+            set currentPlace anteriorPlace
+            set anteriorPlace list xcor ycor
           ]
         ]
       ]
-
-
-
     ]
   ]
   ;]
@@ -915,7 +968,7 @@ to isolar
 
     set try students-isolation-fraction * NUMBER_STUDENTS
   show try
-    ask n-of try civilians with [ types != "NE" ][
+    ask n-of try civilians with [ types != CIVILIAN_NAO_ESTUDANTE ][
       set stay-home true
     ]
 
@@ -925,25 +978,25 @@ end
 
 to move-to-school
   move-to school
-  set currentPlace [location_label] of school
+  set currentPlaceName [location_label] of school
   set testar testar + 1
 end
 
 to move-to-work
   move-to work
-  set currentPlace [location_label] of work
+  set currentPlaceName [location_label] of work
   set testar testar + 1
 end
 
 to move-to-park
   move-to park
-  set currentPlace [location_label] of park
+  set currentPlaceName [location_label] of park
   set testar testar + 1
 end
 
 to move-backhome
   move-to homes
-  set currentPlace "at home"
+  set currentPlaceName "at home"
   set testar testar + 1
 end
 
@@ -951,6 +1004,7 @@ to human-state
   ; ask walkers[
   foreach sort civilians [ the-turtle ->
     ask the-turtle [
+
       if state != 1 [
         if ticks >= elapsed-days [
           set current-days current-days + 1
@@ -958,26 +1012,33 @@ to human-state
       ]
 
       if state = 1 [
-        let lista  sort  other civilians-here
-        while [ length lista != 0 ] [
-          let prim first lista
-          if contamined? = false [
-            if (xcor = [xcor] of prim) and (ycor = [ycor] of prim)[
-              if [state] of prim = 3 [
-                let try random-float 1
-                if try <= transmission-probability [
-                  set contamined? true
-                  set color orange
-                  set state 2
-                  let b (max-exposed - min-exposed) + 1
-                  set days-in-state min-exposed + random b
+        ifelse ticks >= elapsed-days [][
 
-                  ask prim [ set how_many_i_infected how_many_i_infected + 1 ]
+          if already-spread = false [
+            let lista  sort  other civilians-here
+            while [ length lista != 0 ] [
+              let prim first lista
+              if contamined? = false [
+                if (xcor = [xcor] of prim) and (ycor = [ycor] of prim)[
+                  if [state] of prim = 3 [
+                    let try random-float 1
+                    if try <= transmission-probability [
+                      set contamined? true
+                      set color orange
+                      set state 2
+                      let b (max-exposed - min-exposed) + 1
+                      set days-in-state min-exposed + random b
+
+                      ask prim [ set how_many_i_infected how_many_i_infected + 1 ]
+                    ]
+                  ]
                 ]
               ]
+              set lista but-first lista
             ]
+            if  worker = true  [
+              if (types = CIVILIAN_NAO_ESTUDANTE) or (types != CIVILIAN_NAO_ESTUDANTE and period-of-day = 2)  [ set already-spread true ] ]
           ]
-          set lista but-first lista
         ]
       ]
 
@@ -1037,8 +1098,8 @@ end
 GRAPHICS-WINDOW
 333
 10
-1059
-1091
+780
+734
 -1
 -1
 1.0
@@ -1052,9 +1113,9 @@ GRAPHICS-WINDOW
 0
 1
 0
-717
+438
 0
-1071
+714
 0
 0
 1
@@ -1536,6 +1597,72 @@ infected-workers
 1
 0
 Number
+
+PLOT
+0
+992
+324
+1201
+COVID-19 Workers Daily Monitoring
+Days
+Number of people
+1.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"Population" 1.0 0 -16777216 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ worker = true ]]"
+"Susceptible" 1.0 0 -13840069 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ worker = true and state = 1 ]]"
+"Exposed" 1.0 0 -955883 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ worker = true and state = 2 ]]"
+"Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ worker = true and state = 3 ]]"
+"Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ worker = true and state = 4 ]]"
+
+PLOT
+0
+1217
+323
+1442
+COVID-19 Students Daily Monitoring
+Days
+Number of people
+1.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"Population" 1.0 0 -16777216 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types != CIVILIAN_NAO_ESTUDANTE ]]"
+"Susceptible" 1.0 0 -13840069 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 1]]"
+"Exposed" 1.0 0 -955883 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 2 ]]"
+"Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 3]]"
+"Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 4]]"
+
+PLOT
+0
+1466
+322
+1704
+COVID-19 Non-students and Unemployed Daily Monitoring
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"Population" 1.0 0 -16777216 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false]]"
+"Susceptible" 1.0 0 -13840069 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 1]]"
+"Exposed" 1.0 0 -955883 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 2]]"
+"Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 3]]"
+"Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 4]]"
 
 @#$#@#$#@
 ## WHAT IS IT?
