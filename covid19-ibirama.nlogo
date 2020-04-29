@@ -900,7 +900,7 @@ to go
   human-state
   turns
   show ticks
-ask civilians  [
+  ask civilians with [stay-home = false ]  [
     if (xcor = item 0 currentPlace) and (ycor = item 1 currentPlace)  [
       set contLocal contLocal + 1
       if worker = true or types != CIVILIAN_NAO_ESTUDANTE [
