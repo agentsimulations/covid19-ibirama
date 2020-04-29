@@ -721,7 +721,7 @@ end
 to infect-people
   show (word "infecting " infected-students" students...")
 
-  ask n-of infected-students civilians with [ types != CIVILIAN_NAO_ESTUDANTE ][
+  ask n-of infected-students civilians with [ types != CIVILIAN_NAO_ESTUDANTE and not worker][ ; just students
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
@@ -729,12 +729,28 @@ to infect-people
   show "infection of students is done"
 
   show (word "infecting " infected-workers" workers...")
-  ask n-of infected-workers civilians with [ worker = true ]   [
+  ask n-of infected-workers civilians with [ worker = true and types = CIVILIAN_NAO_ESTUDANTE]   [ ; just workers
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
   ]
   show "infection of workers is done"
+
+  show (word "infecting " infected-workers" workers that are also students...")
+  ask n-of infected-workers-that-study civilians with [ worker = true and  types != CIVILIAN_NAO_ESTUDANTE ]   [ ; workers that study
+    set state 2
+    let b (max-exposed - min-exposed) + 1
+    set days-in-state min-exposed + random b
+  ]
+  show "infection of workers that are also students is done"
+
+  show (word "infecting " infected-workers" non-students and unemployed people...")
+  ask n-of infected-nonstudents-unemployed civilians with [ worker = false and types = CIVILIAN_NAO_ESTUDANTE]   [
+    set state 2
+    let b (max-exposed - min-exposed) + 1
+    set days-in-state min-exposed + random b
+  ]
+  show "infection of non-students and unemployed people is done"
 end
 
 
@@ -1123,10 +1139,10 @@ periods-of-day
 30.0
 
 BUTTON
-145
-580
-210
-613
+147
+649
+212
+682
 NIL
 setup\n
 NIL
@@ -1214,23 +1230,23 @@ PENS
 "default" 1.0 1 -16777216 true "" "histogram [family_members] of houses with [ family_members > 0 ]"
 
 TEXTBOX
-9
-492
-189
-526
+11
+561
+191
+595
 Social isolation parameters:
 14
 0.0
 1
 
 BUTTON
-223
-580
-286
-613
+225
+649
+288
+682
 NIL
 go
-NIL
+T
 1
 T
 OBSERVER
@@ -1241,10 +1257,10 @@ NIL
 1
 
 PLOT
-0
-630
-328
-874
+2
+699
+330
+943
 COVID-19 Daily Monitoring
 Days
 Number of people
@@ -1332,10 +1348,10 @@ NIL
 0
 
 INPUTBOX
-148
-513
-279
-573
+150
+582
+281
+642
 workers-isolation-fraction
 0.0
 1
@@ -1343,10 +1359,10 @@ workers-isolation-fraction
 Number
 
 INPUTBOX
-7
-513
-143
-573
+9
+582
+145
+642
 students-isolation-fraction
 0.0
 1
@@ -1480,20 +1496,20 @@ Number of initially infected agents:
 1
 
 TEXTBOX
-6
-612
-156
-630
+8
+681
+158
+699
 Simulation monitoring
 14
 0.0
 1
 
 MONITOR
-190
-930
-276
-975
+192
+999
+278
+1044
 Elapsed days
 ticks / NUMBER_PERIODS_OF_DAY
 0
@@ -1501,10 +1517,10 @@ ticks / NUMBER_PERIODS_OF_DAY
 11
 
 MONITOR
-8
-882
-82
-927
+10
+951
+84
+996
 Susceptibles
 count civilians with [ state = 1 ]
 0
@@ -1512,10 +1528,10 @@ count civilians with [ state = 1 ]
 11
 
 MONITOR
-87
-882
-163
-927
+89
+951
+165
+996
 Exposed
 count civilians with [ state = 2 ]
 0
@@ -1523,10 +1539,10 @@ count civilians with [ state = 2 ]
 11
 
 MONITOR
-167
-882
-242
-927
+169
+951
+244
+996
 Infected
 count civilians with [ state = 3 ]
 0
@@ -1534,10 +1550,10 @@ count civilians with [ state = 3 ]
 11
 
 MONITOR
-54
-931
-124
-976
+56
+1000
+126
+1045
 Deaths
 dead
 0
@@ -1545,10 +1561,10 @@ dead
 11
 
 MONITOR
-246
-882
-318
-927
+248
+951
+320
+996
 Recovered
 count civilians with [ state = 4 ]
 0
@@ -1599,10 +1615,10 @@ infected-workers
 Number
 
 PLOT
-0
-992
-324
-1201
+2
+1061
+326
+1270
 COVID-19 Workers Daily Monitoring
 Days
 Number of people
@@ -1621,10 +1637,10 @@ PENS
 "Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ worker = true and state = 4 ]]"
 
 PLOT
-0
-1217
-323
-1442
+2
+1286
+325
+1511
 COVID-19 Students Daily Monitoring
 Days
 Number of people
@@ -1643,10 +1659,10 @@ PENS
 "Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 4]]"
 
 PLOT
-0
-1466
-322
-1704
+2
+1535
+324
+1773
 COVID-19 Non-students and Unemployed Daily Monitoring
 NIL
 NIL
@@ -1663,6 +1679,46 @@ PENS
 "Exposed" 1.0 0 -955883 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 2]]"
 "Infected" 1.0 0 -2674135 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 3]]"
 "Recovered" 1.0 0 -13791810 true "" "if (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [plot count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 4]]"
+
+INPUTBOX
+9
+480
+150
+540
+infected-workers-that-study
+0.0
+1
+0
+Number
+
+INPUTBOX
+155
+479
+327
+539
+infected-nonstudents-unemployed
+0.0
+1
+0
+Number
+
+PLOT
+1823
+1613
+2181
+1833
+infections per infected agent
+number of infections
+number of agents
+0.0
+100.0
+0.0
+10.0
+true
+false
+"" "set-plot-x-range 1 (max [how_many_i_infected] of civilians) + 1\n;set-histogram-num-bars 10"
+PENS
+"default" 1.0 1 -16777216 true "" "histogram [how_many_i_infected] of civilians with [ state >= 3  and how_many_i_infected > 0] "
 
 @#$#@#$#@
 ## WHAT IS IT?
