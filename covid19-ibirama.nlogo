@@ -159,6 +159,8 @@ to setup
   assign-civilians-workplace
   assign-civilians-school
 
+  agents-turns
+
   infect-people
 
   isolar
@@ -611,7 +613,7 @@ to create-ibirama-civilians
 
   show "done create-ibirama-civilians"
 
-  agents-turns
+
 
 end
 
