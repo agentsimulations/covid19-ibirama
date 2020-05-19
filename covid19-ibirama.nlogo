@@ -85,7 +85,7 @@ locations-own [
 ]
 
 to setup
-  show "setup is running, please wait..."
+;  show "setup is running, please wait..."
   clear-all
   ; initializing the constants
   set NUMBER_HOUSES 5515
@@ -171,7 +171,7 @@ to setup
 
   reset-ticks
 
-  show "setup is done!"
+;  show "setup is done!"
 end
 
 
@@ -362,7 +362,7 @@ to create-ibirama-companies
 
   ; read the CSV file and initialize the number of employees for each company
   let companies locations with [location_type = LOCATION_COMPANY]
-  show (word "created companies: " count companies )
+ ; show (word "created companies: " count companies )
   let companies_data csv:from-file "data/empresas/ibirama-empresas-estimativa-funcionarios.csv"
   foreach companies_data [ company ->
 
@@ -372,7 +372,7 @@ to create-ibirama-companies
       set location_capacity item 1 company
     ]
   ]
-  show "Companies created!"
+  ;show "Companies created!"
 end
 
 
@@ -460,7 +460,7 @@ to create-ibirama-schools
       ]
     ]
   ]
-  show "Schools created!"
+ ; show "Schools created!"
 end
 
 to create-ibirama-parks-and-squares
@@ -477,7 +477,7 @@ to create-ibirama-parks-and-squares
       ]
     ]
   ]
-  show "Parks created!"
+ ; show "Parks created!"
 end
 
 to create-ibirama-civilians
@@ -487,7 +487,7 @@ to create-ibirama-civilians
     let families item i families_number; families with more than 10 people are created later
     let members item i families_size
 
-    show (word "creating " families " families with " members " members ")
+    ;show (word "creating " families " families with " members " members ")
     ask n-of families houses with [ family_members = 0 ] [
       let me who
       set family_members  members
@@ -549,7 +549,7 @@ to create-ibirama-civilians
   ; first, we create N families with 11 civilians each
   let families item ((length families_number) - 1) families_number
   let members item ((length families_size) - 1) families_size
-  show (word "creating " families " families with " members " members ")
+ ; show (word "creating " families " families with " members " members ")
 
   ask n-of families houses with [ family_members = 0 ][
     let me who
@@ -582,7 +582,7 @@ to create-ibirama-civilians
   ]
 
   ; then, we add more civilians to these families, until NUMBER_CIVILIANS is reached
-  show (word "adding " (NUMBER_CIVILIANS - count civilians) " more members to families with more than 10 members")
+ ; show (word "adding " (NUMBER_CIVILIANS - count civilians) " more members to families with more than 10 members")
   repeat NUMBER_CIVILIANS - count civilians [
     ask one-of houses with [ family_members > 10 ][
       let me who
@@ -611,7 +611,7 @@ to create-ibirama-civilians
     ]
   ]
 
-  show "done create-ibirama-civilians"
+;  show "done create-ibirama-civilians"
 
 
 
@@ -703,12 +703,12 @@ to assign-civilians-school
     ]
   ]
 
-  show (word "Educação Infantil: " count civilians with [ types = CIVILIAN_EDUCATION_INFANTIL] " alunos")
-  show (word "Ensino Fundamental 1: " count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL1] " alunos")
-  show (word "Ensino Fundamental 2: " count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL2] " alunos")
-  show (word "Ensino Médio: " count civilians with [ types = CIVILIAN_EDUCATION_MEDIO] " alunos")
-  show (word "CEJA: " count civilians with [ types = CIVILIAN_EDUCATION_CEJA] " alunos")
-  show (word "Universidade: " count civilians with [ types = CIVILIAN_EDUCATION_UNIVERSIDADE] " alunos")
+;  show (word "Educação Infantil: " count civilians with [ types = CIVILIAN_EDUCATION_INFANTIL] " alunos")
+;  show (word "Ensino Fundamental 1: " count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL1] " alunos")
+;  show (word "Ensino Fundamental 2: " count civilians with [ types = CIVILIAN_EDUCATION_FUNDAMENTAL2] " alunos")
+;  show (word "Ensino Médio: " count civilians with [ types = CIVILIAN_EDUCATION_MEDIO] " alunos")
+;  show (word "CEJA: " count civilians with [ types = CIVILIAN_EDUCATION_CEJA] " alunos")
+;  show (word "Universidade: " count civilians with [ types = CIVILIAN_EDUCATION_UNIVERSIDADE] " alunos")
 end
 
 to assign-civilians-workplace
@@ -721,38 +721,38 @@ to assign-civilians-workplace
 end
 
 to infect-people
-  show (word "infecting " infected-students" students...")
+ ; show (word "infecting " infected-students" students...")
 
   ask n-of infected-students civilians with [ types != CIVILIAN_NAO_ESTUDANTE and not worker][ ; just students
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
   ]
-  show "infection of students is done"
+;  show "infection of students is done"
 
-  show (word "infecting " infected-workers" workers...")
+;  show (word "infecting " infected-workers" workers...")
   ask n-of infected-workers civilians with [ worker = true and types = CIVILIAN_NAO_ESTUDANTE]   [ ; just workers
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
   ]
-  show "infection of workers is done"
+ ; show "infection of workers is done"
 
-  show (word "infecting " infected-workers" workers that are also students...")
+ ; show (word "infecting " infected-workers" workers that are also students...")
   ask n-of infected-workers-that-study civilians with [ worker = true and  types != CIVILIAN_NAO_ESTUDANTE ]   [ ; workers that study
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
   ]
-  show "infection of workers that are also students is done"
+ ; show "infection of workers that are also students is done"
 
-  show (word "infecting " infected-workers" non-students and unemployed people...")
+ ; show (word "infecting " infected-workers" non-students and unemployed people...")
   ask n-of infected-nonstudents-unemployed civilians with [ worker = false and types = CIVILIAN_NAO_ESTUDANTE]   [
     set state 2
     let b (max-exposed - min-exposed) + 1
     set days-in-state min-exposed + random b
   ]
-  show "infection of non-students and unemployed people is done"
+ ; show "infection of non-students and unemployed people is done"
 end
 
 
@@ -769,7 +769,7 @@ to create-ibirama-houses
     ]
   ]
   ask patches [ set pcolor black ]
-  show "done create-ibirama-houses"
+ ; show "done create-ibirama-houses"
 end
 
 to display-roads
@@ -878,19 +878,19 @@ end
 to turns
 
   if ticks != elapsed-days [
-    Show "---------------------------------------------------"
-    show word "Turno atual que se passou é: " init
+    ;Show "---------------------------------------------------"
+   ; show word "Turno atual que se passou é: " init
     let aux init
     set init med
     set med fin
     set fin aux
-    show word "Próximo turno será: " init
+   ; show word "Próximo turno será: " init
 
   ]
 
   if ticks >= elapsed-days [
     set elapsed-days elapsed-days + 4
-    show "madrugada!"
+   ; show "madrugada!"
 
   ]
   ;; Resembles something like a bubbleSort for a simple logic to be used
@@ -977,7 +977,7 @@ to isolar
 
   let try 0
    set try workers-isolation-fraction * NUMBER_WORKERS
-  show try
+ ; show try
     ask n-of try civilians with [ worker = true ][
       set stay-home true
 
@@ -985,7 +985,7 @@ to isolar
 
 
     set try students-isolation-fraction * NUMBER_STUDENTS
-  show try
+ ; show try
     ask n-of try civilians with [ types != CIVILIAN_NAO_ESTUDANTE ][
       set stay-home true
     ]
@@ -1072,7 +1072,7 @@ to human-state
         ]
       ]
       if state = 3 [
-        ; the agent can dead in any of the days it is infected
+        ; the agent can die in any of the days it is infected
         let try random-float 1
         if try < mortality-rate [
           set dead dead + 1
@@ -1116,8 +1116,8 @@ end
 GRAPHICS-WINDOW
 333
 10
-1059
-1091
+1777
+2163
 -1
 -1
 1.0
@@ -1131,9 +1131,9 @@ GRAPHICS-WINDOW
 0
 1
 0
-717
+1435
 0
-1071
+2143
 0
 0
 1
@@ -1355,7 +1355,7 @@ INPUTBOX
 281
 642
 workers-isolation-fraction
-0.0
+0.1
 1
 0
 Number
@@ -1617,10 +1617,10 @@ infected-workers
 Number
 
 PLOT
-2
-1061
+1
+1049
 326
-1270
+1278
 COVID-19 Workers Daily Monitoring
 Days
 Number of people
@@ -2038,6 +2038,77 @@ display-cities
 display-countries
 @#$#@#$#@
 @#$#@#$#@
+<experiments>
+  <experiment name="WorkersExperiment1(0;10)" repetitions="10" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="360"/>
+    <metric>count civilians</metric>
+    <metric>count civilians with [ state = 1 ]</metric>
+    <metric>count civilians with [ state = 2 ]</metric>
+    <metric>count civilians with [ state = 3 ]</metric>
+    <metric>count civilians with [ state = 4 ]</metric>
+    <metric>dead</metric>
+    <metric>count civilians with [ worker = true ]</metric>
+    <metric>count civilians with [ worker = true and state = 1 ]</metric>
+    <metric>count civilians with [ worker = true and state = 2 ]</metric>
+    <metric>count civilians with [ worker = true and state = 3 ]</metric>
+    <metric>count civilians with [ worker = true and state = 4 ]</metric>
+    <metric>count civilians with [ types != CIVILIAN_NAO_ESTUDANTE ]</metric>
+    <metric>count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 1]</metric>
+    <metric>count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 2]</metric>
+    <metric>count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 3]</metric>
+    <metric>count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 4]</metric>
+    <metric>count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false]</metric>
+    <metric>count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 1]</metric>
+    <metric>count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 2]</metric>
+    <metric>count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 3]</metric>
+    <metric>count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 4]</metric>
+    <metric>count civilians with [ state &gt;= 3  and how_many_i_infected &gt; 0]</metric>
+    <enumeratedValueSet variable="infected-nonstudents-unemployed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="transmission-probability">
+      <value value="0.3435"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-workers-that-study">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="students-isolation-fraction">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-exposed">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="label-roads">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-rates-file">
+      <value value="&quot;data/disease/mortality-rates-china.csv&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-infected">
+      <value value="8"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="label-points-of-interest">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="workers-isolation-fraction">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-exposed">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-infected">
+      <value value="8"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-workers">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-students">
+      <value value="0"/>
+    </enumeratedValueSet>
+  </experiment>
+</experiments>
 @#$#@#$#@
 @#$#@#$#@
 default
