@@ -10,7 +10,7 @@ A simulação foi desenvolvida no âmbito do projeto de pesquisa [Desenvolviment
 
 A simulação foi desenvolvida na plataforma [NetLogo](https://ccl.northwestern.edu/netlogo/), e pode ser visualizada na Figura 1. 
 
-[<img src="images/covid19-ibirama-screenshot.png" width="500" alt="Simulação de Propagação de COVID-19 em Ibirama/SC"/>](images/covid19-ibirama-screenshot.png)
+[<img src="images/covid19-ibirama-screenshot.png" width="700" alt="Simulação de Propagação de COVID-19 em Ibirama/SC"/>](images/covid19-ibirama-screenshot.png)
 >Figura 1: Simulação de Propagação de COVID-19 em Ibirama/SC
 
 
@@ -44,6 +44,11 @@ Os dados utilizados na simulação são provenientes das seguintes fontes (apres
 ### Parâmetros da COVID-19
 
 # Resultados Preliminares
+
+
+[<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/all-chart.png)
+>Acima: Todos os Habitantes com Isolamento Setorial (0% estudantes e 10% trabalhadores)
+
 
 # Referências
 
