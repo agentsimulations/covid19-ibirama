@@ -1,5 +1,5 @@
 
-# Simulação de Propagação de COVID-19 em Ibirama
+# Simulação da Propagação de COVID-19 em Ibirama
 
 O objetivo desta [simulação com agentes](https://sites.google.com/view/simulacoescomagentes/) é estudar a propagação de COVID-19 na cidade de Ibirama/SC em diferentes cenários de isolamento social. Nesta simulação é criado um ***agente artificial (virtual)*** para cada habitante. Estes agentes reproduzem o comportamento diário dos habitantes de ir para o trabalho e/ou para instituição de ensino e então retornar para suas residências. Enquanto permanece no trabalho, escola, ou até mesmo em casa, um agente saudável pode ter contato com agente(s) infectado(s), ocasionando a propagação da doença. É possível simular o isolamento social **total** ou **setorial** (por exemplo, o isolamento apenas de estudantes ou trabalhadores) para verificar o efeito que estas medidas de isolamento podem causar na curva de contaminação do COVID-19.  
    
@@ -35,7 +35,7 @@ Os dados utilizados na simulação são provenientes das seguintes fontes (apres
 * [Referências](#Referências)
 
 
-## Especificação da Simulação
+# Especificação da Simulação
 ### Territorial e Viária
 ### População e Domicílios
 ### Empresas e Trabalhadores
@@ -43,8 +43,8 @@ Os dados utilizados na simulação são provenientes das seguintes fontes (apres
 ### Comportamento dos Agentes
 ### Parâmetros da COVID-19
 
-## Resultados Preliminares
+# Resultados Preliminares
 
-## Referências
+# Referências
 
 
