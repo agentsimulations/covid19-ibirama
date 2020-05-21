@@ -2108,6 +2108,76 @@ display-countries
       <value value="0"/>
     </enumeratedValueSet>
   </experiment>
+  <experiment name="WorkersExperiment-Dayly-Monitoring(0;10)" repetitions="10" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="360"/>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [ticks / NUMBER_PERIODS_OF_DAY] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ state = 1 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ state = 2 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ state = 3 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ state = 4 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [dead] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ worker = true ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ worker = true and state = 1 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ worker = true and state = 2 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ worker = true and state = 3 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ worker = true and state = 4 ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types != CIVILIAN_NAO_ESTUDANTE ]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 1]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 2]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 3]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types != CIVILIAN_NAO_ESTUDANTE and state = 4]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 1]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 2]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 3]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ types = CIVILIAN_NAO_ESTUDANTE and worker = false and state = 4]] [""]</metric>
+    <metric>ifelse-value (ticks mod NUMBER_PERIODS_OF_DAY) = 0 [count civilians with [ state &gt;= 3  and how_many_i_infected &gt; 0]] [""]</metric>
+    <enumeratedValueSet variable="students-isolation-fraction">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="workers-isolation-fraction">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-students">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-workers">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-workers-that-study">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="infected-nonstudents-unemployed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="transmission-probability">
+      <value value="0.3435"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-exposed">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-exposed">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-infected">
+      <value value="8"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-infected">
+      <value value="8"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-rates-file">
+      <value value="&quot;data/disease/mortality-rates-china.csv&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="label-points-of-interest">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="label-roads">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
 </experiments>
 @#$#@#$#@
 @#$#@#$#@
