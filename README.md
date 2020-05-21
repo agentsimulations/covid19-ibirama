@@ -13,6 +13,9 @@ A simulação foi desenvolvida na plataforma [NetLogo](https://ccl.northwestern.
 ![Simulação de Propagação de COVID-19 em Ibirama/SC](images/covid19-ibirama-screenshot.png)
 >Figura 1: Simulação de Propagação de COVID-19 em Ibirama/SC
 
+Teste
+
+[<img src="images/covid19-ibirama-screenshot.png" width="250"/>](images/covid19-ibirama-screenshot.png)
 
 Os dados utilizados na simulação são provenientes das seguintes fontes (apresentadas em detalhes mais abaixo):
 - Os dados territoriais e viários foram obtidos do repositório [Open Street Map](https://www.openstreetmap.org/relation/296728). 
