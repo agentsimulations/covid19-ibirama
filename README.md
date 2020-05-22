@@ -113,7 +113,7 @@ São aqueles agentes que **não trabalham nem estudam**. Estes agentes se compor
 # Resultados Preliminares
 O modelo simula diversos cenários diferentes, com a duração de execução de cada cenário equivalente a 90 dias (3 meses) no *tempo virtual* do modelo. Cada cenário é executado 10 vezes, para serem obtidas médias como resultado de um cenário específico e serem gerados gráficos a partir das mesmas.
 
-O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR**(Susceptible, Exposed, INfectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. 
+O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR** (Susceptible, Exposed, INfectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. 
 
 Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
 
