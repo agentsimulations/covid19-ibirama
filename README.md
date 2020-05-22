@@ -1,4 +1,4 @@
-
+﻿
 <!-- Visualizador online: https://stackedit.io/ -->
 
 # Simulação da Propagação de COVID-19 em Ibirama
@@ -54,6 +54,31 @@ O NetLogo utiliza uma grade para representar o território por onde os agentes s
 ## Empresas e Trabalhadores
 ## Instituções de Ensino e Alunos
 ## Comportamento dos Agentes
+Os agentes na simulação possuem três tipos, sendo estes estudantes, trabalhadores e aqueles que se mantêm o tempo todo em casa. Podendo haver uma combinação de tipos, ex.: trabalhador e estudante.
+
+Os **estudantes** são divididos em alunos do ensino infantil, fundamental, médio, superior e de jovens/adultos. Seu comportamento é organizado da seguinte forma:
+- Movem-se para a instituição de  ensino no início do seu turno (matutino ou vespertino ou norturno).
+- Agentes contaminados propagam a doença na instituição de ensino (uma única vez no turno).
+- Voltam para casa ao fim do turno, ou caso sejam trabalhadores se movem para o local de trabalho.
+- Agentes contaminados propagram a doença em casa (uma única vez, até o início do próximo turno).
+
+Caso os estudantes sejam do ensino infantil, estes agentes permanecem na instituição de educação infantil durante o horário de trabalho dos pais e retornam para casa ao fim do turno vespertino.
+
+Os **agentes trabalhadores** se comportam de modo que:
+- Movem-se para a empresa no início do turno matutino.
+- Agentes contaminados propagam a doença para outras pessoas da empresa (uma única vez durante os dois turnos).
+- Voltam para casa ao fim do turno vespertino.
+- Agentes contaminados propagam a doença em casa (uma única vez, até o início do próximo turno).
+
+Caso o agente também seja um **estudante matutino** ou **vespertino**, ele trabalha durante 1 turno oposto ao seu horário escolar.
+
+**Agentes não economicamente ativos** são aqueles agentes que não trabalham nem estudam, portanto:
+- Estes agentes permanecem em casa o tempo todo.
+- Se estiverem contaminados, então propagam a doença em casas uma única vez no dia(ex.: durante a "noite").
+
+
+
+
 ## Parâmetros da COVID-19
 
 # Resultados Preliminares
@@ -76,3 +101,5 @@ O NetLogo utiliza uma grade para representar o território por onde os agentes s
 [<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png)
 
 # Referências
+
+
