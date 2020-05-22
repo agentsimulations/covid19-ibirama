@@ -1,5 +1,6 @@
 ﻿
 <!-- Visualizador online: https://stackedit.io/ -->
+ ![Logo da UDESC Alto Vale](http://www1.udesc.br/imagens/id_submenu/2019/marca_alto_vale_horizontal_assinatura_rgb_01.jpg)
 
 # Simulação da Propagação de COVID-19 em Ibirama
 
@@ -12,8 +13,10 @@ A simulação foi desenvolvida no âmbito do projeto de pesquisa [Desenvolviment
 
 A simulação foi desenvolvida na plataforma [NetLogo](https://ccl.northwestern.edu/netlogo/), e pode ser visualizada na Figura 1.
 
-[<img src="images/covid19-ibirama-screenshot.png" width="700" alt="Simulação de Propagação de COVID-19 em Ibirama/SC"/>](images/covid19-ibirama-screenshot.png)
 >Figura 1: Simulação de Propagação de COVID-19 em Ibirama/SC
+
+![Simulação de Propagação de COVID-19 em Ibirama/SC](images/covid19-ibirama-screenshot.png)
+
 
 
 Os dados utilizados na simulação são provenientes das seguintes fontes (apresentadas em detalhes mais abaixo):
@@ -101,5 +104,3 @@ Caso o agente também seja um **estudante matutino** ou **vespertino**, ele trab
 [<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png)
 
 # Referências
-
-
