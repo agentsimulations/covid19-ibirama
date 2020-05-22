@@ -57,29 +57,28 @@ O NetLogo utiliza uma grade para representar o território por onde os agentes s
 ## Empresas e Trabalhadores
 ## Instituções de Ensino e Alunos
 ## Comportamento dos Agentes
-Os agentes na simulação possuem três tipos, sendo estes estudantes, trabalhadores e aqueles que se mantêm o tempo todo em casa. Podendo haver uma combinação de tipos, ex.: trabalhador e estudante.
+A simulação agrupa os habitantes de Ibirama em três categorias: (i) *estudantes*, (ii) *trabalhadores*, e (iii) *habitantes não economicamente ativos*. Para cada uma destas categorias foi criado um tipo de *agente artificial*. Ainda é possível haver uma combinação de categorias, por exemplo, para aqueles habitantes que *trabalham* e *estudam*. A seguir é detalhado o comportamento de cada categoria de agente.
 
-Os **estudantes** são divididos em alunos do ensino infantil, fundamental, médio, superior e de jovens/adultos. Seu comportamento é organizado da seguinte forma:
+### Agentes estudantes
+Os **estudantes** são divididos em alunos do ensino *infantil*, *fundamental*, *médio*, *superior* (universitários) e de *educação de jovens e adultos*. Seu comportamento é organizado da seguinte forma:
 - Movem-se para a instituição de  ensino no início do seu turno (matutino ou vespertino ou norturno).
-- Agentes contaminados propagam a doença na instituição de ensino (uma única vez no turno).
-- Voltam para casa ao fim do turno, ou caso sejam trabalhadores se movem para o local de trabalho.
-- Agentes contaminados propagram a doença em casa (uma única vez, até o início do próximo turno).
+- Na instituição de ensino, os agentes infectados propagam a doença para outros agentes (uma única vez no turno).
+- Voltam para casa ao fim do turno, ou caso sejam trabalhadores, se movem para o local de trabalho.
+- Em casa, os agentes infectados propagam a doença para outros agentes que moram no mesmo domicílio (uma única vez, até o início do próximo turno).
 
-Caso os estudantes sejam do ensino infantil, estes agentes permanecem na instituição de educação infantil durante o horário de trabalho dos pais e retornam para casa ao fim do turno vespertino.
-
-Os **agentes trabalhadores** se comportam de modo que:
+### Agentes trabalhadores
+Os **agentes trabalhadores** se comportam da seguinte forma:
 - Movem-se para a empresa no início do turno matutino.
-- Agentes contaminados propagam a doença para outras pessoas da empresa (uma única vez durante os dois turnos).
+- Na empresa, os agentes infectados propagam a doença para outros agentes (uma única vez durante os dois turnos de trabalho).
 - Voltam para casa ao fim do turno vespertino.
-- Agentes contaminados propagam a doença em casa (uma única vez, até o início do próximo turno).
+- Em casa, os agentes infectados propagam a doença para outros agentes que moram no mesmo domicílio (uma única vez, até o início do próximo turno).
 
-Caso o agente também seja um **estudante matutino** ou **vespertino**, ele trabalha durante 1 turno oposto ao seu horário escolar.
+Caso o agente trabalhador também seja um estudante, então ele frequenta a empresa no contraturno escolar.
 
-**Agentes não economicamente ativos** são aqueles agentes que não trabalham nem estudam, portanto:
-- Estes agentes permanecem em casa o tempo todo.
-- Se estiverem contaminados, então propagam a doença em casas uma única vez no dia(ex.: durante a "noite").
-
-
+### Agentes não economicamente ativos
+São aqueles agentes que **não trabalham nem estudam**. Estes agentes se comportam da seguinte forma:
+- Permanecem em casa o tempo todo.
+- Se forem infectados, então propagam a doença em casa uma única vez no dia (ex.: durante a noite).
 
 
 ## Parâmetros da COVID-19
