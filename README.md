@@ -111,9 +111,33 @@ São aqueles agentes que **não trabalham nem estudam**. Estes agentes se compor
 ## Parâmetros da COVID-19
 
 # Resultados Preliminares
+O modelo simula diversos cenários diferentes, com a duração de execução de cada cenário equivalente a 90 dias (3 meses) no *tempo virtual* do modelo. Cada cenário é executado 10 vezes, para serem obtidas médias como resultado de um cenário específico e serem gerados gráficos a partir das mesmas.
 
+O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR**(Susceptible, Exposed, INfectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. 
 
->No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 10% trabalhadores)
+Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 50% trabalhadores)
+
+[<img src="charts/introduction(1w)/isolation(0.5s_0.5w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.5s_0.5w)/all-chart.png)
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 75% trabalhadores)
+
+[<img src="charts/introduction(1w)/isolation(0.5s_0.75w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.5s_0.75w)/all-chart.png)
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (75% estudantes e 50% trabalhadores)
+
+[<img src="charts/introduction(1w)/isolation(0.75s_0.5w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.75s_0.50w)/all-chart.png)
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (75% estudantes e 75% trabalhadores)
+
+[<img src="charts/introduction(1w)/isolation(0.75s_0.75w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.75s_0.75w)/all-chart.png)
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (100% estudantes e 100% trabalhadores)
+
+[<img src="charts/introduction(1w)/isolation(1s_1w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(1s_1w)/all-chart.png)
+
+<!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 10% trabalhadores)
 
 [<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/all-chart.png)
 
@@ -127,7 +151,7 @@ São aqueles agentes que **não trabalham nem estudam**. Estes agentes se compor
 
 >No gráfico abaixo: propagação entre **não estudantes e não trabalhadores** com isolamento setorial (0% estudantes e 10% trabalhadores)
 
-[<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png)
+[<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png) -->
 
 # Referências
 ###### (IBGE, 2010a)
