@@ -82,7 +82,13 @@ Como não há dados disponiveis sobre a faixa etária dos habitantes de cada dom
 
 
 ## Empresas e Trabalhadores
-## Instituições de Ensino e Alunos
+Segundo um relatório emitido pela Federação Catarinense de Municípios, até 21 de março de 2019 haviam **1418** CNPJs no município de Ibirama. Não foi encontrado nenhum tipo de mapa com as posições geográficas destas empresas no município. Por esta razão, foi realizado um levantamento manual no Google Maps, procurando pelo nome das empresas para verificar a existÇencia de um ponto cadastrado no Google Maps. Das 1418 empresas referidas apenas 282 foram encontradas (19,89%), logo estaé a quantidadede empresas consideradas nesta simulação.
+
+O total de habitantes que trabalham no município de Ibirama é de 9142 (IBGE, 2010). Não foram encontrados dados sobre a quantidade de trabalhadores em cada empresa. Portanto, solicitamos o auxílio de um especialista da área contábil, morador de Ibirama e com conhecimento das empresas fizesse uma estimativa de quantos funcionários trabalham em cada uma das 282 empresas consideradas na simulação. A estimativa apontou 2462 trabalhadores, uma quantidade inferior ao total de habitantes que trabalham em Ibirama.
+
+Então, com o objetivo de **manter uma proporção**, nesta simulação são considerados apenas 2462 trabalhadores distribuídos nas 282 empresas que puderam ser localizadas.
+
+## Instituções de Ensino e Alunos
 <!-- link mapa com as empresas, para usar na seção acima: https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221oSmpCIJzkWzKo-mdMAfmUI7tsTPptgT0%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22102580730194240009973%22%7D&usp=sharing -->
 
 A simulação considera um total de **4487 alunos** [(IBGE,  2010b)](#ibge-2010b) que frequentam instituições de ensino no município de Ibirama.  O IBGE estratifica esta quantidade de alunos por categoria de ensino. A tabela a seguir apresenta a quantidade de alunos por categoria [(IBGE,  2010b)](#ibge-2010b) que foram considerados na simulação.
@@ -175,9 +181,6 @@ Faixa Etária |Taxa de Mortalidade
 
 # Resultados Preliminares
 O modelo simula diversos cenários diferentes, com a duração de execução de cada cenário equivalente a 90 dias (3 meses) no *tempo virtual* do modelo. Cada cenário é executado 10 vezes, para serem obtidas médias como resultado de um cenário específico e serem gerados gráficos a partir das mesmas.
-
-<!-- Lucas eu expliquei o SEIR acima, na seção parametros da covid. Então pode remover daqui
-O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR** (Susceptible, Exposed, Infectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. -->
 
 Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
 
