@@ -82,14 +82,19 @@ Como não há dados disponiveis sobre a faixa etária dos habitantes de cada dom
 
 
 ## Empresas e Trabalhadores
-Segundo um relatório emitido pela Federação Catarinense de Municípios, até 21 de março de 2019 haviam **1418** CNPJs no município de Ibirama. Não foi encontrado nenhum tipo de mapa com as posições geográficas destas empresas no município. Por esta razão, foi realizado um levantamento manual no Google Maps, procurando pelo nome das empresas para verificar a existÇencia de um ponto cadastrado no Google Maps. Das 1418 empresas referidas apenas 282 foram encontradas (19,89%), logo estaé a quantidadede empresas consideradas nesta simulação.
 
-O total de habitantes que trabalham no município de Ibirama é de 9142 (IBGE, 2010). Não foram encontrados dados sobre a quantidade de trabalhadores em cada empresa. Portanto, solicitamos o auxílio de um especialista da área contábil, morador de Ibirama e com conhecimento das empresas fizesse uma estimativa de quantos funcionários trabalham em cada uma das 282 empresas consideradas na simulação. A estimativa apontou 2462 trabalhadores, uma quantidade inferior ao total de habitantes que trabalham em Ibirama.
+Os dados empresariais foram obtidos de um relatório emitido pela [Federação Catarinense de Municípios (FECAM)](https://static.fecam.net.br/uploads/72/arquivos/1444231_Relatorio_Empresas_Ibirama.pdf) em 21/03/2019. O relatório aponta a existência de **1418** CNPJs no município de Ibirama.
 
-Então, com o objetivo de **manter uma proporção**, nesta simulação são considerados apenas 2462 trabalhadores distribuídos nas 282 empresas que puderam ser localizadas.
+A localização geográfica destas empresas não está disponível no site da FECAM nem no site da Prefeitura de Ibirama. Por este motivo, realizamos um *levantamento manual* no Google Maps para encontrar as empresas. Procuramos pelo nome de cada empresa para verificar a existência de um ponto já cadastrado no Google Maps. Infelizmente, nem todas as empresas estão cadastradas no Google Maps. Apenas **282** das 1418 (19,89%) foram encontradas. Esta é a quantidade de empresas consideradas na simulação. Preparamos um [Google Map](https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221oSmpCIJzkWzKo-mdMAfmUI7tsTPptgT0%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22102580730194240009973%22%7D&usp=sharing) com a localização destas empresas.
+
+Segundo o IBGE, Ibirama conta com 9142 habitantes trabalhadores [(IBGE,  2010c)](#ibge-2010c). Entretanto, não há dados disponiveis sobre a quantidade de trabalhadores **em cada empresa**. Portanto, solicitamos a um especialista da área contábil e com conhecimento das empresas de Ibirama - Professor [Sérgio Marian](https://www.udesc.br/professor/sergio.marian) (Departamento de Ciências Contábeis da UDESC Alto Vale) - que fizesse uma estimativa de quantos funcionários trabalham em cada uma das 282 empresas consideradas na simulação. A estimativa apontou **2462 trabalhadores**. Disponibilizamos a estimativa de trabalhadores por empresa neste [link](/data/empresas/README.md).
+
+
+Portanto, a simulação considera apenas **282 empresas** (que foram encontradas no Google Maps) e apenas **2462 trabalhadores** (estimativa de especialista na área contábil). Os 6680 trabalhadores restantes foram tratados como agentes não economicamente ativos, cujo comportamento é detalhado posteriormente na seção  [Comportamento dos Agentes](#Comportamento-dos-Agentes). 
+
+***Ressaltamos que estas quantidades são diferentes das apontadas pela FECAM e IBGE e isso pode fazer com que a simulação não reflita a dinâmica real de propagação de COVID-19 na cidade. Portanto, os resultados da simulação devem ser utilizados com cautela***
 
 ## Instituções de Ensino e Alunos
-<!-- link mapa com as empresas, para usar na seção acima: https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221oSmpCIJzkWzKo-mdMAfmUI7tsTPptgT0%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22102580730194240009973%22%7D&usp=sharing -->
 
 A simulação considera um total de **4487 alunos** [(IBGE,  2010b)](#ibge-2010b) que frequentam instituições de ensino no município de Ibirama.  O IBGE estratifica esta quantidade de alunos por categoria de ensino. A tabela a seguir apresenta a quantidade de alunos por categoria [(IBGE,  2010b)](#ibge-2010b) que foram considerados na simulação.
 
@@ -227,10 +232,16 @@ Algo que é possível inferir a partir da observação dos gráficos é a diminu
 European Centre for Disease Prevention and Control (ECDC). **Guidance for discharge and ending isolation in the context of widespread community transmission of COVID-19**. 2020. Disponível em <<https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-guidance-discharge-and-ending-isolation-first%20update.pdf>>. Acesso em: 01/04/2020.
 
 ###### (IBGE, 2010a)
-Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>>. Acesso em: 01/04/2020.
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010a. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>>. Acesso em: 01/04/2020.
 
 ###### (IBGE, 2010b)
-Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Educação**. 2010. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22469?detalhes=true>>. Acesso em: 01/04/2020.
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Educação**. 2010b. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22469?detalhes=true>>. Acesso em: 01/04/2020.
+
+###### (IBGE, 2010c)
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Trabalho**. 2010b. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22957?detalhes=true>>. Acesso em: 01/04/2020.
+
+
+
 
 ###### (Keeling e Rohani, 2011)
 KEELING, M. J.; ROHANI, P. **Modeling infectious diseases in humans and animals**. Princeton University Press, 2011.
