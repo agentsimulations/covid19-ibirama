@@ -61,7 +61,7 @@ Este valor foi obtido através do Censo 2010 realizado pelo Instituto Brasileiro
 
 Uma idade foi atribuída a cada *agente artificial*, de acordo com a pirâmide demográfica disponibilizada pelo IBGE [(IBGE,  2010a)](#ibge-2010a).
 
-A simulação considera **5515 domicílios**, que são as moradias onde residem os habitantes (IBGE, 2010a). Para cada domicílio foi criada uma *casa virtual*. Cada *agente virtual* habita uma *casa virtual*, e a quantidade de agentes por casa seguiu a distribuição abaixo [(IBGE, 2010a)](#ibge-2010a).
+A simulação considera **5515 domicílios**, que são as moradias onde residem os habitantes (IBGE, 2010a). Para cada domicílio foi criada uma *casa virtual* posicionada na lateral de alguma rua da estrutura viária descrita anteriormente na seção [Especificação Territorial e Viária](#Territorial-e-Viária). Cada *agente virtual* habita uma *casa virtual*, e a quantidade de agentes por casa seguiu a distribuição abaixo [(IBGE, 2010a)](#ibge-2010a).
 
 Quantidade de moradores | Quantidade de domicílios
 ------------: | -------------:
@@ -82,15 +82,13 @@ Como não há dados disponiveis sobre a faixa etária dos habitantes de cada dom
 
 
 ## Empresas e Trabalhadores
-## Instituções de Ensino e Alunos
-A simulação considera um total de 4487 alunos [(IBGE,  2010a)](#ibge-2010a) que frequentam as escolas do município de Ibirama.
+## Instituições de Ensino e Alunos
+<!-- link mapa com as empresas, para usar na seção acima: https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221oSmpCIJzkWzKo-mdMAfmUI7tsTPptgT0%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22102580730194240009973%22%7D&usp=sharing -->
 
-A lista de escolas do município foi obtida no portal [Educa Mais Brasil](https://www.educamaisbrasil.com.br/escolas/santa-catarina/ibirama). Como não foram encontrados dados de distribuição dos alunos nas escolas, a escolha adotada foi uma distribuição aleatória. O aluno é atribuído a uma escola aleatória, desde que esta ofereça as aulas para a sua faixa etária.
+A simulação considera um total de **4487 alunos** [(IBGE,  2010b)](#ibge-2010b) que frequentam instituições de ensino no município de Ibirama.  O IBGE estratifica esta quantidade de alunos por categoria de ensino. A tabela a seguir apresenta a quantidade de alunos por categoria [(IBGE,  2010b)](#ibge-2010b) que foram considerados na simulação.
 
-O IBGE separa os alunos em classes, assim como a sua respectiva quantidade em cada uma, para melhor entendimento foi adotada uma nomenclatura para as classes baseado no dados do IBGE [(IBGE,  2010a)](#ibge-2010a) demonstrado na tabela abaixo.
-
-Categoria de escola | Quantidade de alunos
-------------: | -------------:
+Categoria de ensino | Quantidade de alunos
+------------ | -------------:
 Educação Infantil |	449
 Ensino Fundamental I |	1567
 Ensino Fundamental II |	1078
@@ -99,9 +97,18 @@ Ensino de Jovens e Adultos |	480
 Universidades |	448
 **Total** |	**4487**
 
+A lista de instituições de ensino do município com e as respectivas faixas etárias das categorias de ensino foi obtida no portal [Educa Mais Brasil](https://www.educamaisbrasil.com.br/escolas/santa-catarina/ibirama). A tabela a seguir apresenta a quantidade de instituições de ensino consideradas na simulação. Preparamos um [Google Map](https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221isUELXN4khxv8gzN_x9ghP3ib6Ab9uSb%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22102580730194240009973%22%7D&usp=sharing) com a localização destas instituições.
 
-Entretanto, na classe de Ensino de Jovens e Adultos os agentes atribuídos devem ter idade maior ou igual a 15 anos. A partir deste fato eles podem ser selecionados e associados a devida escola.
+Categoria de ensino | Quantidade de instituições | Faixa etária dos alunos
+------------ | -------------: | -------------:
+Educação Infantil | 12 | de 0 a 5 anos
+Ensino Fundamental I | 9 | de 6 a 10 anos
+Ensino Fundamental II |	5 | de 11 a 14 anos
+Ensino Médio | 4 | de 15 a 17 anos
+Ensino de Jovens e Adultos | 1 | acima de 15 anos
+Universidades |	1 | acima de 18 anos
 
+Como não há dados disponíveis sobre a quantidade de alunos em cada uma dessas instituiçoes de ensino, a simulação faz uma distribuição aleatória. Cada aluno é atribuído a uma escola aleatória que esta oferece as aulas para a sua faixa etária. Na categoria *Ensino de Jovens e Adultos* os agentes atribuídos devem ter idade maior ou igual a 15 anos para respeitar as normas da [Secretaria do Estado da Educação](http://sed.sc.gov.br/servicos/etapas-e-modalidades-de-ensino/29-modalidade-de-ensino/6617-educacao-de-jovens-e-adultos). A partir da idade dos agentes, eles são associados a uma escola.
 
 
 ## Comportamento dos Agentes
@@ -218,6 +225,9 @@ European Centre for Disease Prevention and Control (ECDC). **Guidance for discha
 
 ###### (IBGE, 2010a)
 Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>>. Acesso em: 01/04/2020.
+
+###### (IBGE, 2010b)
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Educação**. 2010. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22469?detalhes=true>>. Acesso em: 01/04/2020.
 
 ###### (Keeling e Rohani, 2011)
 KEELING, M. J.; ROHANI, P. **Modeling infectious diseases in humans and animals**. Princeton University Press, 2011.

@@ -1,0 +1,2886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ibirama1</name>
+    <description/>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Construção de Edifícios</name>
+      <Placemark>
+        <name>JC CONSTRUTORA</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5345728,-27.0556238,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pré-vale Pré-moldados</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.525702,-27.10866,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>PH Engenharia e Construção Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.525698,-27.0615758,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Artigos de Óptica</name>
+      <Placemark>
+        <name>Gerhard Herweg</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.526349,-27.0617369,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Máq. e Equip. p/ Uso Ind. não especif. anteriormente,pçs e acessórios</name>
+      <Placemark>
+        <name>Máquinas Omil Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5296194,-27.0579159,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Possamai Indústria Metalúrgica Ltda.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5408081,-27.0566264,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de amidos e Féculas de Vegetais</name>
+      <Placemark>
+        <name>Empresa Hercílio de Féculas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5171231,-27.05611,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <name>Com. a Varej. de Pneumáticos e Câmarasde-ar</name>
+      <Placemark>
+        <name>Pneurama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5366662,-27.0593709,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Artigos de Joalheria</name>
+      <Placemark>
+        <name>Relojoaria e Ótica Bonin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5178716,-27.0568506,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Tecidos</name>
+      <Placemark>
+        <name>Lojas de Tecidos Andreon Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177838,-27.0587434,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Org. Associativas Patronais e Empresariais</name>
+      <Placemark>
+        <name>CDL Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.517226,-27.056618,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Operadores Turísticos</name>
+      <Placemark>
+        <name>4 Estações Turismo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5118611,-27.0569433,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Mercadorias em Geral, com predominância de Produtos Alimentícios - Supermercados</name>
+      <Placemark>
+        <name>Supermercado Solar</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.515234,-27.0531382,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wagner Bebidas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.537351,-27.056706,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Supermercado Nardelão</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5207356,-27.0596299,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cooper Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5367116,-27.0618639,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mercado Tambani</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5907918,-27.0320447,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mercado Schmitz</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.525859,-27.1128695,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Comercial Galdino</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.586557,-27.0472194,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Captação, tratamento e distribuição de água</name>
+      <Placemark>
+        <name>Casan-Companhia Catarinense de Água e Saneamento</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197981,-27.055162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serraria com Desdobramento de Madeira</name>
+      <Placemark>
+        <name>Serraria Budag Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.549393,-27.09101,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Weise Compensados</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.588753,-27.046365,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Clubes Sociais, Esportivos e Similares</name>
+      <Placemark>
+        <name>Sociedade Desportiva União</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5338687,-27.0555715,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sociedade Desportiva União</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177587,-27.0537756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Club Recreativo Hamonia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5367942,-27.0516083,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. Especializado de Eletrodomesticos e Equipamentos de Áudio e Vídeo</name>
+      <Placemark>
+        <name><![CDATA[Ralf Scheidemantel & Cia Ltda]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5191134,-27.0587082,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Refrigeração Gilson Weiss</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197981,-27.055162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lojas Presidente Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5195327,-27.0588322,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neni Motores Eletricos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5322599,-27.0610379,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Panorama Móveis</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5156409,-27.0564337,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de outros Prod. Alimentícios não especif. anteriormente</name>
+      <Placemark>
+        <name>Irmãos Galdino</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5862715,-27.0459351,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Manutenção e Reparação de Motocicletas e Motonetas</name>
+      <Placemark>
+        <name>Oficina Zumm Motos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5251999,-27.0620873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Manutenção e Reparação Mecânica de Veículos Automotores</name>
+      <Placemark>
+        <name>Mecânica Krüger</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5917138,-27.0314199,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eletro Mecânica Panorama Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5313999,-27.0611069,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ADM Oficina e Chapeação</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5200854,-27.0666663,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ekar Automóveis</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192112,-27.0578992,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Coringa Auto Center</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5182249,-27.0580805,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mecânica Lingner</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.484572,-27.0803077,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. especializado de pçs e acessórios p/ aparelhos </name>
+      <Placemark>
+        <name>Eletrônica Ibiramense</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5249128,-27.0620897,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. por Atac. de Peças e Acessórios Novos para Veículos Automotores</name>
+      <Placemark>
+        <name>Auto Mecanica Koepsel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5361562,-27.0608772,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. a Varej. de Peças e Acessórios Novos para Veículos Automotores</name>
+      <Placemark>
+        <name>Auto Elétrica Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.522739,-27.060339,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>COMERCIO DE BATERIAS IBIRAMA LTDA ME</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5237142,-27.0613099,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mecânica Diesel Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5908904,-27.0479274,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>LM Hidráulicos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.528579,-27.099377,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Bebidas</name>
+      <Placemark>
+        <name>Tá na Festa Eventos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5194134,-27.0539319,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Educação Profissional de Nível Técnico</name>
+      <Placemark>
+        <name>Instituto Federal de Educação, Ciência e Tecnologia Catarinense, Câmpus Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5387053,-27.0492025,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Trans. rodov. colet. de passageiros,com itinerário fixo,intermunicipal,exceto em região metropolitana </name>
+      <Placemark>
+        <name>Auto Viação Catarinense</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5181247,-27.0583613,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Produtos  Farmacêuticos, sem  manipulação de fórmula</name>
+      <Placemark>
+        <name>Farmácia Muller</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5153698,-27.0533554,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Farmácia Dalbérgia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5914857,-27.0350439,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Farmácia Ponto Chic</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5374823,-27.0586854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Farmácia Alexandre Müller</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5310902,-27.0615586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Farmácia Stylo Farma</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5175685,-27.0565834,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cooper Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5367116,-27.0618639,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de outros  artigos de uso pessoal e  doméstico não  especificados </name>
+      <Placemark>
+        <name>1002 utilidades</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5150858,-27.0538803,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Consultoria em Gestão Empresarial, exceto consultoria técnica específica</name>
+      <Placemark>
+        <name>Opersul</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5150584,-27.0537134,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Reforma de Pneumáticos  Usados</name>
+      <Placemark>
+        <name>Bonin Recauchutadora de Pneus Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5877234,-27.0490412,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Mercadorias em Geral, com predominância de Prod. Alimentícios - Minimercados, Mercearias e Armazéns</name>
+      <Placemark>
+        <name>Mercearia Queijeiro</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5388934,-27.0560707,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mercado Ideker Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5292083,-27.0578046,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Reparação de Bicicletas, Triciclos e outros véículos não-motorizados</name>
+      <Placemark>
+        <name>Krieser Bikes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5246883,-27.0617924,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Prod. Farmacêuticos, com Manipulação de Fórmulas</name>
+      <Placemark>
+        <name>Farmácia Pró Vida</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5180159,-27.0572856,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Efficace Farmácia e Manipulação</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177588,-27.0566685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Laboratórios Clínicos</name>
+      <Placemark>
+        <name>LACIB - IBIRAMA CENTRO</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5193657,-27.0593319,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laboratório de Análises Clínicas Cristina</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5172214,-27.0588293,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laboratório Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.519501,-27.0598738,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Agência de Viagens</name>
+      <Placemark>
+        <name>Trans Braatz Tur</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.567495,-27.0456558,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Renotur Agência de Viagens</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5375117,-27.0480166,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Desenvolvimento de Programas de Computador sob Encomenda</name>
+      <Placemark>
+        <name>Panorama Sistemas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5156367,-27.0564335,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Merkadia Soluções Digitais</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5196009,-27.0552406,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Móveis</name>
+      <Placemark>
+        <name>Loja Salfer - Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5156811,-27.0554926,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Schumann</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5186374,-27.0574183,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Combustíveis para Veículos Automotores</name>
+      <Placemark>
+        <name>Posto Marchetti (Ipiranga)</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5190592,-27.0593948,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Waldemiro Scursel & Cia ltda]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5312599,-27.0614779,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Auto Posto Dalbergia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5875519,-27.045947,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Posto Ponto Chick</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5379943,-27.0567662,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>POSTO D BOSCO LTDA</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.514434,-27.0547737,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Confecção de peças de Vestuário, exceto roupas íntimas e as confeccionadas sob medida</name>
+      <Placemark>
+        <name>Suzan Uniformes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.587998,-27.046339,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Loja Laurita Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5201716,-27.0555702,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gal Confecções Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.519798,-27.055162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Confecções Heusser</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.542112,-27.056135,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jms Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.540035,-27.003764,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ibiro Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197981,-27.055162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Badal Confecções Ltda - ME</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5894025,-27.0460249,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SC Dez Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.533838,-27.0389133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>LAL CONFECÇOES</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.4844268,-27.0342415,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[LIPY'S CONFECÇOES EIRELI ME.]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5379794,-27.0431063,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>JAM Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5870458,-27.0464496,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>B U B U T E X</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5501881,-27.0911607,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jully Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5263404,-27.0581711,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Magazine Centro - K&K Confeccoes Eireli - ME]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5202294,-27.0636895,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aquantica Confecção</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5441123,-27.0363968,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Bancos comerciais</name>
+      <Placemark>
+        <name>Banco do Brasil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5195732,-27.0595051,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Outras atividades de prestação de serviços de informação não especificados anteriormente </name>
+      <Placemark>
+        <name>Despachante KS</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5217092,-27.0596269,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Contabilidade</name>
+      <Placemark>
+        <name>Contabilidade Hohl</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5204422,-27.0618703,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Contabilidade Dora</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5194282,-27.0628189,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Tecidos de Malha</name>
+      <Placemark>
+        <name>Venemalhas Indústria Têxtil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5009952,-27.081845,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Transp. Rodov. Colet. de Passageiros, sob regime de fretamento, intermunicipal, interestadual e internacional</name>
+      <Placemark>
+        <name>Alvostur Turismo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5120265,-27.0567059,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Auto Serviços Gross</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.541439,-27.057549,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de associações de defesa de direitos sociais</name>
+      <Placemark>
+        <name>Associação Atlética Banco do Brasil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.502456,-27.0668025,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Associação De Bombeiros Voluntários De Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5061004,-27.0591735,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Bairro Operário</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5114129,-27.0472586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>EEB Gertrud Aichinger</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5230182,-27.0637982,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grupo Escoteiro Guardiões das Águas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.536658,-27.0485559,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Nova Stettin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5653963,-27.0574815,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Tancredo Neves</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5268342,-27.1170748,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro de Educação Infantil Siegolf Radloff</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5211916,-27.0613761,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Associação dos Aposentados e Pensionistas Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197981,-27.055162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços Combinados de Escritório e Apoio Admin</name>
+      <Placemark>
+        <name>Manoel Marchetti Ind e Com</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5168605,-27.0575761,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Esquadrias de madeira e de pçs. de madeira p/ Inst. Ind. e Com</name>
+      <Placemark>
+        <name>Manoel Marchetti Indústria Comércio Esquadrias de Madeira</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5386746,-27.05581,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Outras Ativ. de Recreação e Lazer não especif. anteriormente</name>
+      <Placemark>
+        <name>Ibirama Rafting</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5161776,-27.0557509,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. por Atac. de Automóveis, Camionetas e Utilit. Novos e Usados</name>
+      <Placemark>
+        <name>Wg Veiculos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.592313,-27.0323439,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Despachante - Pessoa Jurídica </name>
+      <Placemark>
+        <name>Airton Moretti Imóveis</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5359115,-27.0528003,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Torrefação e Moagem de Café</name>
+      <Placemark>
+        <name>Café Ouro</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.535707,-27.051697,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Organisações Religiosas ou filosóficas</name>
+      <Placemark>
+        <name>Igreja Martin Luther</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5133377,-27.0540889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Lanchonete, Casas de Chá, de Sucos e Similares</name>
+      <Placemark>
+        <name><![CDATA[Mülla's Lanchonete]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.514689,-27.0540754,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Baiuca's Lanches]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5382458,-27.0500596,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Gás Liquefeito de Petróleo (GLP)</name>
+      <Placemark>
+        <name>Panorama Gás Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197981,-27.055162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Transporte Rodoviário de Carga, exceto produtos perigosos e mudanças, intermunicipal, interestadual e internacional </name>
+      <Placemark>
+        <name>Trans Yellow - Transporte de Cargas e Fretes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.529639,-27.056555,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sinil Transportes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5300262,-27.0578266,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>BM Motopecas e serviços multimarcas Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5356276,-27.0608254,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TranspovaleTransportes Especiais</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5268133,-27.0611801,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Atac. de Energia Elétrica</name>
+      <Placemark>
+        <name>UHE</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5488226,-27.0402969,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Aparelhamento de Placas e execução de trabalhos em Mármore, Granito, Ardósia e outras Pedras</name>
+      <Placemark>
+        <name>Marmoraria Ponto Chic</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5382679,-27.055961,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Ativ. de Assoc. de Defesa de Direitos Sociais</name>
+      <Placemark>
+        <name>Escola Municipal Christa Sedlacek</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5393126,-27.0588131,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Associação de moradores bairro bela vista ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5307633,-27.0563756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Associação dos Func e Munic de Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.53312,-27.0567038,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Casa do Artesanato de Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5227762,-27.0607531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>APP da Escola de Educação Básica Eliseu Guilherme</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5049933,-27.0479012,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Ribeirão Areado</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5483671,-27.01139,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Vidros</name>
+      <Placemark>
+        <name>Vidraçaria Hamonia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5191957,-27.0606865,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Ferragens e Ferramentas</name>
+      <Placemark>
+        <name>Casa Agrícola Leomar Mohr</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177127,-27.0566885,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Formação de Condutores</name>
+      <Placemark>
+        <name>Centro de Formação de Condutores Radical Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192919,-27.0605344,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Auto Escola Alto Vale de Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5319338,-27.0609922,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Preparação de Terreno, Cultivo e Colheita</name>
+      <Placemark>
+        <name>Tambani Garden Center</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.521454,-27.081696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Corretores e Agentes de Seguros, de Planos de Previdência Complementar e de Saúde </name>
+      <Placemark>
+        <name>Olben Corretora De Seguros</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177442,-27.0535363,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Autoya Corretora de Seguros Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.517477,-27.056843,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Mercadorias em Lojas de Conveniência</name>
+      <Placemark>
+        <name>Posto Scursel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5313119,-27.0614089,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Artig. de Metal p/ Uso Doméstico e Pessoal</name>
+      <Placemark>
+        <name>Kn Calhas e Esquadrias</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5043531,-27.0662028,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Tintas e Materiais para Pintura</name>
+      <Placemark>
+        <name>Escala Cor</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5311226,-27.0610796,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tupy Tintas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5296586,-27.0611555,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Beneficiários - Centros de Educação Infantil</name>
+      <Placemark>
+        <name>Centro de Educação Infantil Florinda Zemke dos Santos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5886376,-27.0318606,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro de Educação Infantil Abelhinha Feliz</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5260105,-27.0829726,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CEI RUTH SCHLEI</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5374771,-27.0616059,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro de Educação Infantil Lidi Brodwolf</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.541648,-27.0450877,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Beneficiários - Escolas</name>
+      <Placemark>
+        <name>Escola Municipal Ribeirão Areado</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5483671,-27.01139,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Tancredo Neves</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5268342,-27.1170748,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Escola Municipal Nova Stettin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5653963,-27.0574815,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>EEB Walmor Ribeiro</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5908019,-27.0347133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Colégio Hamônia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5197845,-27.0549892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Beneficiários - Igrejas</name>
+      <Placemark>
+        <name>Igreja Evangélica de Confissão Luterana no Brasil de Rafael Baixo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5505868,-27.0192526,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Comunidade Evangélica Nova Bremen</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5897682,-27.0356561,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Congregação Cristã No Brasil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5389209,-27.059616,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal;Instrumentos Musicais</name>
+      <Placemark>
+        <name>Jaeger Locações</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5463507,-27.0469543,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. a Varej. de Motocicletas e Motonetas Novas</name>
+      <Placemark>
+        <name>Sérgio Motos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5199961,-27.0590597,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Condicionamento Físico</name>
+      <Placemark>
+        <name>Academia Ritmo Vital</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5108776,-27.0523385,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Academia Planeta Korpo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5308357,-27.0619203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Estúdio Nina Rickmann</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.537977,-27.0565791,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Assessoria Empresarial </name>
+      <Placemark>
+        <name>Prefeitura Municipal de Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5162026,-27.0532296,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Suporte Técnico, Manut. e outros serviços em tecnologia da informação </name>
+      <Placemark>
+        <name>Unity consultoria e sistemas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5888082,-27.041743,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Cooperativas de Crédito Mútuo</name>
+      <Placemark>
+        <name>Viacredi Alto vale</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5314197,-27.0571884,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Viacredi Alto Vale</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5381615,-27.0564902,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Viacredi Alto Vale</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5914275,-27.0326275,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Viacredi Alto Vale</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5147792,-27.0539513,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de pçs e acessórios p/ o sistema de direção e suspensão de veículos automotores</name>
+      <Placemark>
+        <name>Cava e Cava Metalúrgica LTDA</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5902118,-27.0330356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Cervejas e Chopes</name>
+      <Placemark>
+        <name>Handwerk Cervejaria</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.522303,-27.0823212,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades associativas não especificadas anteriormente</name>
+      <Placemark>
+        <name>Associação Atiradores Rafaell II</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5502892,-26.9790349,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Bar e Lanchonete</name>
+      <Placemark>
+        <name>Campo Da Omil</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5355608,-27.0410172,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Loja de Variedades, exceto Lojas de Departamentos ou Magazines</name>
+      <Placemark>
+        <name>Marlisa Goebel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177224,-27.0566774,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Estab. Bancários,de Crédito, Finan. e Investimento</name>
+      <Placemark>
+        <name>Banco Bradesco</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5171151,-27.0532774,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Rádio</name>
+      <Placemark>
+        <name>Belos Vales</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177588,-27.0566685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Alimentação para Eventos e Recepções - bufê</name>
+      <Placemark>
+        <name>Restaurante Quinta Dourada</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5500608,-27.0898985,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Bares e outros Estabelecimentos especializados em servir Bebidas</name>
+      <Placemark>
+        <name>Master Bar Lanchonete</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.4994276,-27.0708297,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Panga's Bar e Lanchonete]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5411623,-27.0549695,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Esportiva e Recreativa</name>
+      <Placemark>
+        <name>Estádio Hermann Aichinger - Baixada</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5207026,-27.0630074,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ginásio Municipal João Moretti</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5073641,-27.0598434,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de móveis com predominância de madeira</name>
+      <Placemark>
+        <name>Móveis Schlup</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5349709,-27.0546031,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Móveis Adam</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5409589,-27.0550499,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Curtimento e outras Preparações de Couro</name>
+      <Placemark>
+        <name>Curtume Grosch</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5483671,-27.01139,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Produtos de Panificação</name>
+      <Placemark>
+        <name>Panificadora Carlitos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5353316,-27.0603907,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Material Elétrico</name>
+      <Placemark>
+        <name>Loja Gubler - Solução em materiais para sua casa</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.532773,-27.061196,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades Assoc. não especif. anteriormente</name>
+      <Placemark>
+        <name>UDESC - Alto Vale - CEAVI</name>
+        <description>empresa junior da udesc</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5376615,-27.0497152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de outros produtos não especificados anteriormente</name>
+      <Placemark>
+        <name>Sonho de festa</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5846347,-27.0483773,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Paulo Pfeiffer</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5205449,-27.0593601,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Maq.- ferramenta, peças e acessórios</name>
+      <Placemark>
+        <name>Alca Comércio de Máquinas Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5343156,-27.116873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Cooperativa de Crédito Rural</name>
+      <Placemark>
+        <name>Cresol Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192051,-27.0588212,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Padaria e Confeitaria com Predominância de Produção Própria</name>
+      <Placemark>
+        <name>Panificadora Carlitos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5353316,-27.0603907,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Restaurantes e Similares</name>
+      <Placemark>
+        <name>Restaurante Arca</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5211694,-27.0598169,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Estrela Viva Restaurante</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5153424,-27.0532629,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Restaurante e Hamburgueria Mano's]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.523809,-27.0612007,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Restaurante Mano's]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.4848667,-27.08028,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Padaria e Confeitaria com predominância de revenda</name>
+      <Placemark>
+        <name><![CDATA[Keske's Padaria e Confeitaria]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5355335,-27.0603849,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Artigos do Vestuário e Acessórios</name>
+      <Placemark>
+        <name>Deyjur Modas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5161682,-27.0556988,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teris Modas e Presentes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.536512,-27.060979,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ionice Souza Jacinto</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177588,-27.0566685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Amanda Modas e Bazar</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.525025,-27.0617026,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Loja Pereira</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5217065,-27.0598725,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Waltraud Witzke</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.517309,-27.0568436,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Super Lojão Scheidemantel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5194816,-27.0582183,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Quatro Estações</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5173893,-27.0565711,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Santa Moda Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5180751,-27.0573519,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Funerárias</name>
+      <Placemark>
+        <name>Funerária Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.4985515,-27.0437387,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Funerária São Sebastião</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5019999,-27.0432776,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Confec. de Roupas Íntimas</name>
+      <Placemark>
+        <name>Indústria e Comércio de Confecções Sam Top</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.4692503,-27.0925534,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades de Organizações Sindicais</name>
+      <Placemark>
+        <name>Sindicato dos Trabalhadores Rurais de Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5175454,-27.0583922,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Plantas e Flores Naturais</name>
+      <Placemark>
+        <name>Butzen, Luiz A</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5177588,-27.0566685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Materiais de Construção em geral</name>
+      <Placemark>
+        <name>Carcime Comércio Materiais Construção - Hipermac</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.519064,-27.0593475,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arns Materiais de Construção</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5215753,-27.0820053,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>COMERCIAL AMARILDO MATERIAIS DE CONSTRUÇÃO</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5910449,-27.0325604,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Comercial Amarildo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5163273,-27.055792,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Transporte Rodoviário de Produtos Perigosos</name>
+      <Placemark>
+        <name>Regional Gás E Transportes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5270293,-27.0611058,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividades do Correio Nacional</name>
+      <Placemark>
+        <name>Correios Ibirama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5149167,-27.0542496,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Esquadrias de Metal</name>
+      <Placemark>
+        <name>Mett Esquadrias e Vidraçaria</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5753337,-27.0485736,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Artigos de Papelaria</name>
+      <Placemark>
+        <name>Papelaria e Bazar Ana Daniela</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5169069,-27.0532719,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Papelaria Office</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5200733,-27.0590964,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ART PEL PRESENTES E PAPELARIA</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.518733,-27.058418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Representante comercial</name>
+      <Placemark>
+        <name>Cotrare Representações</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5923129,-27.0323439,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Armas e Munições</name>
+      <Placemark>
+        <name>O ATIRADOR - ARMAS E MUNIÇÕES</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5160849,-27.0556814,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Manutenção e Reparação Elétrica de Veículos Automotores</name>
+      <Placemark>
+        <name>Auto Peças Mecânica e Elétrica Globo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5140072,-27.0583778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Máq., Equip. e Aparelhos p/ Transp. e Elevação de Cargas, pçs e acessórios</name>
+      <Placemark>
+        <name>EMPIMAQ - Empilhadeiras Andrade Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5755026,-27.0471991,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Keil Auto Peças Serviços</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5243542,-27.0619467,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Animais Vivos e de Artig. e Alimentos p/ Animais de Estimação</name>
+      <Placemark>
+        <name>Bichinho Fiel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5167707,-27.0532802,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Haukemia Centro Médico Veterinário</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5483671,-27.01139,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Outras Atividades Esportivas nao especificadas anteriormente </name>
+      <Placemark>
+        <name>Sociedade Esportiva Ribeirão das Pedras</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5355269,-27.0928246,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Materiais de Const. não especif. anteriormente</name>
+      <Placemark>
+        <name>Comércio Mat Construção Andrade Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5373633,-27.0570317,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Gestão e Administração da Propriedade Imobiliária</name>
+      <Placemark>
+        <name>Edimar Schissl</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5342592,-27.0609211,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Atac. de Materiais de Const. em Geral</name>
+      <Placemark>
+        <name>Elétrica Márcio</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5149933,-27.0536746,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Integral Soluções em Engenharia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5193921,-27.0589929,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Artigos para Viagem, Bolsas e Semelhantes de qualquer material</name>
+      <Placemark>
+        <name>FÁBRICA LACI BARUFFI</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.546603,-27.047257,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Couribi Artigos de Couro</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5539158,-27.0533973,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Discos, CDs, DVDs e Fitas</name>
+      <Placemark>
+        <name>Foto Center Ibirama Ernani</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5181246,-27.0575484,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividade Médica Ambulatorial com Recursos para realização de Exames Complementares</name>
+      <Placemark>
+        <name>Clínica Herweg</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5160251,-27.0579249,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[CENTRAL MED - CLÍNICO GERAL & ULTRASSONOGRAFIA]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5172354,-27.0574798,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clinica Vidas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5193335,-27.0610152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Tradução, Interpretação e Similares</name>
+      <Placemark>
+        <name>Contabilidade JS</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5439864,-27.0466614,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Arquitetura</name>
+      <Placemark>
+        <name>KOEPSEL+MATTA Engenharia e Arquitetura Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.507828,-27.0502257,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Atac. de Máq., Aparelhos e Equip. p/ uso Agropecuário,partes e pçs</name>
+      <Placemark>
+        <name>Agrinorte Comercio de Maquinas Ltda</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5320908,-27.0609589,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Facção de Peças do Vestuário, exceto Roupas íntimas</name>
+      <Placemark>
+        <name>Confecções Filan</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5446415,-27.0465081,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>K Angel facção ltda me</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5359913,-27.0522601,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Facção KCCK</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.542707,-27.0468345,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jane Confecções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5137592,-27.058807,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Obras de Alvenaria</name>
+      <Placemark>
+        <name><![CDATA[Ibirama Engenharia & Construções Ltda.]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5369395,-27.0593559,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. Especializado de Equip. e Suprimentos de Informática</name>
+      <Placemark>
+        <name>Service Informática</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5184643,-27.0540319,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Perfiltech Informática</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192944,-27.0604039,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Singular Sistemas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5891464,-27.0388368,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Desenho técnico relacionados à arquit. e eng</name>
+      <Placemark>
+        <name>Pedro da Costa Interiores e móveis Planejados</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.526809,-27.060995,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prumo e Nível Engenharia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5912295,-27.0319423,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Peças e Acessórios para Motocicletas</name>
+      <Placemark>
+        <name>Durag Factory Racing</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5021004,-27.0734526,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Atac. de Fios e Fibras Texteis Beneficiados</name>
+      <Placemark>
+        <name>Madty Comércio De Celulares</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5186007,-27.0585941,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Abertura de contas em geral, inclusive contacorrente, conta de investimentos e aplicação e caderneta de poupança, no País e no exterior, bem como a manutenção das referidas contas ativas e inativas</name>
+      <Placemark>
+        <name>Caixa Econômica Federal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5169506,-27.0566596,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Distribuição de Energia Elétrica</name>
+      <Placemark>
+        <name>CELESC - Centrais Elétricas de Santa Catarina</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5161044,-27.0527797,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Estruturas Pré-Moldadas de Concreto Armado, em série e sob encomenda</name>
+      <Placemark>
+        <name>Pré-Fabricar Construções</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5233857,-27.1064507,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pré-vale Pré-moldados</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.525702,-27.10866,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Fabricação de Conservas de Frutas</name>
+      <Placemark>
+        <name>Conservas Hartmann</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192527,-27.0590519,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Perfuração, Desmonte de Rocha com uso de Explosivos, Pesquisa, Lavra e Comercialização de qualquer Bem Mineral no Brasil </name>
+      <Placemark>
+        <name>COMERCIAL DACLANDE LTDA</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5170212,-27.0960181,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividade Médica Ambulatorial com Recursos para Realização de Procedimentos Cirúrgicos</name>
+      <Placemark>
+        <name>Clínica Monteiro Lins</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5198303,-27.0629854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. a Varej. de Automóveis, Camionetas e utilitários usados</name>
+      <Placemark>
+        <name>Zandocar Veículos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192652,-27.061436,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ekar Automóveis</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5192112,-27.0578992,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MGK Automóveis</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5216123,-27.0595587,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[J & C Veiculos]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.530306,-27.061326,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Top Motors Multimarcas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5904846,-27.047644,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividade de Fornecimento  de Infra-Estrutura de  Apoio e Assistência a  Paciente no Domicílio -</name>
+      <Placemark>
+        <name>Pro Fisio Clinica de Fisioterapia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5242174,-27.057764,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Cartografia, Topografia e Geodésia</name>
+      <Placemark>
+        <name>Governa Publica</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.535464,-27.0536296,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Outras Ativ. de Serviços Prestados principalmente às Empresas não especificadas anteriormente</name>
+      <Placemark>
+        <name>Vistorama Vistorias</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5307902,-27.0631132,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividade Medica Ambulatorial Restrita a Consultas</name>
+      <Placemark>
+        <name>Claudia Daniela Roza Mallet de Souza</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.515789,-27.0582886,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>WS Centro Clínico - Ultrassom - Dir. Técnico Dr. Jorge L. M. Schramm - CRM/SC 12314 - RQE 14262</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.516391,-27.057918,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Suvenires, Bijuterias e Artesanatos</name>
+      <Placemark>
+        <name>Cris Presentes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.524412,-27.0616873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços Advocatícios</name>
+      <Placemark>
+        <name><![CDATA[Motta & Hartmann Advogados Associados]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5193899,-27.059826,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mello e Advogados Associados</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.519256,-27.0548363,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ilda Valentim</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5191978,-27.0605989,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. V. especializado de equipamentos de telefonia e comunicação</name>
+      <Placemark>
+        <name>Madty Comércio De Celulares</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5186007,-27.0585941,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Atac. de Gás Liquefeito de Petróleo (GLP)</name>
+      <Placemark>
+        <name><![CDATA[Disk Gás Liquigás - I. Trapp & Cia Ltda]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5362897,-27.0604453,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Varej. de Equipamentos para Escritório</name>
+      <Placemark>
+        <name>P S I Móveis para Escritório e Automação Comercial</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5347393,-27.0608549,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Atividade Odontológica</name>
+      <Placemark>
+        <name>VITALCARE ODONTOLOGIA</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.51936,-27.060533,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Engenharia</name>
+      <Placemark>
+        <name>H2B Engenharia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5320455,-27.0613117,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>H2SA Engenharia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5350219,-27.0536555,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Feijó & Jedlicka Arquitetura e Engenharia]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5242174,-27.057764,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Produção de Artefatos estampados de Metal</name>
+      <Placemark>
+        <name>Metais Fulle</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5792188,-27.0261248,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Com. Ata.de Bombas e Compressores; Partes e Peças</name>
+      <Placemark>
+        <name>Click Geradores</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.519598,-27.055231,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>FABRICAÇÃO DE ESTRUTURAS METÁLICAS</name>
+      <Placemark>
+        <name>Total Sul Estruturas Metálicas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5493145,-27.045466,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Corretagem na Compra e Venda e Avaliação de Imóveis -</name>
+      <Placemark>
+        <name>Imobiliária Tafarel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.531932,-27.060991,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Serviços de Lanternagem ou Funilaria e Pintura de Veículos Automotores</name>
+      <Placemark>
+        <name>VSB Chapeação e Pintura</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5008088,-27.074751,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chapeaçao e Pintura Andrade</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5089938,-27.0596128,0
+          </coordinates>
+        </Point>
+      </Placemark>
+
+      <name>Preparação de Documentos e Serviços Especializados de Apoio Adm. não especif. anteriormente</name>
+      <Placemark>
+        <name>Baucke Motos</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -49.5315314,-27.0613221,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>	
+	
+	
+  </Document>
+</kml>
