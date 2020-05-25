@@ -85,9 +85,10 @@ Como não há dados disponiveis sobre a faixa etária dos habitantes de cada dom
 ## Instituções de Ensino e Alunos
 A simulação considera um total de 4487 alunos [(IBGE,  2010a)](#ibge-2010a) que frequentam as escolas do município de Ibirama.
 
-A lista de escolas do município foi obtida no portal [Educa Mais Brasil](https://www.educamaisbrasil.com.br/escolas/santa-catarina/ibirama). Como não foram encontrados dados de distribuição dos alunos nas escolas, a escolha adotada foi uma distribuição aleatória. O aluno é atribuído a uma escola aleatória, desde que esta ofereça as aulas para a sua faixa etária. 
+A lista de escolas do município foi obtida no portal [Educa Mais Brasil](https://www.educamaisbrasil.com.br/escolas/santa-catarina/ibirama). Como não foram encontrados dados de distribuição dos alunos nas escolas, a escolha adotada foi uma distribuição aleatória. O aluno é atribuído a uma escola aleatória, desde que esta ofereça as aulas para a sua faixa etária.
 
 O IBGE separa os alunos em classes, assim como a sua respectiva quantidade em cada uma, para melhor entendimento foi adotada uma nomenclatura para as classes baseado no dados do IBGE [(IBGE,  2010a)](#ibge-2010a) demonstrado na tabela abaixo.
+
 Categoria de escola | Quantidade de alunos
 ------------: | -------------:
 Educação Infantil |	449
@@ -109,31 +110,67 @@ A simulação agrupa os habitantes de Ibirama em três categorias: (i) *estudant
 ### Agentes estudantes
 Os **estudantes** são divididos em alunos do ensino *infantil*, *fundamental*, *médio*, *superior* (universitários) e de *educação de jovens e adultos*. Seu comportamento é organizado da seguinte forma:
 - Movem-se para a instituição de  ensino no início do seu turno (matutino ou vespertino ou norturno).
-- Na instituição de ensino, os agentes infectados propagam a doença para outros agentes (uma única vez no turno).
+- Na instituição de ensino, os agentes infectados transmitem a doença para outros agentes (uma única vez no turno).
 - Voltam para casa ao fim do turno, ou caso sejam trabalhadores, se movem para o local de trabalho.
-- Em casa, os agentes infectados propagam a doença para outros agentes que moram no mesmo domicílio (uma única vez, até o início do próximo turno).
+- Em casa, os agentes infectados transmitem a doença para outros agentes que moram no mesmo domicílio (uma única vez, até o início do próximo turno).
 
 ### Agentes trabalhadores
 Os **agentes trabalhadores** se comportam da seguinte forma:
 - Movem-se para a empresa no início do turno matutino.
-- Na empresa, os agentes infectados propagam a doença para outros agentes (uma única vez durante os dois turnos de trabalho).
+- Na empresa, os agentes infectados transmitem a doença para outros agentes (uma única vez durante os dois turnos de trabalho).
 - Voltam para casa ao fim do turno vespertino.
-- Em casa, os agentes infectados propagam a doença para outros agentes que moram no mesmo domicílio (uma única vez, até o início do próximo turno).
+- Em casa, os agentes infectados transmitem a doença para outros agentes que moram no mesmo domicílio (uma única vez, até o início do próximo turno).
 
 Caso o agente trabalhador também seja um estudante, então ele frequenta a empresa no contraturno escolar.
 
 ### Agentes não economicamente ativos
 São aqueles agentes que **não trabalham nem estudam**. Estes agentes se comportam da seguinte forma:
 - Permanecem em casa o tempo todo.
-- Se forem infectados, então propagam a doença em casa uma única vez no dia (ex.: durante a noite).
+- Se forem infectados, então transmitem a doença em casa uma única vez no dia (ex.: durante a noite).
 
 
 ## Parâmetros da COVID-19
 
+Para modelar a propagação da COVID-19 entre os *agentes artificiais*, adotamos o modelo epidemiológico compartimental SEIR [(Keeling e Rohani, 2011)](#keeling-e-rohani-2011). Ao aplicar este modelo epidemiológico em uma simulação com agentes, cada *agente artificial* é categorizado de acordo com seu *estado de saúde* em:
+
+- **Suscetível** `(S)`: o agente não foi exposto à doença, ou seja, nunca foi infectado.
+- **Exposto** `(E)`: o agente foi exposto à doença, e a doença está em período de incubação.
+- **Infectado** `(I)`: o agente é considerado doente (após o período de incubação), podendo manifestar os sintomas, transmitir para outros agentes, e eventualmente falecer em função da doença.
+- **Recuperado** `(R)`: o agente se recuperou da doença (está curado) e desenvolveu imunidade.
+
+A dinâmica da doença ocorre com a transição do agente pelos estados `S -> E -> I -> R`. Essa transição é governada por parâmetros que caracterizam a doença, como por exemplo probabilidade de transmissão e mortalidade. A simulação adota os parâmetros da COVID-19 disponíveis na literatura científica especializada. Estes parâmetros e seus valores são apresentados a seguir.
+
+
+#### Exposição, Infecção e Transmissão
+
+Parâmetro | Valor | Referência
+--- | ---: | :---:
+Duração da Incubação (`E`) |	5 ou 6 dias |  [(ECDC, 2020)](#ecdc-2020)
+Duração da Infecção (`I`)|	8 dias |  [(ECDC, 2020)](#ecdc-2020)
+Probabilidade de transmissão |	0.3435 | [(SBI, 2020)](#sbi-2020)
+
+A transmissão acontece quando um agente **infectado** `(I)` entra em contato com um agente **suscetível** `(S)`. Este contato ocorre nos locais onde o agente trabalha, estuda, ou reside, conforme descrito anteriormente na seção [Comportamento dos Agentes](#Comportamento-dos-Agentes). Se o agente for infectado, então ele passa para o estado **exposto** `(E)` e desenvolve a doença. Ao término do período **infectado** `(I)` o agente é considerado curado, desenvolvendo imunidade e passando para o estado **recuperado** `(R)`.
+
+
+#### Mortalidade
+A doença pode causar a morte do agente ao longo do período em que ele estiver **infectado** `(I)`. A taxa de mortalidade varia conforme a idade do agente. Nesta simulação adotamos as taxas de mortalidade por faixa etária observadas na China e reportadas na literatura [(NCPERET, 2020)](#ncperet-2020). A tabela a seguir apresenta as taxas de mortalidade utilizadas.
+
+Faixa Etária |Taxa de Mortalidade
+--- | ---:
+≤ 9 anos  |	0.00%
+10 a 19 anos | 0.18%
+20 a 49 anos | 0.32%
+50 a 59 anos |	1.30%
+60 a 69 anos | 3.60%
+70 a 79 anos | 8.00%
+≥ 80 anos | 14.80%
+
+
 # Resultados Preliminares
 O modelo simula diversos cenários diferentes, com a duração de execução de cada cenário equivalente a 90 dias (3 meses) no *tempo virtual* do modelo. Cada cenário é executado 10 vezes, para serem obtidas médias como resultado de um cenário específico e serem gerados gráficos a partir das mesmas.
 
-O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR** (Susceptible, Exposed, Infectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. 
+<!-- Lucas eu expliquei o SEIR acima, na seção parametros da covid. Então pode remover daqui
+O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR** (Susceptible, Exposed, Infectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. -->
 
 Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
 
@@ -176,5 +213,17 @@ Algo que é possível inferir a partir da observação dos gráficos é a diminu
 [<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png) -->
 
 # Referências
+###### (ECDC, 2020)
+European Centre for Disease Prevention and Control (ECDC). **Guidance for discharge and ending isolation in the context of widespread community transmission of COVID-19**. 2020. Disponível em <<https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-guidance-discharge-and-ending-isolation-first%20update.pdf>>. Acesso em: 01/04/2020.
+
 ###### (IBGE, 2010a)
-Instituto Brasileiro de Geografia e Estatística. IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios. 2010. Disponível em: <https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>. Acesso em: 22/05/2020.
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>>. Acesso em: 01/04/2020.
+
+###### (Keeling e Rohani, 2011)
+KEELING, M. J.; ROHANI, P. **Modeling infectious diseases in humans and animals**. Princeton University Press, 2011.
+
+###### (NCPERET, 2020)
+The Novel Coronavirus Pneumonia Emergency Response Epidemiology Team (NCPERET). **The Epidemiological Characteristics of an Outbreak of 2019 Novel Coronavirus Diseases (COVID-19) — China**. China CDC Weekly, 2(8): 113-122. 2020. Disponível em: <<http://weekly.chinacdc.cn/en/article/id/e53946e2-c6c4-41e9-9a9b-fea8db1a8f51>>. Acesso em: 01/04/2020.
+
+###### (SBI, 2020)
+Sociedade Brasileira de Infectologia (SBI). **Informe da Sociedade Brasileira de Infectologia (SBI) sobre o novo coronavírus**. 2020. Disponível em <<https://www.infectologia.org.br/admin/zcloud/principal/2020/03/Informativo-CoV-12-03-2020.pdf>>. Acesso em: 01/04/2020.
