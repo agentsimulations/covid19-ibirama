@@ -90,9 +90,9 @@ A localização geográfica destas empresas não está disponível no site da FE
 Segundo o IBGE, Ibirama conta com 9142 habitantes trabalhadores [(IBGE,  2010c)](#ibge-2010c). Entretanto, não há dados disponiveis sobre a quantidade de trabalhadores **em cada empresa**. Portanto, solicitamos a um especialista da área contábil e com conhecimento das empresas de Ibirama - Professor [Sérgio Marian](https://www.udesc.br/professor/sergio.marian) (Departamento de Ciências Contábeis da UDESC Alto Vale) - que fizesse uma estimativa de quantos funcionários trabalham em cada uma das 282 empresas consideradas na simulação. A estimativa apontou **2462 trabalhadores**. Disponibilizamos a estimativa de trabalhadores por empresa neste [link](/data/empresas/README.md).
 
 
-Portanto, a simulação considera apenas **282 empresas** (que foram encontradas no Google Maps) e apenas **2462 trabalhadores** (estimativa de especialista na área contábil). Os 6680 trabalhadores restantes foram tratados como agentes não economicamente ativos, cujo comportamento é detalhado posteriormente na seção  [Comportamento dos Agentes](#Comportamento-dos-Agentes). 
+Portanto, a simulação considera apenas **282 empresas** (que foram encontradas no Google Maps) e apenas **2462 trabalhadores** (estimativa de especialista na área contábil). Os 6680 trabalhadores restantes foram tratados como agentes não economicamente ativos, cujo comportamento é detalhado posteriormente na seção  [Comportamento dos Agentes](#Comportamento-dos-Agentes).
 
-***Ressaltamos que estas quantidades são diferentes das apontadas pela FECAM e IBGE e isso pode fazer com que a simulação não reflita a dinâmica real de propagação de COVID-19 na cidade. Portanto, os resultados da simulação devem ser utilizados com cautela***
+***Ressaltamos que a adoção de quantidades de empresas e trabalhadores diferente das apontadas pela FECAM e IBGE pode fazer com que a simulação não reflita a dinâmica real de propagação de COVID-19 na cidade. Portanto, os resultados da simulação devem ser utilizados com cautela***
 
 ## Instituções de Ensino e Alunos
 
