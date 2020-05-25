@@ -74,7 +74,7 @@ Quantidade de moradores | Quantidade de domicílios
 7 |	81
 8 |	34
 9 |	8
-10 |	7
+10 | 	7
 11 |	7
 **Total**  | **5515**
 
@@ -88,24 +88,16 @@ A simulação considera um total de 4487 alunos [(IBGE,  2010a)](#ibge-2010a) qu
 A lista de escolas do município foi obtida no portal [Educa Mais Brasil](https://www.educamaisbrasil.com.br/escolas/santa-catarina/ibirama). Como não foram encontrados dados de distribuição dos alunos nas escolas, a escolha adotada foi uma distribuição aleatória. O aluno é atribuído a uma escola aleatória, desde que esta ofereça as aulas para a sua faixa etária. 
 
 O IBGE separa os alunos em classes, assim como a sua respectiva quantidade em cada uma, para melhor entendimento foi adotada uma nomenclatura para as classes baseado no dados do IBGE [(IBGE,  2010a)](#ibge-2010a) demonstrado na tabela abaixo.
-
 Categoria de escola | Quantidade de alunos
- 
-------------: | ------------:
- 
-Educação Infantil | 449
- 
-Ensino Fundamental I | 1567
- 
-Ensino Fundamental II |1078
- 
-Ensino Médio | 465
- 
-Ensino de Jovens e Adultos | 480
- 
-Universidades | 448
- 
-**Total** | **4487**
+------------: | -------------:
+Educação Infantil |	449
+Ensino Fundamental I |	1567
+Ensino Fundamental II |	1078
+Ensino Médio |	465
+Ensino de Jovens e Adultos |	480
+Universidades |	448
+**Total** |	**4487**
+
 
 Entretanto, na classe de Ensino de Jovens e Adultos os agentes atribuídos devem ter idade maior ou igual a 15 anos. A partir deste fato eles podem ser selecionados e associados a devida escola.
 
