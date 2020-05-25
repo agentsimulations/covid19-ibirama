@@ -83,6 +83,35 @@ Como não há dados disponiveis sobre a faixa etária dos habitantes de cada dom
 
 ## Empresas e Trabalhadores
 ## Instituções de Ensino e Alunos
+A simulação considera um total de 4487 alunos [(IBGE,  2010a)](#ibge-2010a) que frequentam as escolas do município de Ibirama.
+
+A lista de escolas do município foi obtida no portal [Educa Mais Brasil](https://www.educamaisbrasil.com.br/escolas/santa-catarina/ibirama). Como não foram encontrados dados de distribuição dos alunos nas escolas, a escolha adotada foi uma distribuição aleatória. O aluno é atribuído a uma escola aleatória, desde que esta ofereça as aulas para a sua faixa etária. 
+
+O IBGE separa os alunos em classes, assim como a sua respectiva quantidade em cada uma, para melhor entendimento foi adotada uma nomenclatura para as classes baseado no dados do IBGE [(IBGE,  2010a)](#ibge-2010a) demonstrado na tabela abaixo.
+
+ Categoria de escola | Quantidade de alunos
+ 
+------------: | ------------:
+ 
+Educação Infantil | 449
+ 
+Ensino Fundamental I | 1567
+ 
+Ensino Fundamental II |1078
+ 
+Ensino Médio | 465
+ 
+Ensino de Jovens e Adultos | 480
+ 
+Universidades | 448
+ 
+**Total** | **4487**
+
+
+Entretanto, na classe de Ensino de Jovens e Adultos os agentes atribuídos devem ter idade maior ou igual a 15 anos. A partir deste fato eles podem ser selecionados e associados a devida escola.
+
+
+
 ## Comportamento dos Agentes
 A simulação agrupa os habitantes de Ibirama em três categorias: (i) *estudantes*, (ii) *trabalhadores*, e (iii) *habitantes não economicamente ativos*. Para cada uma destas categorias foi criado um tipo de *agente artificial*. Ainda é possível haver uma combinação de categorias, por exemplo, para aqueles habitantes que *trabalham* e *estudam*. A seguir é detalhado o comportamento de cada categoria de agente.
 
@@ -113,7 +142,7 @@ São aqueles agentes que **não trabalham nem estudam**. Estes agentes se compor
 # Resultados Preliminares
 O modelo simula diversos cenários diferentes, com a duração de execução de cada cenário equivalente a 90 dias (3 meses) no *tempo virtual* do modelo. Cada cenário é executado 10 vezes, para serem obtidas médias como resultado de um cenário específico e serem gerados gráficos a partir das mesmas.
 
-O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR** (Susceptible, Exposed, INfectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. 
+O sistema escolhido para representar os estágios de um agente durante a doença foi o **SEIR** (Susceptible, Exposed, Infectious, Recovered), que acreditamos ser o que melhor se encaixa no contexto da simulação. 
 
 Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
 
@@ -136,6 +165,8 @@ Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens
 >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (100% estudantes e 100% trabalhadores)
 
 [<img src="charts/introduction(1w)/isolation(1s_1w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(1s_1w)/all-chart.png)
+
+Algo que é possível inferir a partir da observação dos gráficos é a diminuição da quantidade de infectados conforme as taxas do isolamento de cada classe vai aumentando. O último gráfico apresenta uma média de 5 infectados e 0 mortes como resultado de um isolamento completo (100%).
 
 <!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 10% trabalhadores)
 
