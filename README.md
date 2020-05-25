@@ -89,7 +89,7 @@ A lista de escolas do município foi obtida no portal [Educa Mais Brasil](https:
 
 O IBGE separa os alunos em classes, assim como a sua respectiva quantidade em cada uma, para melhor entendimento foi adotada uma nomenclatura para as classes baseado no dados do IBGE [(IBGE,  2010a)](#ibge-2010a) demonstrado na tabela abaixo.
 
- Categoria de escola | Quantidade de alunos
+Categoria de escola | Quantidade de alunos
  
 ------------: | ------------:
  
@@ -106,7 +106,6 @@ Ensino de Jovens e Adultos | 480
 Universidades | 448
  
 **Total** | **4487**
-
 
 Entretanto, na classe de Ensino de Jovens e Adultos os agentes atribuídos devem ter idade maior ou igual a 15 anos. A partir deste fato eles podem ser selecionados e associados a devida escola.
 
