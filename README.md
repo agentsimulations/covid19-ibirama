@@ -189,7 +189,19 @@ O modelo simula diversos cenários diferentes, com a duração de execução de 
 
 Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
 
->No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 50% trabalhadores)
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 0-100% trabalhadores com uma variação de 25%)
+
+[<img src="charts/introduction(1w)/Overall-infected/chart(00,Y).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(00,Y).png)
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0-100% estudantes com uma variação de 25% e 0% trabalhadores)
+
+[<img src="charts/introduction(1w)/Overall-infected/chart(X,00).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(X,00).png)
+
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0-100% estudantes e 0-100% trabalhadores, com uma variação de 25%)
+
+[<img src="charts/introduction(1w)/Overall-infected/chart(X,Y).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(X,Y).png)
+
+<!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 50% trabalhadores)
 
 [<img src="charts/introduction(1w)/isolation(0.5s_0.5w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.5s_0.5w)/all-chart.png)
 
@@ -211,7 +223,7 @@ Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens
 
 Algo que é possível inferir a partir da observação dos gráficos é a diminuição da quantidade de infectados conforme as taxas do isolamento de cada classe vai aumentando. O último gráfico apresenta uma média de 5 infectados e 0 mortes como resultado de um isolamento completo (100%).
 
-<!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 10% trabalhadores)
+>No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 10% trabalhadores)
 
 [<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/all-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/all-chart.png)
 
