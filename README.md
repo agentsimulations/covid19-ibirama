@@ -10,7 +10,7 @@ O objetivo desta [simulação com agentes](https://sites.google.com/view/simulac
 
 A simulação foi desenvolvida no âmbito do projeto de pesquisa [Desenvolvimento Dirigido a Modelos de Simulações com Agentes](https://www.udesc.br/ceavi/pesquisaepos/pesquisa/projetos) do [Centro de Educação Superior do Alto Vale do Itajaí (CEAVI/UDESC)](https://www.udesc.br/ceavi). Os autores da simulação são:
 
- - [**Lucas de Castro Lima Teixeira**](mailto:email-do-lucas@dominio.com) (aluno de Engenharia de Software e bolsista de pesquisa).
+ - [**Lucas de Castro Lima Teixeira**](mailto:luukascastro@gmail.com) (aluno de Engenharia de Software e bolsista de pesquisa).
  - [**Fernando dos Santos**](mailto:fernando.santos@udesc.br) (professor no curso de Engenharia de Software).
 
 A simulação foi desenvolvida na plataforma [NetLogo](https://ccl.northwestern.edu/netlogo/), e pode ser visualizada na Figura 1.
@@ -200,6 +200,7 @@ Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens
 >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0-100% estudantes e 0-100% trabalhadores, com uma variação de 25%)
 
 [<img src="charts/introduction(1w)/Overall-infected/chart(X,Y).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(X,Y).png)
+
 
 <!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 50% trabalhadores)
 
