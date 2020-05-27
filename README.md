@@ -39,6 +39,7 @@ Os dados utilizados na simulação são provenientes das seguintes fontes (apres
 	* [Comportamento dos Agentes](#Comportamento-dos-Agentes)
 	* [Parâmetros da COVID-19](#Parâmetros-da-COVID-19)
 * [Resultados Preliminares](#Resultados-Preliminares)
+* [Próximos Passos](#Próximos-Passos)
 * [Referências](#Referências)
 
 
@@ -185,21 +186,29 @@ Faixa Etária |Taxa de Mortalidade
 
 
 # Resultados Preliminares
+<!-- Realizamos algumas simulações para estudar a propagação em um período de 90 dias (3 meses). Cada simulação foi executada 10 vezes para ser possível obter resultados médios e assim mitigar os efeitos que a inicialização aleatória dos agentes poderia causar.
+
+As simulações consideram que o *paciente zero* é **um único agente trabalhador**.  -->
+
+
 O modelo simula diversos cenários diferentes, com a duração de execução de cada cenário equivalente a 90 dias (3 meses) no *tempo virtual* do modelo. Cada cenário é executado 10 vezes, para serem obtidas médias como resultado de um cenário específico e serem gerados gráficos a partir das mesmas.
 
 Os cenários executados se iniciam com 1 trabalhador infectado e as porcentagens de estudantes e trabalhadores em isolamento variam de acordo com o cenário. Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral.
 
->No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0% estudantes e 0-100% trabalhadores com uma variação de 25%)
 
-[<img src="charts/introduction(1w)/Overall-infected/chart(00,Y).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(00,Y).png)
 
->No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0-100% estudantes com uma variação de 25% e 0% trabalhadores)
+>No gráfico abaixo: simulação da propagação entre todos os habitantes considerando isolamento simultâneo de estudantes e trabalhadores (percentuais de isolamento com variação de 25%)
 
-[<img src="charts/introduction(1w)/Overall-infected/chart(X,00).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(X,00).png)
+![Resultado: Isolamento de Estudantes e Trabalhadores](charts/introduction(1w)/Overall-infected/infected-chart(X,Y).png)
 
->No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (0-100% estudantes e 0-100% trabalhadores, com uma variação de 25%)
 
-[<img src="charts/introduction(1w)/Overall-infected/chart(X,Y).png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/Overall-infected/chart(X,Y).png)
+>No gráfico abaixo: simulação da propagação entre todos os habitantes considerando isolamento **apenas de estudantes** (percentuais de isolamento com variação de 25%)
+
+![Resultado: Isolamento Apenas de Estudantes](charts/introduction(1w)/Overall-infected/infected-chart(X,00).png)
+
+>No gráfico abaixo: simulação da propagação entre todos os habitantes considerando isolamento **apenas de trabalhadores** (percentuais de isolamento com variação de 25%)
+
+![Resultado: Isolamento Apenas de Trabalhadores](charts/introduction(1w)/Overall-infected/infected-chart(00,Y).png)
 
 <!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 50% trabalhadores)
 
@@ -238,6 +247,13 @@ Algo que é possível inferir a partir da observação dos gráficos é a diminu
 >No gráfico abaixo: propagação entre **não estudantes e não trabalhadores** com isolamento setorial (0% estudantes e 10% trabalhadores)
 
 [<img src="charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png" width="500" alt="Resultado: Todos os Habitantes com Isolamento Setorial"/>](charts/introduction(1w)/isolation(0.0s_0.1w)/others-chart.png) -->
+
+
+# Próximos Passos
+<!-- sugestoes:
+- outras quantiddes para "paciente zero"
+-->
+
 
 # Referências
 ###### (ECDC, 2020)
