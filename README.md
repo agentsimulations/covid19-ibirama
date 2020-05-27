@@ -188,14 +188,11 @@ Realizamos algumas simulações para estudar a propagação em um período de 90
 
 As simulações consideram que o *paciente zero* é **um único agente trabalhador**. Diferentes cenários de isolamento foram simulados, variando o percentual de estudantes e trabalhadores isolados. <!-- Essa parte da granularidade vamos deixar para falar só no futuro: Maiores granularidades nas taxas de isolamento foram escolhidas inicialmente para testar com objetividade a eficácia do isolamento social de um modo geral. -->
 
-A Figura 3 apresenta a quantidade de agentes infectados no cenário onde o percentual de isolamento de estudantes e trabalhadores é o mesmo (por exemplo, isolando-se 75% de estudantes e 75% de trabalhadores, curva verde). <!-- Lucas aqui vai alguma explicação dos resultados. Tem que mencionar onde está a curva com o isolamento (100,100) -->
-
+A Figura 3 apresenta a quantidade de agentes infectados no cenário onde o percentual de isolamento de estudantes e trabalhadores é o mesmo (por exemplo, isolando-se 75% de estudantes e 75% de trabalhadores, curva verde). Este gráfico evidencia a diferença na propagação em função do percentual de isolamento. O cenário que resulta na menor quantidade de infectados é aquele com isolamento total (100% de estudantes e 100% de trabalhadores). Neste cenário a quantidade de agentes infectados é próxima de zero (linha roxa que aparece junto ao eixo inferior). O cenário oposto é aquele onde não há isolamento nem de estudantes nem de trabalhadores, que resulta na maior quantidade de agentes infectados (linha azul).
 
 >Figura 3: Simulação da propagação entre todos os habitantes considerando isolamento simultâneo de estudantes e trabalhadores (percentuais de isolamento com variação de 25%)
 
 ![Figura 3: Resultado com Isolamento de Estudantes e Trabalhadores](charts/introduction(1w)/Overall-infected/infected-chart(X,Y).png)
-
-A partir da observação da Figura 3 acima, tornam-se evidentes as diferenças entre os cenários analisados. O melhor cenário possível se demonstra ser o de isolamento total onde temos um percentual de agentes infectados próximo de zero. Em oposto temos o cenário onde não há isolamento de nenhuma das classes, que demonstra a maior quantidade de agentes infectados.
 
 A Figura 4 apresenta a quantidade de agentes infectados no cenário em que considera somente o isolamento de estudantes.
 
@@ -210,9 +207,9 @@ A Figura 5 apresenta a quantidade de agentes infectados no cenário em que consi
 
 ![Figura 5: Resultado com Isolamento Apenas de Trabalhadores](charts/introduction(1w)/Overall-infected/infected-chart(00,Y).png)
 
-É possível observar que os resultados das Figuras 4 e 5 acima são parecidos ao fazer uma comparação entre o mesmo percentual de isolamente em classes diferentes, por exemplo isolar 25% dos trabalhadores levou a um resultado similar ao isolar 25% dos estudantes, enquanto o percentual da outra classe se mantém em zero Logo, isto dá **indícios que torna-se indiferente** isolar uma determinada quantidade de agentes de certa classe, caso o percentual de isolamento da outra classe seja zero.
+Nos resultados mostrados nas Figuras 4 e 5 acima, nota-se semelhança nos casos em que houve isolamento de 25% ou 50% ou 75% de apenas uma classe de agentes. Por exemplo, isolar 25% dos trabalhadores e 0% de estudantes (Figura 5 linha vermelha) produz uma quantidade de infectados similar a isolar 25% dos estudantes e 0% de trabalhadores (Figura 4 linha vermelha). Isso dá **indícios de que é indiferente** isolar 25% ou 50% ou 75% de uma classe de agentes caso o percentual de isolamento da outra classe seja zero.
 
-Entretanto, os gráficos demonstram curvas acentuadamente diferentes ao isolar 100% de uma determinada classe. No caso do isolamento total de estudantes houve um achatamento maior da curva de infectados, possivelmente isso é causado devido a maior quantidade de estudantes existentes na simulação. Porém, ainda é necessário uma análise mais detalhada desta hipótese.
+Por outro lado, os resultados mostram curvas acentuadamente diferentes ao isolar 100% de uma determinada classe. No caso do isolamento total de estudantes (Figura 4 linha roxa) há um achatamento maior da curva de infectados em comparação ao isolamento total de trabalhadores (Figura 5 linha roxa).  Possivelmente isso é devido a maior quantidade de estudantes existentes na simulação. Porém, ainda é necessário uma análise mais detalhada desta hipótese.
 
 <!-- >No gráfico abaixo: propagação entre **todos os habitantes** com isolamento setorial (50% estudantes e 50% trabalhadores)
 
@@ -254,7 +251,9 @@ Algo que é possível inferir a partir da observação dos gráficos é a diminu
 
 
 # Próximos Passos
-Os próximos passos desta simulação com agentes têm como objetivo analisar os percentuais de infecções por classes de agente. Assim como também fazer análises mais detalhadas sobre a mortalidade dos agentes e seus outros respectivos parâmetros, e explorar outras quantidades de agentes inicialmente infectados.
+Atualizaremos a simulação a medida que novos dados científicos sobre os parâmetros da COVID-19 específicos do Brasil e de Santa Catarina estejam disponíveis.
+
+Nos próximos passos desta pesquisa pretendemos analisar os percentuais de infecções por classes de agente. Também pretendemos explorar cenários onde há mais de um *paciente zero*. Também pretendemos fazer análises mais detalhadas sobre a mortalidade dos agentes.
 <!-- sugestoes:
 - outras quantidades para "paciente zero"
 -->
