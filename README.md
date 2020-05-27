@@ -13,13 +13,11 @@ A simulação foi desenvolvida no âmbito do projeto de pesquisa [Desenvolviment
  - [**Lucas de Castro Lima Teixeira**](mailto:luukascastro@gmail.com) (aluno de Engenharia de Software e bolsista de pesquisa).
  - [**Fernando dos Santos**](mailto:fernando.santos@udesc.br) (professor no curso de Engenharia de Software).
 
-A simulação foi desenvolvida na plataforma [NetLogo](https://ccl.northwestern.edu/netlogo/), e pode ser visualizada na Figura 1.
+A simulação foi desenvolvida na plataforma [NetLogo](https://ccl.northwestern.edu/netlogo/), e pode ser visualizada na Figura 1 abaixo (clique para abrir o video no YouTube).
 
->Figura 1: Simulação de Propagação de COVID-19 em Ibirama/SC
+>Figura 1: Video da Simulação de Propagação de COVID-19 em Ibirama/SC (clique para abrir no YouTube)
 
-![Simulação de Propagação de COVID-19 em Ibirama/SC](images/covid19-ibirama-screenshot.png)
-
-
+[![Video Simulação de Propagação de COVID-19 em Ibirama/SC](images/covid19-ibirama-youtube.png)](https://youtu.be/5zOu0fGIyYQ)
 
 Os dados utilizados na simulação são provenientes das seguintes fontes (apresentadas em detalhes mais abaixo):
 - Os dados territoriais e viários foram obtidos do repositório [Open Street Map](https://www.openstreetmap.org/relation/296728).
@@ -256,7 +254,7 @@ Algo que é possível inferir a partir da observação dos gráficos é a diminu
 
 
 # Próximos Passos
-Os próximos passos desta simulação com agentes têm como objetivo analisar os percentuais de infecções por classes de agente. Assim como também fazer análises mais detalhadas sobre a mortalidade dos agentes e seus outros respectivos parâmetros, e explorar outras quantidades de agentes inicialmente infectados. 
+Os próximos passos desta simulação com agentes têm como objetivo analisar os percentuais de infecções por classes de agente. Assim como também fazer análises mais detalhadas sobre a mortalidade dos agentes e seus outros respectivos parâmetros, e explorar outras quantidades de agentes inicialmente infectados.
 <!-- sugestoes:
 - outras quantidades para "paciente zero"
 -->
