@@ -29,16 +29,16 @@ Os dados utilizados na simulação são provenientes das seguintes fontes (apres
 É **muito importante** destacar que outros dados  **necessários** à simulação mas que **não estão disponíveis** nas fontes de dados acima (como por exemplo, a quantidade de funcionários de cada empresa ou de alunos em cada escola) foram **estimados**. Neste sentido, ressaltamos que a simulação **pode não refletir a dinâmica real de propagação de COVID-19 na cidade** e portanto seus resultados devem ser utilizados **com cautela**.  
 
 # Sumário
-* [Especificação da Simulação](#Especificação-da-Simulação)
-	* [Territorial e Viária](#Territorial-e-Viária)
-	* [População e Domicílios](#População-e-Domicílios)
-	* [Empresas e Trabalhadores](#Empresas-e-Trabalhadores)
-	* [Instituções de Ensino e Alunos](#Instituções-de-Ensino-e-Alunos)
-	* [Comportamento dos Agentes](#Comportamento-dos-Agentes)
-	* [Parâmetros da COVID-19](#Parâmetros-da-COVID-19)
-* [Resultados Preliminares](#Resultados-Preliminares)
-* [Próximos Passos](#Próximos-Passos)
-* [Referências](#Referências)
+* [Especificação da Simulação](#especificação-da-simulação)
+	* [Territorial e Viária](#territorial-e-viária)
+	* [População e Domicílios](#população-e-domicílios)
+	* [Empresas e Trabalhadores](#empresas-e-trabalhadores)
+	* [Instituções de Ensino e Alunos](#instituções-de-ensino-e-alunos)
+	* [Comportamento dos Agentes](#comportamento-dos-agentes)
+	* [Parâmetros da COVID-19](#parâmetros-da-covid-19)
+* [Resultados Preliminares](#resultados-preliminares)
+* [Próximos Passos](#próximos-passos)
+* [Referências](#referências)
 
 
 # Especificação da Simulação
@@ -60,7 +60,7 @@ Este valor foi obtido através do Censo 2010 realizado pelo Instituto Brasileiro
 
 Uma idade foi atribuída a cada *agente artificial*, de acordo com a pirâmide demográfica disponibilizada pelo IBGE [(IBGE,  2010a)](#ibge-2010a).
 
-A simulação considera **5515 domicílios**, que são as moradias onde residem os habitantes (IBGE, 2010a). Para cada domicílio foi criada uma *casa virtual* posicionada na lateral de alguma rua da estrutura viária descrita anteriormente na seção [Especificação Territorial e Viária](#Territorial-e-Viária). Cada *agente virtual* habita uma *casa virtual*, e a quantidade de agentes por casa seguiu a distribuição abaixo [(IBGE, 2010a)](#ibge-2010a).
+A simulação considera **5515 domicílios**, que são as moradias onde residem os habitantes (IBGE, 2010a). Para cada domicílio foi criada uma *casa virtual* posicionada na lateral de alguma rua da estrutura viária descrita anteriormente na seção [Especificação Territorial e Viária](#territorial-e-viária). Cada *agente virtual* habita uma *casa virtual*, e a quantidade de agentes por casa seguiu a distribuição abaixo [(IBGE, 2010a)](#ibge-2010a).
 
 Quantidade de moradores | Quantidade de domicílios
 ------------: | -------------:
@@ -89,7 +89,7 @@ A localização geográfica destas empresas não está disponível no site da FE
 Segundo o IBGE, Ibirama conta com 9142 habitantes trabalhadores [(IBGE,  2010c)](#ibge-2010c). Entretanto, não há dados disponiveis sobre a quantidade de trabalhadores **em cada empresa**. Portanto, solicitamos a um especialista da área contábil e com conhecimento das empresas de Ibirama - Professor [Sérgio Marian](https://www.udesc.br/professor/sergio.marian) (Departamento de Ciências Contábeis da UDESC Alto Vale) - que fizesse uma estimativa de quantos funcionários trabalham em cada uma das 282 empresas consideradas na simulação. A estimativa apontou **2462 trabalhadores**. Disponibilizamos a estimativa de trabalhadores por empresa neste [link](/data/empresas/README.md).
 
 
-Portanto, a simulação considera apenas **282 empresas** (que foram encontradas no Google Maps) e apenas **2462 trabalhadores** (estimativa de especialista na área contábil). Os 6680 trabalhadores restantes foram tratados como agentes não economicamente ativos, cujo comportamento é detalhado posteriormente na seção  [Comportamento dos Agentes](#Comportamento-dos-Agentes).
+Portanto, a simulação considera apenas **282 empresas** (que foram encontradas no Google Maps) e apenas **2462 trabalhadores** (estimativa de especialista na área contábil). Os 6680 trabalhadores restantes foram tratados como agentes não economicamente ativos, cujo comportamento é detalhado posteriormente na seção  [Comportamento dos Agentes](#comportamento-dos-agentes).
 
 ***Ressaltamos que a adoção de quantidades de empresas e trabalhadores diferente das apontadas pela FECAM e IBGE pode fazer com que a simulação não reflita a dinâmica real de propagação de COVID-19 na cidade. Portanto, os resultados da simulação devem ser utilizados com cautela***
 
@@ -166,7 +166,7 @@ Duração da Incubação (`E`) |	5 ou 6 dias |  [(ECDC, 2020)](#ecdc-2020)
 Duração da Infecção (`I`)|	8 dias |  [(ECDC, 2020)](#ecdc-2020)
 Probabilidade de transmissão |	0.3435 | [(SBI, 2020)](#sbi-2020)
 
-A transmissão acontece quando um agente **infectado** `(I)` entra em contato com um agente **suscetível** `(S)`. Este contato ocorre nos locais onde o agente trabalha, estuda, ou reside, conforme descrito anteriormente na seção [Comportamento dos Agentes](#Comportamento-dos-Agentes). Se o agente for infectado, então ele passa para o estado **exposto** `(E)` e desenvolve a doença. Ao término do período **infectado** `(I)` o agente é considerado curado, desenvolvendo imunidade e passando para o estado **recuperado** `(R)`.
+A transmissão acontece quando um agente **infectado** `(I)` entra em contato com um agente **suscetível** `(S)`. Este contato ocorre nos locais onde o agente trabalha, estuda, ou reside, conforme descrito anteriormente na seção [Comportamento dos Agentes](#comportamento-dos-agentes). Se o agente for infectado, então ele passa para o estado **exposto** `(E)` e desenvolve a doença. Ao término do período **infectado** `(I)` o agente é considerado curado, desenvolvendo imunidade e passando para o estado **recuperado** `(R)`.
 
 
 #### Mortalidade
