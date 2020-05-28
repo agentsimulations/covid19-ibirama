@@ -260,25 +260,22 @@ Nos próximos passos desta pesquisa pretendemos analisar os percentuais de infec
 
 # Referências
 ###### (ECDC, 2020)
-European Centre for Disease Prevention and Control (ECDC). **Guidance for discharge and ending isolation in the context of widespread community transmission of COVID-19**. 2020. Disponível em <https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-guidance-discharge-and-ending-isolation-first%20update.pdf>. Acesso em: 01/04/2020.
+European Centre for Disease Prevention and Control (ECDC). **Guidance for discharge and ending isolation in the context of widespread community transmission of COVID-19**. 2020. Disponível em < <https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-guidance-discharge-and-ending-isolation-first%20update.pdf> >. Acesso em: 01 abr. 2020.
 
 ###### (IBGE, 2010a)
-Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010a. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>>. Acesso em: 01/04/2020.
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010a. Disponível em: < <https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true> >. Acesso em: 01 abr. 2020.
 
 ###### (IBGE, 2010b)
-Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Educação**. 2010b. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22469?detalhes=true>>. Acesso em: 01/04/2020.
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Educação**. 2010b. Disponível em: < <https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22469?detalhes=true> >. Acesso em: 01 abr. 2020.
 
 ###### (IBGE, 2010c)
-Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Trabalho**. 2010b. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22957?detalhes=true>>. Acesso em: 01/04/2020.
-
-
-
+Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Amostra - Trabalho**. 2010b. Disponível em: < <https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/22957?detalhes=true> >. Acesso em: 01 abr. 2020.
 
 ###### (Keeling e Rohani, 2011)
 KEELING, M. J.; ROHANI, P. **Modeling infectious diseases in humans and animals**. Princeton University Press, 2011.
 
 ###### (NCPERET, 2020)
-The Novel Coronavirus Pneumonia Emergency Response Epidemiology Team (NCPERET). **The Epidemiological Characteristics of an Outbreak of 2019 Novel Coronavirus Diseases (COVID-19) — China**. China CDC Weekly, 2(8): 113-122. 2020. Disponível em: <<http://weekly.chinacdc.cn/en/article/id/e53946e2-c6c4-41e9-9a9b-fea8db1a8f51>>. Acesso em: 01/04/2020.
+The Novel Coronavirus Pneumonia Emergency Response Epidemiology Team (NCPERET). **The Epidemiological Characteristics of an Outbreak of 2019 Novel Coronavirus Diseases (COVID-19) — China**. China CDC Weekly, 2(8): 113-122. 2020. Disponível em: < <http://weekly.chinacdc.cn/en/article/id/e53946e2-c6c4-41e9-9a9b-fea8db1a8f51> >. Acesso em: 01 abr. 2020.
 
 ###### (SBI, 2020)
-Sociedade Brasileira de Infectologia (SBI). **Informe da Sociedade Brasileira de Infectologia (SBI) sobre o novo coronavírus**. 2020. Disponível em <<https://www.infectologia.org.br/admin/zcloud/principal/2020/03/Informativo-CoV-12-03-2020.pdf>>. Acesso em: 01/04/2020.
+Sociedade Brasileira de Infectologia (SBI). **Informe da Sociedade Brasileira de Infectologia (SBI) sobre o novo coronavírus**. 2020. Disponível em < <https://www.infectologia.org.br/admin/zcloud/principal/2020/03/Informativo-CoV-12-03-2020.pdf> >. Acesso em: 01 abr. 2020.
