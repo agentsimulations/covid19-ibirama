@@ -41,6 +41,7 @@ Os dados utilizados na simulação são provenientes das seguintes fontes (apres
 * [Referências](#Referências)
 
 
+
 # Especificação da Simulação
 ## Territorial e Viária
 Os dados territoriais e viários foram obtidos do repositório [Open Street Map](https://www.openstreetmap.org/relation/296728) em Março de 2020. A Figura 2 apresenta uma visualização do mapa utilizado. A estrutura viária está em vermelho. Os limites territoriais de Ibirama estão destacados em bege. Na simulação foi utilizado apenas a extensão territorial onde há ruas, destacada pelo retângulo azul. Essa extensão tem aproximadamente 21.44 km de altura por 14.36 km de largura.
