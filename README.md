@@ -254,14 +254,13 @@ Algo que é possível inferir a partir da observação dos gráficos é a diminu
 Atualizaremos a simulação a medida que novos dados científicos sobre os parâmetros da COVID-19 específicos do Brasil e de Santa Catarina estejam disponíveis.
 
 Nos próximos passos desta pesquisa pretendemos analisar os percentuais de infecções por classes de agente. Também pretendemos explorar cenários onde há mais de um *paciente zero*. Também pretendemos fazer análises mais detalhadas sobre a mortalidade dos agentes.
-<!-- sugestoes:
-- outras quantidades para "paciente zero"
--->
+
+<!-- sugestoes: i) outras quantidades para "paciente zero" -->
 
 
 # Referências
 ###### (ECDC, 2020)
-European Centre for Disease Prevention and Control (ECDC). **Guidance for discharge and ending isolation in the context of widespread community transmission of COVID-19**. 2020. Disponível em <<https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-guidance-discharge-and-ending-isolation-first%20update.pdf>>. Acesso em: 01/04/2020.
+European Centre for Disease Prevention and Control (ECDC). **Guidance for discharge and ending isolation in the context of widespread community transmission of COVID-19**. 2020. Disponível em <https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-guidance-discharge-and-ending-isolation-first%20update.pdf>. Acesso em: 01/04/2020.
 
 ###### (IBGE, 2010a)
 Instituto Brasileiro de Geografia e Estatística. **IBGE | Cidades@ | Santa Catarina | Ibirama | Pesquisa | Censo | Universo - Características da população e dos domicílios**. 2010a. Disponível em: <<https://cidades.ibge.gov.br/brasil/sc/ibirama/pesquisa/23/24304?detalhes=true>>. Acesso em: 01/04/2020.
