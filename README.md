@@ -279,3 +279,11 @@ The Novel Coronavirus Pneumonia Emergency Response Epidemiology Team (NCPERET). 
 
 ###### (SBI, 2020)
 Sociedade Brasileira de Infectologia (SBI). **Informe da Sociedade Brasileira de Infectologia (SBI) sobre o novo coronavírus**. 2020. Disponível em < <https://www.infectologia.org.br/admin/zcloud/principal/2020/03/Informativo-CoV-12-03-2020.pdf> >. Acesso em: 01 abr. 2020.
+
+
+Nº | Empresa | Trabalhadores
+---| ---:|---:
+1 | Clínica Vidas |	20
+... | ... |	...
+... | ... |	...
+282 | Zandocar Veículos |	4
